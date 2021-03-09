@@ -4,6 +4,12 @@
 | :----: | :--: | :-------: | :------: |
 | 김재훈 | 팀장 | Back-End  |  Django  |
 | 백동우 | 팀원 | Front-End |  React   |
+### 사용한 라이브러리(Web)
+- styled-components
+- react-scroll
+- react-router-dom
+### 사용된 기술(Web)
+*****
 ## 게임 개발 팀원
 |  이름  | 담당 | 기술스택 |
 | :----: | :--: |:------: |
