@@ -25,3 +25,5 @@ yarn-error.log*
 secretFile/
 .idea/
 /.idea
+src/image_video/
+/src/image_video

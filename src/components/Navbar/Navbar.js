@@ -1,0 +1,111 @@
+import React from 'react';
+import styled from 'styled-components';
+import { animateScroll as scroll } from 'react-scroll';
+import { Link as LinkS } from 'react-scroll';
+function Navbar(props) {
+    const toggleHome = () => {
+        scroll.scrollToTop();
+    };
+    return (
+        <Container>
+            <LogoContainer>
+                <Logo
+                    src="https://www.cookierun-kingdom.com/static/d8473823fd5fc1ca674920f26f54993f/e7014/flat-logo-ko.webp"
+                    alt="Logo"
+                    onClick={toggleHome}
+                />
+                <Nav>
+                    <NavLinks
+                        to="character"
+                        smooth={true}
+                        duration={500}
+                        spy={true}
+                        exact="true"
+                        offset={-80}
+                    >
+                        게임소개
+                    </NavLinks>
+                    <NavLinks
+                        to="worldview"
+                        smooth={true}
+                        duration={500}
+                        spy={true}
+                        exact="true"
+                        offset={-80}
+                    >
+                        캐릭터
+                    </NavLinks>
+                    <NavLinks>세계관</NavLinks>
+                    <NavLinks>미디어</NavLinks>
+                    <NavLinks>쿠폰입력</NavLinks>
+                </Nav>
+            </LogoContainer>
+        </Container>
+    );
+}
+
+export default Navbar;
+const Container = styled.div`
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+`;
+const LogoContainer = styled.div`
+    max-width: 1250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+`;
+const Nav = styled.div`
+    align-items: center;
+    height: 5.8125rem;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 75rem;
+    margin: auto;
+`;
+const Logo = styled.img`
+    margin-right: 130px;
+    width: 106px;
+    height: 55px;
+    cursor: pointer;
+`;
+const SideMenu = styled.p`
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    &:hover {
+        color: #ffe81e;
+        transform: scale(1.04);
+    }
+    //@media only screen and (max-width: 1024px) {
+    //    display: inline-block !important;
+    //}
+`;
+// 리액트 스크롤
+const NavItem = styled.li`
+    height: 80px;
+`;
+const NavLinks = styled(LinkS)`
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    &:hover {
+        color: #ffe81e;
+        transform: scale(1.04);
+    }
+
+    &.active {
+        border-bottom: 3px solid #01bf71;
+        transform: scale(1.04);
+        font-weight: 700;
+    }
+`;
