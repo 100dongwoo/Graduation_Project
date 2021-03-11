@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Video from '../../../image_video/background.mp4';
+import Video from '../../../../image_video/background.mp4';
 
-function MainPage(props) {
+function Banner(props) {
     return (
         <Container id="home">
             <VideoBg
@@ -10,7 +10,7 @@ function MainPage(props) {
                 loop
                 muted
                 playsinline
-                // src={Video}
+                src={Video}
                 src={
                     'https://www.cookierun-kingdom.com/static/pc.vp9-16076e5e49815f0e77288b02e58d9c16.webm'
                 }
@@ -53,4 +53,4 @@ const Container = styled.div`
     padding: 0 0;
 `;
 
-export default MainPage;
+export default Banner;

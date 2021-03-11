@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPage from './components/page/LoginPage/LoginPage';
-import MainPage from './components/page/MainPage/MainPage';
+import Banner from './components/page/MainPage/Banner/Banner';
 import { createGlobalStyle } from 'styled-components';
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/page/home';
+import Home from './components/page/MainPage/home';
 const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;

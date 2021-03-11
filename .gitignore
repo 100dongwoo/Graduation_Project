@@ -21,8 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/secretFile
-secretFile/
+/src/secretFile
+src/secretFile/
 .idea/
 /.idea
 src/image_video/

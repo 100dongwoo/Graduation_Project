@@ -1,13 +1,15 @@
 import React from 'react';
-import MainPage from './MainPage/MainPage';
+import Banner from './Banner/Banner';
 import Character from './CharacterPage/Character';
 import Worldview from './Worldview/Worldview';
+import Medias from './Medias/Medias';
 function Home(props) {
     return (
         <>
-            <MainPage />
+            <Banner />
             <Character />
             <Worldview />
+            <Medias />
         </>
     );
 }
