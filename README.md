@@ -8,6 +8,7 @@
 - styled-components
 - react-scroll
 - react-router-dom
+- react-carousel
 ### 사용된 기술(Web)
 *****
 ## 게임 개발 팀원
