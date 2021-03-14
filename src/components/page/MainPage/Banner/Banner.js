@@ -1,118 +1,19 @@
-// import React, { useState, useEffect } from 'react';
-// import styled from 'styled-components';
-// import Carousel, { Dots } from '@brainhubeu/react-carousel';
-// import '@brainhubeu/react-carousel/lib/style.css';
-// import Video from '../../../../image_video/background.mp4';
-// import forest from '../../../../image_video/forest.jpg';
-//
-// function Banner(props) {
-//     const [value, setValue] = useState(0);
-//
-//     const onChange = (value) => {
-//         setValue(value);
-//     };
-//
-//     useEffect(() => {}, []);
-//     return (
-//         <Container id="home">
-//             <div>
-//                 <div>
-//                     <Carousel value={value} onChange={onChange}>
-//                         {/*<img className="img-example" src={forest} />*/}
-//
-//                         {/*<img className="img-example" src={forest} />*/}
-//                     </Carousel>
-//                     <Dots
-//                         value={value}
-//                         onChange={onChange}
-//                         thumbnails={[
-//                             <img
-//                                 key={1}
-//                                 className="img-example-small"
-//                                 src={forest}
-//                             />,
-//                             <img
-//                                 key={12}
-//                                 className="img-example-small"
-//                                 src={forest}
-//                             />,
-//                         ]}
-//                     />
-//                 </div>
-//             </div>
-//             {/*<VideoBg*/}
-//             {/*    src="https://lwi.nexon.com/maplestory/banner/2021/0310/main_bn_210310_18EFC4B6F5BC7B69.jpg"*/}
-//             {/*    // src={forest}*/}
-//             {/*    // autoPlay*/}
-//             {/*    // loop*/}
-//             {/*    // muted*/}
-//             {/*    // playsinline*/}
-//             {/*    // src={Video}*/}
-//             {/*    // src={*/}
-//             {/*    //     'https://www.cookierun-kingdom.com/static/pc.vp9-16076e5e49815f0e77288b02e58d9c16.webm'*/}
-//             {/*    // }*/}
-//             {/*    // type="video/mp4"*/}
-//             {/*/>*/}
-//         </Container>
-//     );
-// }
-// const VideoBg = styled.img`
-//     opacity: 0.9;
-//     width: 1200px;
-//     height: 410px;
-//     background-repeat: no-repeat;
-//     object-fit: cover;
-//     background-size: cover;
-//     //@media only screen and (min-width: 25em) {
-//     //    width: 42.75rem;
-//     //}
-//     //@media only screen and (min-width: 40em) {
-//     //    width: 57.875rem;
-//     //}
-//     ////opacity: 0.5;
-//     //object-fit: cover;
-//     //@media (min-width: 40em) {
-//     //    display: block;
-//     //}
-// `;
-//
-// const Container = styled.div`
-//     background: #fff;
-//     align-items: center;
-//     display: flex;
-//     flex: 1;
-//     justify-content: center;
-//     height: 30.625rem;
-//     @media only screen and (min-width: 25em) {
-//         height: 42.75rem;
-//     }
-//     @media only screen and (min-width: 40em) {
-//         height: 57.875rem;
-//     }
-//     width: 100%;
-//     margin: 0;
-//     padding: 0 0;
-// `;
-//
-// export default Banner;
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Carousel, { Dots, arrowsPlugin } from '@brainhubeu/react-carousel';
+import Carousel, { Dots } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-
-import Video from '../../../../image_video/background.mp4';
 import forest from '../../../../image_video/forest.jpg';
-
 const Banner = () => {
     const [value, setValue] = useState(0);
     const [slides, setSlides] = useState([
         <IMG
-            src={
-                'https://images.unsplash.com/photo-1612832020719-2bcbeedd4750?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-            }
+            src=" https://lwi.nexon.com/maplestory/banner/2021/0224/main_bn_210225_76D10BE2C51A9766.jpg"
+            alt=""
         />,
-        <IMG src={forest} />,
+        <IMG
+            src="https://lwi.nexon.com/maplestory/banner/2021/0310/main_bn_210310_18EFC4B6F5BC7B69.jpg"
+            alt=""
+        />,
         <IMG src={forest} />,
     ]);
 
@@ -136,16 +37,45 @@ const Banner = () => {
         }
     };
     return (
-        <div>
-            <button onClick={onPressUp}>메롱</button>
-            <Carousel value={value} slides={slides} onChange={onchange} />
-            <button onClick={onPressDown}>메롱</button>
-            <Dots value={value} onChange={onchange} number={slides.length} />
-        </div>
+        <Container>
+            <Content>
+                <ImageBox>
+                    <Carousel
+                        autoPlay={3800}
+                        value={value}
+                        slides={slides}
+                        onChange={onchange}
+                    />
+                    <button onClick={onPressUp}> -> </button>
+                    <button onClick={onPressDown}> _- </button>
+                    <Dots
+                        value={value}
+                        onChange={onchange}
+                        number={slides.length}
+                        style={{ color: 'transparent' }}
+                    />
+                </ImageBox>
+            </Content>
+        </Container>
     );
 };
+const Container = styled.div``;
+const ImageBox = styled.div`
+    width: 100%;
+`;
+const Content = styled.div`
+    text-align: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    height: 45.938rem;
+    width: 100%;
+    background: url(https://t1.kakaocdn.net/gamepub/ui-contents/promotion/odin/201014_teaser/pc/images/bg-section-gallery.jpg)
+        no-repeat;
+    background-size: cover;
+`;
 const IMG = styled.img`
-    width: 900px;
-    height: 900px;
+    width: 1200px;
+    height: 350px;
 `;
 export default Banner;

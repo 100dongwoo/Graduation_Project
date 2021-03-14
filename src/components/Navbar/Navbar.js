@@ -1,43 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import { animateScroll as scroll } from 'react-scroll';
+import { Link, useHistory } from 'react-router-dom';
 import { Link as LinkS } from 'react-scroll';
 function Navbar(props) {
+    const history = useHistory();
     const toggleHome = () => {
         scroll.scrollToTop();
     };
+    const Navbar = styled(Link)``;
     return (
         <Container>
             <LogoContainer>
                 <Logo
                     src="https://www.cookierun-kingdom.com/static/d8473823fd5fc1ca674920f26f54993f/e7014/flat-logo-ko.webp"
                     alt="Logo"
-                    onClick={toggleHome}
+                    onClick={() => {
+                        history.push('/');
+                    }}
                 />
                 <Nav>
-                    <NavLinks
-                        to="character"
-                        smooth={true}
-                        duration={500}
-                        spy={true}
-                        exact="true"
-                        offset={-80}
-                    >
-                        게임소개
-                    </NavLinks>
-                    <NavLinks
-                        to="worldview"
-                        smooth={true}
-                        duration={500}
-                        spy={true}
-                        exact="true"
-                        offset={-80}
-                    >
-                        캐릭터
-                    </NavLinks>
-                    <NavLinks>세계관</NavLinks>
-                    <NavLinks>미디어</NavLinks>
-                    <NavLinks>쿠폰입력</NavLinks>
+                    <NavLinks to="/login">공지사항</NavLinks>
+                    <NavLinks to="/login">가이드</NavLinks>
+                    <NavLinks to="/login">랭킹</NavLinks>
+                    <NavLinks to="/login">커뮤니티</NavLinks>
+                    <NavLinks to="/login">고객센터</NavLinks>
                 </Nav>
             </LogoContainer>
         </Container>
@@ -47,10 +34,10 @@ function Navbar(props) {
 export default Navbar;
 const Container = styled.div`
     width: 100%;
-    position: fixed;
-    z-index: 1;
-    background-color: transparent;
-    //background-color: rgba(0, 0, 0, 0.7);
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    background: #fff;
 `;
 const LogoContainer = styled.div`
     max-width: 1250px;
@@ -61,7 +48,7 @@ const LogoContainer = styled.div`
 `;
 const Nav = styled.div`
     align-items: center;
-    height: 5.8125rem;
+    height: 5.8rem;
     padding: 0.5rem 0;
     display: flex;
     justify-content: space-between;
@@ -93,10 +80,9 @@ const SideMenu = styled.p`
 const NavItem = styled.li`
     height: 80px;
 `;
-const NavLinks = styled(LinkS)`
+const NavLinks = styled(Link)`
     text-decoration: none;
-    color: #fff;
-
+    color: #000;
     font-size: 1.2rem;
     font-weight: 400;
     cursor: pointer;
@@ -104,7 +90,6 @@ const NavLinks = styled(LinkS)`
         color: #ffe81e;
         transform: scale(1.04);
     }
-
     &.active {
         border-bottom: 3px solid #01bf71;
         transform: scale(1.04);
