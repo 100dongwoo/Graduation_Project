@@ -9,8 +9,7 @@ import {
 
 function Medias(props) {
     return (
-        <Container>
-            {' '}
+        <Container id="media">
             <SocialContainer>
                 <SocialBox
                     target="_blank"
@@ -21,7 +20,10 @@ function Medias(props) {
                     <Social className="fab fa-youtube" />
                 </SocialBox>
                 <SocialBox
-                    style={{ background: 'pink' }}
+                    style={{
+                        background:
+                            'linear-gradient(180deg, #ea9e38 0, #ef9337 8.33%, #f48838 16.67%, #f77a3a 25%, #f96b3d 33.33%, #fa5a41 41.67%, #f94646 50%, #f72c4c 58.33%, #f40054 66.67%, #f0005e 75%, #eb0069 83.33%, #e40075 91.67%, #db0082 100%)',
+                    }}
                     target="_blank"
                     rel="noopener"
                     href={instargrarm}
@@ -67,6 +69,9 @@ const SocialBox = styled.a`
     cursor: pointer;
     border-radius: 50%;
     text-decoration: none;
+    &: hover {
+        opacity: 0.8;
+    }
 `;
 const SocialContainer = styled.div`
     max-width: 55rem;

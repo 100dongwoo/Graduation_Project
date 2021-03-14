@@ -49,7 +49,8 @@ const Container = styled.div`
     width: 100%;
     position: fixed;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: transparent;
+    //background-color: rgba(0, 0, 0, 0.7);
 `;
 const LogoContainer = styled.div`
     max-width: 1250px;
@@ -95,6 +96,7 @@ const NavItem = styled.li`
 const NavLinks = styled(LinkS)`
     text-decoration: none;
     color: #fff;
+
     font-size: 1.2rem;
     font-weight: 400;
     cursor: pointer;
