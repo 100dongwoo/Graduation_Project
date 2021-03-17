@@ -6,6 +6,7 @@ import { createGlobalStyle } from 'styled-components';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/page/MainPage/home';
 import RegisterPage from './components/page/RegisterPage/RegisterPage';
+import Help from './components/page/Help/Help';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -25,6 +26,7 @@ function App() {
             <GlobalStyle />
             <Switch>
                 <>
+                    <Help />
                     <Navbar />
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={LoginPage} />
