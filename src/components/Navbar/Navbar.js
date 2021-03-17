@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { animateScroll as scroll } from 'react-scroll';
 import { Link, useHistory } from 'react-router-dom';
-import { Link as LinkS } from 'react-scroll';
+import DURE from '../../image_video/DURE.png';
 function Navbar(props) {
     const history = useHistory();
     const toggleHome = () => {
@@ -13,7 +13,7 @@ function Navbar(props) {
         <Container>
             <LogoContainer>
                 <Logo
-                    src="https://www.cookierun-kingdom.com/static/d8473823fd5fc1ca674920f26f54993f/e7014/flat-logo-ko.webp"
+                    src={DURE}
                     alt="Logo"
                     onClick={() => {
                         history.push('/');

@@ -6,6 +6,7 @@ import { createGlobalStyle } from 'styled-components';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/page/MainPage/home';
 import RegisterPage from './components/page/RegisterPage/RegisterPage';
+
 const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;
@@ -17,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 `;
+
 function App() {
     return (
         <Router>

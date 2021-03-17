@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Carousel, { Dots } from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
-import forest from '../../../../image_video/forest.jpg';
+import './style.css';
 const Banner = () => {
     const [value, setValue] = useState(0);
     const [slides, setSlides] = useState([
         <IMG
-            src=" https://lwi.nexon.com/maplestory/banner/2021/0224/main_bn_210225_76D10BE2C51A9766.jpg"
+            src=" https://images.unsplash.com/photo-1579649554660-463ed1d72831?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8a29hbGF8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
             alt=""
         />,
         <IMG
-            src="https://lwi.nexon.com/maplestory/banner/2021/0310/main_bn_210310_18EFC4B6F5BC7B69.jpg"
+            src="https://images.unsplash.com/photo-1589182337358-2cb63099350c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8bGFtYXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
             alt=""
         />,
-        <IMG src={forest} />,
+        <IMG src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZG9nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />,
     ]);
 
     const onchange = (value) => {
@@ -37,7 +36,7 @@ const Banner = () => {
         }
     };
     return (
-        <Container>
+        <Container id="banner">
             <Content>
                 <ImageBox>
                     <Carousel
@@ -52,7 +51,7 @@ const Banner = () => {
                         value={value}
                         onChange={onchange}
                         number={slides.length}
-                        style={{ color: 'transparent' }}
+                        style={{ color: 'red' }}
                     />
                 </ImageBox>
             </Content>
@@ -61,12 +60,13 @@ const Banner = () => {
 };
 const Container = styled.div``;
 const ImageBox = styled.div`
-    width: 100%;
+    width: 500px;
 `;
 const Content = styled.div`
     text-align: center;
     align-items: center;
     display: flex;
+    justify-content: center;
     position: relative;
     height: 45.938rem;
     width: 100%;

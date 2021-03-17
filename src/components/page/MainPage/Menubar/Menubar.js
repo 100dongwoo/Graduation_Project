@@ -6,7 +6,7 @@ function Menubar(props) {
         <Container>
             <Nav>
                 <NavLinks
-                    to="character"
+                    to="banner"
                     smooth={true}
                     duration={500}
                     spy={true}
@@ -16,7 +16,7 @@ function Menubar(props) {
                     게임소개
                 </NavLinks>
                 <NavLinks
-                    to="worldview"
+                    to="character"
                     smooth={true}
                     duration={500}
                     spy={true}
@@ -26,7 +26,7 @@ function Menubar(props) {
                     캐릭터
                 </NavLinks>
                 <NavLinks
-                    to="media"
+                    to="worldview"
                     smooth={true}
                     duration={500}
                     spy={true}
@@ -36,7 +36,7 @@ function Menubar(props) {
                     세계관
                 </NavLinks>
                 <NavLinks
-                    to=""
+                    to="media"
                     smooth={true}
                     duration={500}
                     spy={true}
@@ -45,16 +45,16 @@ function Menubar(props) {
                 >
                     미디어
                 </NavLinks>
-                <NavLinks
-                    to="worldview"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact="true"
-                    offset={-80}
-                >
-                    쿠폰입력
-                </NavLinks>
+                {/*<NavLinks*/}
+                {/*    to="worldview"*/}
+                {/*    smooth={true}*/}
+                {/*    duration={500}*/}
+                {/*    spy={true}*/}
+                {/*    exact="true"*/}
+                {/*    offset={-80}*/}
+                {/*>*/}
+                {/*    쿠폰입력*/}
+                {/*</NavLinks>*/}
             </Nav>
         </Container>
     );
@@ -67,7 +67,7 @@ const Container = styled.div`
     background: #fff;
     display: flex;
     position: sticky;
-    border-top: 10px solid red;
+    //border-top: 10px solid red;
     box-shadow: 0 2px 15px 0 rgb(0 0 0 / 70%);
 `;
 
