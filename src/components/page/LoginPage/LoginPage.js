@@ -2,6 +2,18 @@ import React from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
+import {
+    fade,
+    ThemeProvider,
+    withStyles,
+    makeStyles,
+    createMuiTheme,
+} from '@material-ui/core/styles';
+import InputBase from '@material-ui/core/InputBase';
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
+import { Link as LinkS } from 'react-scroll';
 
 function LoginPage(props) {
     const formik = useFormik({
@@ -35,28 +47,40 @@ function LoginPage(props) {
         // setErrors,
     } = formik;
     return (
-        <div>
-            <h1>Join the game</h1>
-            <h2>Go inside the best gamers social network!</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    value={values.email}
-                    onChange={handleChange('email')}
-                />
-                <input
-                    type="password"
-                    value={values.password}
-                    onChange={handleChange('password')}
-                />
-                <button type="submit" onClick={handleSubmit}>
-                    Login now
-                </button>
-                {errors.password && <p>{errors.password}</p>}
-                {errors.email && <p>{errors.email}</p>}
-            </form>
+        <div style={{ width: '100%', textAlign: 'center' }}>
+            {console.log(values.email)}
+            <div>
+                <h1>Join the game</h1>
+                <h2>Go inside the best gamers social network!</h2>
+                <form onSubmit={handleSubmit}>
+                    <Textbox>
+                        <input
+                            type="email"
+                            value={values.email}
+                            onChange={handleChange('email')}
+                        />
+                    </Textbox>
+                    <Textbox>
+                        <input
+                            type="password"
+                            value={values.password}
+                            onChange={handleChange('password')}
+                        />
+                    </Textbox>
+
+                    <button type="submit" onClick={handleSubmit}>
+                        Login now
+                    </button>
+                    {errors.password && <p>{errors.password}</p>}
+                    {errors.email && <p>{errors.email}</p>}
+                </form>
+            </div>
         </div>
     );
 }
 
 export default LoginPage;
+const Formcontainer = styled.form``;
+const Textbox = styled.div`
+    margin-top: 1rem;
+`;
