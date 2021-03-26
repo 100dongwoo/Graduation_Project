@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LoginPage from './components/page/LoginPage/LoginPage';
-import Banner from './components/page/MainPage/Banner/Banner';
+import RegisterPage from './components/page/RegisterPage/RegisterPage';
 import { createGlobalStyle } from 'styled-components';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/page/MainPage/home';
-import RegisterPage from './components/page/RegisterPage/RegisterPage';
+import LoginPage from './components/page/LoginPage/LoginPage';
 import Help from './components/page/Help/Help';
 
 const GlobalStyle = createGlobalStyle`

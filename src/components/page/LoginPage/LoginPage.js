@@ -1,283 +1,153 @@
-import React, { useState } from 'react';
-import * as yup from 'yup';
-import { useFormik } from 'formik';
+import React from 'react';
 import styled from 'styled-components';
-import './button.css';
+import RegisterPage from '../RegisterPage/RegisterPage';
 
 function LoginPage(props) {
-    const formik = useFormik({
-        enableReinitialize: true,
-        initialValues: {
-            email: '',
-            password: '',
-        },
-        validationSchema: yup.object().shape({
-            email: yup
-                .string()
-                .email('존재하지 않는 형식입니다.')
-                .required('필수 항목입니다.'),
-            password: yup
-                .string()
-                .min(8, '비밀번호는 최소 4자리 이상입니다.')
-                .required('필수 항목입니다.'),
-            // checkPassword: yup.string().required('필수 항목입니다.'),
-            checkPassword: yup
-                .string()
-                .min(8, '비밀번호는 최소 4자리 이상입니다.')
-                .oneOf([yup.ref('password'), null], '비밀번호와 같지않습니다.'),
-            phoneNumber: yup
-                .string()
-                .max(11, '최대 11자리입니다 ')
-                .required('- 없이 숫자만 입력해주세요.'),
-            nickname: yup
-                .string()
-                .min(2, '최소 2자리 이상 입니다 ')
-                .max(6, '최대 6자리 이하 입니다')
-                .required('필수 항목입니다.'),
-        }),
-    });
-    const {
-        values,
-        handleChange,
-        errors,
-        // setFieldTouched,
-        // touched,
-        // isValid,
-        // isSubmitting,
-        handleSubmit,
-        // setFieldValue,
-        // resetForm,
-        // setErrors,
-    } = formik;
-    const [passwordHide, setPasswordHide] = useState(true);
-    const [checkPasswordHide, setCheckPasswordHide] = useState(true);
-    const onClickChange = (e, id) => {
-        // e.preventDefault();
-        if (id === 'password') {
-            setPasswordHide(!passwordHide);
-        } else if (id === 'checkPassword')
-            setCheckPasswordHide(!checkPasswordHide);
-    };
     return (
         <Container>
-            <Logincontainer>
-                <h1>회원가입</h1>
-                {console.log(values.email.length)}
-                <form onSubmit={handleSubmit}>
-                    <Formcontainer>
-                        {/*아이디*/}
-                        <TextContainer>
-                            <TextLabel>아이디</TextLabel>
-                            <Textbox>
-                                <Input
-                                    type="email"
-                                    value={values.email}
-                                    onChange={handleChange('email')}
-                                    style={{
-                                        border:
-                                            values.email.length === 0
-                                                ? 'border: 1px solid #adaabf'
-                                                : !errors.email
-                                                ? '1px solid #00d8be'
-                                                : '1px solid #ff5631',
-                                    }}
-                                />
-                                {values.email && !errors.email && (
-                                    <SuccessIcons className="far fa-check-circle" />
-                                )}
-                                {values.email && errors.email && (
-                                    <FailIcons className="far fa-times-circle" />
-                                )}
-                            </Textbox>
-                        </TextContainer>
-                        {/*비밀번호*/}
-                        <TextContainer>
-                            <ShowBox>
-                                <TextLabel>비밀번호</TextLabel>
-                                <HideLabel
-                                    onClick={(e) => {
-                                        onClickChange(e, 'password');
-                                    }}
-                                >
-                                    {passwordHide ? 'Hide' : 'Show'}
-                                </HideLabel>
-                            </ShowBox>
-                            <Textbox>
-                                <LockIcons className="fas fa-lock" />
-                                <Input
-                                    type={passwordHide ? 'password' : 'text'}
-                                    value={values.password}
-                                    onChange={handleChange('password')}
-                                    style={{
-                                        padding: '12px 3rem',
-                                        border: !values.password
-                                            ? 'border: 1px solid #adaabf'
-                                            : !errors.password
-                                            ? '1px solid #00d8be'
-                                            : '1px solid #ff5631',
-                                    }}
-                                />
-                                {values.password && !errors.password && (
-                                    <SuccessIcons className="far fa-check-circle" />
-                                )}
-                                {values.password && errors.password && (
-                                    <FailIcons className="far fa-times-circle" />
-                                )}
-                            </Textbox>
-                        </TextContainer>
-                        {/*비밀번호 체크*/}
-                        <TextContainer>
-                            <ShowBox>
-                                <TextLabel>비밀번호 확인</TextLabel>
-                                <HideLabel
-                                    onClick={(e) => {
-                                        onClickChange(e, 'checkPassword');
-                                    }}
-                                >
-                                    {checkPasswordHide ? 'Hide' : 'Show'}
-                                </HideLabel>
-                            </ShowBox>
-                            <Textbox>
-                                <LockIcons className="fas fa-lock" />
-                                <Input
-                                    type={
-                                        checkPasswordHide ? 'password' : 'text'
-                                    }
-                                    value={values.checkPassword}
-                                    onChange={handleChange('checkPassword')}
-                                    style={{
-                                        padding: '12px 3rem',
-                                        border: !values.checkPassword
-                                            ? 'border: 1px solid #adaabf'
-                                            : !errors.checkPassword
-                                            ? '1px solid #00d8be'
-                                            : '1px solid #ff5631',
-                                    }}
-                                />
-                                {values.checkPassword &&
-                                    !errors.checkPassword && (
-                                        <SuccessIcons className="far fa-check-circle" />
-                                    )}
-                                {values.checkPassword &&
-                                    errors.checkPassword && (
-                                        <FailIcons className="far fa-times-circle" />
-                                    )}
-                            </Textbox>
-                        </TextContainer>
-                        {/*닉네임*/}
-                        <TextContainer>
-                            <TextLabel>닉네임</TextLabel>
-                            <Textbox>
-                                <Input
-                                    type="email"
-                                    value={values.nickname}
-                                    onChange={handleChange('nickname')}
-                                    style={{
-                                        border: !values.nickname
-                                            ? 'border: 1px solid #adaabf'
-                                            : !errors.nickname
-                                            ? '1px solid #00d8be'
-                                            : '1px solid #ff5631',
-                                    }}
-                                />
-                                {values.nickname && !errors.nickname && (
-                                    <SuccessIcons className="far fa-check-circle" />
-                                )}
-                                {values.nickname && errors.nickname && (
-                                    <FailIcons className="far fa-times-circle" />
-                                )}
-                            </Textbox>
-                        </TextContainer>
-                        {/*버튼*/}
-
-                        {/*<button type="submit" onClick={handleSubmit}>*/}
-                        {/*    Login now*/}
-                        {/*</button>*/}
-                        <div className="wrap">
-                            <button
-                                className="button"
-                                type="submit"
-                                onClick={handleSubmit}
-                            >
-                                회원가입 하귀
-                            </button>
-                        </div>
-                        {errors.password && <p>{errors.password}</p>}
-                        {errors.email && <p>{errors.email}</p>}
-                        {errors.checkPassword && <p>{errors.checkPassword}</p>}
-                        {errors.nickname && <p>{errors.nickname}</p>}
-                    </Formcontainer>
-                </form>
-            </Logincontainer>
+            <Content>
+                <LoginLabel>Login</LoginLabel>
+                <Form method="post">
+                    <TextBox>
+                        <Input type="text" required />
+                        <Span></Span>
+                        <Label>Username</Label>
+                    </TextBox>
+                    <TextBox>
+                        <Input type="password" required />
+                        <Span></Span>
+                        <Label>Password</Label>
+                    </TextBox>
+                    <ForgetContainer className="pass">
+                        Forgot Password?
+                    </ForgetContainer>
+                    <SubmitBtn type="submit" value="login" />
+                    <SignContainer>
+                        Not a member?
+                        <SignFont href="register">Signup</SignFont>
+                    </SignContainer>
+                </Form>
+            </Content>
         </Container>
     );
 }
 
 export default LoginPage;
-
-const Container = styled.div``;
-const Formcontainer = styled.form`
+const Container = styled.div`
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
 `;
-const TextContainer = styled.div`
-    margin: auto;
-    max-width: 448px;
-    text-align: left;
-    margin-top: 1rem;
+const Content = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
 `;
-const Textbox = styled.div`
-    margin: auto;
-    max-width: 448px;
-    text-align: left;
-    display: flex;
+const LoginLabel = styled.h1`
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+`;
+const Form = styled.form`
+    padding: 0 40px;
+    box-sizing: border-box;
+`;
+const TextBox = styled.div`
     position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
 `;
 const Input = styled.input`
     width: 100%;
-    height: 3rem;
-    border: 1px solid #adaabf;
-    box-sizing: border-box;
-    box-shadow: 0px 1px 2px rgba(50, 43, 95, 0.08);
-    border-radius: 4px;
-    padding: 12px 1.5rem;
-    &:focus {
-        outline: none;
-        border: 1px solid blue;
-        //border: 1px solid #00d8be;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    outline: none;
+    &:focus ~ Label {
+        top: -5px;
+        color: #2691d9;
+    }
+    &:valid ~ Label {
+        top: -5px;
+        color: #2691d9;
+    }
+    &:focus ~ Span {
+        &:before {
+            width: 100%;
+        }
+    }
+    &:valid ~ Span {
+        &:before {
+            width: 100%;
+        }
+    }
+`;
+const Label = styled.label`
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.5s;
+`;
+const Span = styled.span`
+    &:before {
+        content: '';
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: #2691d9;
+        transition: 0.5s;
+    }
+`;
+const ForgetContainer = styled.div`
+    margin: -5px 0 20px 5px;
+    color: #a6a6a6;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+const SubmitBtn = styled.input`
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+        border-color: #2691d9;
+        transition: 0.5s;
     }
 `;
 
-const Logincontainer = styled.div`
-    margin: auto;
-    max-width: 1250px;
+const SignContainer = styled.div`
+    margin: 30px 0;
     text-align: center;
+    font-size: 1rem;
+    color: #666666;
 `;
-const TextLabel = styled.p`
-    margin-bottom: 3px;
-`;
-const HideLabel = styled(TextLabel)`
-    cursor: pointer;
-`;
-const ShowBox = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`;
-const SuccessIcons = styled.i`
-    position: absolute;
-    right: 12px;
-    top: 16px;
-    color: #00d8be;
-`;
-const FailIcons = styled.i`
-    position: absolute;
-    right: 12px;
-    top: 16px;
-    color: #ff5631;
-`;
-const LockIcons = styled.i`
-    position: absolute;
-    left: 16px;
-    top: 16px;
-    color: #adaabf;
+const SignFont = styled.a`
+    color: #2691d9;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
 `;
