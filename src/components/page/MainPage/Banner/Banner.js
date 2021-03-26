@@ -4,29 +4,36 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'react-bootstrap-carousel/dist/react-bootstrap-carousel.css';
 import Carousel from 'react-bootstrap/Carousel';
 
+import trush1 from '../../../../secretFile/png/쓰레기1.jpg';
+import trush2 from '../../../../secretFile/png/쓰레기2.png';
 const Banner = () => {
     const [main, setMain] = useState([
         {
-            image: 'https://image.bugsm.co.kr/album/images/500/4610/461008.jpg',
+            backImage: trush1,
             title: '흰색 돼지',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
+            image:
+                'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
         },
         {
-            image:
-                'https://pbs.twimg.com/media/EKJdb-bU0AAA-Ru?format=jpg&name=medium',
+            backImage: trush2,
             title: '엘사 딱가리',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
+            image:
+                'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
         },
         {
-            image:
+            backImage:
                 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZG9nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
             title: '댕댕이',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
+            image: trush1,
         },
         {
-            image: '',
+            backImage: '',
             title: '????????????',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
+            image: trush2,
         },
     ]);
 
@@ -35,16 +42,16 @@ const Banner = () => {
             <Carousel fade>
                 {main.map((array) => (
                     <CarouselBox>
-                        {array.image && (
+                        {array.backImage && (
                             <IMG
                                 className="d-block w-100"
-                                src={array.image}
+                                src={array.backImage}
                                 alt="First slide"
                             />
                         )}
                         <Carousel.Caption>
                             <img
-                                src="https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg"
+                                src={array.image}
                                 style={{ width: 300, height: 300 }}
                             />
                             <h3>{array.title}</h3>

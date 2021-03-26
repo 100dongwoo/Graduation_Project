@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
+import './button.css';
 
 function LoginPage(props) {
     const formik = useFormik({
@@ -188,9 +189,19 @@ function LoginPage(props) {
                             </Textbox>
                         </TextContainer>
                         {/*버튼*/}
-                        <button type="submit" onClick={handleSubmit}>
-                            Login now
-                        </button>
+
+                        {/*<button type="submit" onClick={handleSubmit}>*/}
+                        {/*    Login now*/}
+                        {/*</button>*/}
+                        <div className="wrap">
+                            <button
+                                className="button"
+                                type="submit"
+                                onClick={handleSubmit}
+                            >
+                                회원가입 하귀
+                            </button>
+                        </div>
                         {errors.password && <p>{errors.password}</p>}
                         {errors.email && <p>{errors.email}</p>}
                         {errors.checkPassword && <p>{errors.checkPassword}</p>}

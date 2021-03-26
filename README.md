@@ -8,7 +8,9 @@
 - styled-components
 - react-scroll
 - react-router-dom
-- react-carousel
+- react-bootstrap (UI 컴포넌트 라이브러리)
+- useFormik, yup
+
 ### 사용된 기술(Web)
 *****
 ## 게임 개발 팀원
