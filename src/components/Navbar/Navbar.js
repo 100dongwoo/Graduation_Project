@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { animateScroll as scroll, Link as LinkS } from 'react-scroll';
 import { Link, useHistory } from 'react-router-dom';
-import DURE from '../../image_video/DURE.png';
+import DURE from '../../images/DURE.png';
 
 import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 function Navbar(props) {

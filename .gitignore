@@ -25,5 +25,5 @@ yarn-error.log*
 src/secretFile/
 .idea/
 /.idea
-src/image_video/
-/src/image_video
+#src/images/
+#/src/images

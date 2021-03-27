@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import RegisterPage from './components/page/RegisterPage/RegisterPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 import { createGlobalStyle } from 'styled-components';
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/page/MainPage/home';
-import LoginPage from './components/page/LoginPage/LoginPage';
-import Help from './components/page/Help/Help';
+import Home from './pages/MainPage/home';
+import LoginPage from './pages/LoginPage/LoginPage';
+import Help from './pages/Help/Help';
 
 const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;
-     //font-family: payboocLight;
+     //font-family: payboocLight,serif;
      padding : 0 0;
      margin: 0;
 
