@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-    instargrarm,
-    facebook,
-    youtube,
-    naverBlog,
+    INSTAGRAM_URL,
+    NAVERBLOG_URL,
+    YOUTUBE_URL,
+    FACEBOOK_URL,
 } from '../../../constants/URL';
 
 function Medias(props) {
@@ -14,7 +14,7 @@ function Medias(props) {
                 <SocialBox
                     target="_blank"
                     rel="noopener"
-                    href={youtube}
+                    href={YOUTUBE_URL}
                     style={{ background: 'rgb(199, 37, 45)' }}
                 >
                     <Social className="fab fa-youtube" />
@@ -26,7 +26,7 @@ function Medias(props) {
                     }}
                     target="_blank"
                     rel="noopener"
-                    href={instargrarm}
+                    href={INSTAGRAM_URL}
                 >
                     <Social className="fab fa-instagram" />
                 </SocialBox>
@@ -34,7 +34,7 @@ function Medias(props) {
                     style={{ background: 'rgb(60, 92, 153)' }}
                     target="_blank"
                     rel="noopener"
-                    href={facebook}
+                    href={FACEBOOK_URL}
                 >
                     <Social className="fab fa-facebook-f" />
                 </SocialBox>
@@ -42,7 +42,7 @@ function Medias(props) {
                     style={{ background: 'rgb(58, 174, 56)' }}
                     target="_blank"
                     rel="noopener"
-                    href={naverBlog}
+                    href={NAVERBLOG_URL}
                 >
                     <Social className="fab fa-blogger-b" />
                 </SocialBox>
