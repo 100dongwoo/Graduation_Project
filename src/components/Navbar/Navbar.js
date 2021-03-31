@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { animateScroll as scroll, Link as LinkS } from 'react-scroll';
 import { Link, useHistory } from 'react-router-dom';
 import DURE from '../../images/DURE.png';
-
 import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import LoginPage from '../../pages/LoginPage/LoginPage';
+import LoginModal from '../../pages/LoginPage/LoginModal';
 function Navbar(props) {
+    //modal 로긴
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    //
     const history = useHistory();
     const toggleHome = () => {
         scroll.scrollToTop();
@@ -90,6 +96,7 @@ function Navbar(props) {
                     <NavLinks to="/login">커뮤니티</NavLinks>
                     <NavLinks to="/login">고객센터</NavLinks>
                 </Navv>
+                <LoginModal />
             </LogoContainer>
         </Container>
     );

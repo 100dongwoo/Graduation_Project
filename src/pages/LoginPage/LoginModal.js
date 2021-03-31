@@ -1,57 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import RegisterPage from '../RegisterPage/RegisterPage';
-
-function LoginPage(props) {
+import Modal from 'react-bootstrap/Modal';
+function LoginModal(props) {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
-        <Container>
-            <Content>
-                <LoginLabel>Login</LoginLabel>
-                <Form method="post">
-                    <TextBox>
-                        <Input type="text" required />
-                        <Span></Span>
-                        <Label>Username</Label>
-                    </TextBox>
-                    <TextBox>
-                        <Input type="password" required />
-                        <Span></Span>
-                        <Label>Password</Label>
-                    </TextBox>
-                    <ForgetContainer className="pass">
-                        Forgot Password?
-                    </ForgetContainer>
-                    <SubmitBtn type="submit" value="login" />
-                    <SignContainer>
-                        Not a member?
-                        <SignFont href="register">Signup</SignFont>
-                    </SignContainer>
-                </Form>
-            </Content>
-        </Container>
+        <>
+            <button onClick={handleShow}>로그인</button>
+            <Modal show={show} onHide={handleClose} centered>
+                <Modal.Header closeButton />
+                <Modal.Body>
+                    <LoginLabel>로그인</LoginLabel>
+                    <Form method="post">
+                        <TextBox>
+                            <Input type="text" required />
+                            <Label>Username</Label>
+                        </TextBox>
+                        <TextBox>
+                            <Input type="password" required />
+                            <Label>Password</Label>
+                        </TextBox>
+                        <ForgetContainer className="pass">
+                            Forgot Password?
+                        </ForgetContainer>
+                        <SubmitBtn type="submit" value="login" />
+                        <SignContainer>
+                            Not a member?
+                            <SignFont href="register">Signup</SignFont>
+                        </SignContainer>
+                    </Form>
+                </Modal.Body>
+            </Modal>
+        </>
     );
 }
-
-export default LoginPage;
-const Container = styled.div`
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    position: absolute;
-    background: linear-gradient(120deg, #2980b9, #8e44ad);
-`;
-const Content = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    background: white;
-    border-radius: 10px;
-`;
+export default LoginModal;
 const LoginLabel = styled.h1`
     text-align: center;
     padding: 20px 0 20px 0;
@@ -102,18 +86,6 @@ const Label = styled.label`
     font-size: 1rem;
     pointer-events: none;
     transition: 0.5s;
-`;
-const Span = styled.span`
-    &:before {
-        content: '';
-        position: absolute;
-        top: 40px;
-        left: 0;
-        width: 0%;
-        height: 2px;
-        background: #2691d9;
-        transition: 0.5s;
-    }
 `;
 const ForgetContainer = styled.div`
     margin: -5px 0 20px 5px;
