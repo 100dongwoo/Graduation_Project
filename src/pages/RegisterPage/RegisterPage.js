@@ -4,10 +4,7 @@ import { useFormik } from 'formik';
 import styled from 'styled-components';
 import './button.css';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
-import api from '../../settings/api';
 import axios from 'axios';
-import { BASE_URL } from '../../settings/url';
-
 function RegisterPage(props) {
     const formik = useFormik({
         enableReinitialize: true,
@@ -42,7 +39,12 @@ function RegisterPage(props) {
             axios
                 .post('v1/users/sign-up/', values)
                 .then((res) => {
-                    console.log('성공', res);
+                    if (res.data.code !== 'OK') {
+                        alert(res.data.msg);
+                        return;
+                    }
+                    alert('회원가입 되었습니다.');
+                    props.history.replace('/');
                 })
                 .catch((err) => {
                     if (err.response.data.msg) {
@@ -86,6 +88,7 @@ function RegisterPage(props) {
                         </ShowBox>
                         <Textbox>
                             <Input
+                                placeholder="이메일"
                                 type="email"
                                 value={values.login_id}
                                 onChange={handleChange('login_id')}
@@ -147,6 +150,7 @@ function RegisterPage(props) {
 
                             {/*<LockIcons className="fas fa-lock" />*/}
                             <Input
+                                placeholder="비밀번호"
                                 type={passwordHide ? 'password' : 'text'}
                                 value={values.password}
                                 onChange={handleChange('password')}
@@ -201,6 +205,7 @@ function RegisterPage(props) {
                             </OverlayTrigger>
 
                             <Input
+                                placeholder="비밀번호 확인"
                                 type={checkPasswordHide ? 'password' : 'text'}
                                 value={values.checkPassword}
                                 onChange={handleChange('checkPassword')}
@@ -234,6 +239,7 @@ function RegisterPage(props) {
                         </ShowBox>
                         <Textbox>
                             <Input
+                                placeholder="닉네임"
                                 type="text "
                                 value={values.nickname}
                                 onChange={handleChange('nickname')}
