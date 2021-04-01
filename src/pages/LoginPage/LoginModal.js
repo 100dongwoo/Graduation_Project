@@ -1,10 +1,58 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-bootstrap/Modal';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import axios from 'axios';
+
 function LoginModal(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            login_id: '',
+            password: '',
+        },
+        validationSchema: yup.object().shape({
+            login_id: yup
+                .string()
+                .email('존재하지 않는 형식입니다.')
+                .required('필수 항목입니다.'),
+            password: yup
+                .string()
+                .min(4, '비밀번호는 최소 4자리 이상입니다.')
+                .required('필수 항목입니다.'),
+        }),
+        onSubmit: async (values, { setSubmitting, setErrors }) => {
+            console.log('onSubmit result', values);
+            axios
+                .post('v1/users/login/', values)
+                .then((res) => {
+                    console.log('성공', res);
+                })
+                .catch((err) => {
+                    if (err.response.data.msg) {
+                        alert(err.response.data.msg);
+                    }
+                });
+        },
+    });
+
+    const {
+        values,
+        handleChange,
+        errors,
+        // setFieldTouched,
+        // touched,
+        // isValid,
+        // isSubmitting,
+        handleSubmit,
+        // setFieldValue,
+        // resetForm,
+        // setErrors,
+    } = formik;
     return (
         <>
             <button onClick={handleShow}>로그인</button>
@@ -12,13 +60,23 @@ function LoginModal(props) {
                 <Modal.Header closeButton />
                 <Modal.Body>
                     <LoginLabel>로그인</LoginLabel>
-                    <Form method="post">
+                    <Form method="post" onSubmit={handleSubmit}>
                         <TextBox>
-                            <Input type="text" required />
+                            <Input
+                                type="text"
+                                required
+                                value={values.login_id}
+                                onChange={handleChange('login_id')}
+                            />
                             <Label>Username</Label>
                         </TextBox>
                         <TextBox>
-                            <Input type="password" required />
+                            <Input
+                                type="password"
+                                required
+                                value={values.password}
+                                onChange={handleChange('password')}
+                            />
                             <Label>Password</Label>
                         </TextBox>
                         <ForgetContainer className="pass">
@@ -35,6 +93,7 @@ function LoginModal(props) {
         </>
     );
 }
+
 export default LoginModal;
 const LoginLabel = styled.h1`
     text-align: center;

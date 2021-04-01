@@ -45,26 +45,10 @@ function RegisterPage(props) {
                     console.log('성공', res);
                 })
                 .catch((err) => {
-                    console.log('실aa패', err.message);
-                    console.log('실패', err);
+                    if (err.response.data.msg) {
+                        alert(err.response.data.msg);
+                    }
                 });
-            // api.post('v1/users/sign-up/', values)
-            //     .then((res) => {
-            //         // console.log(res)
-            //         if (res.data.code === 'exists') {
-            //             alert(res.data.msg);
-            //             return;
-            //         } else if (!res.ok) {
-            //             alert('회원가입에 실패하였습니다.');
-            //             return;
-            //         }
-            //         alert('회원가입 되었습니다.');
-            //         props.history.replace('/');
-            //         // resetForm();
-            //     })
-            //     .catch((err) => {
-            //         console.log('err', err);
-            //     });
         },
     });
     const {
