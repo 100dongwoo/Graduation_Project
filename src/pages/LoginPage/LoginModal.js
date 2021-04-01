@@ -7,7 +7,9 @@ import axios from 'axios';
 
 function LoginModal(props) {
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+    };
     const handleShow = () => setShow(true);
     const formik = useFormik({
         enableReinitialize: true,
@@ -50,13 +52,20 @@ function LoginModal(props) {
         // isSubmitting,
         handleSubmit,
         // setFieldValue,
-        // resetForm,
+        resetForm,
         // setErrors,
     } = formik;
     return (
         <>
             <button onClick={handleShow}>로그인</button>
-            <Modal show={show} onHide={handleClose} centered>
+            <Modal
+                show={show}
+                onHide={() => {
+                    handleClose();
+                    resetForm();
+                }}
+                centered
+            >
                 <Modal.Header closeButton />
                 <Modal.Body>
                     <LoginLabel>로그인</LoginLabel>
