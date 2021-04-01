@@ -49,15 +49,15 @@ const HeaderArea = styled.div`
 
 const HeaderWrap = styled.div`
     //position: fixed;
-    //top: 0;
+    //top: 80px;
     //left: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 9;
     width: 100%;
     height: 80px;
-    transition: 0.4s ease;
+    transition: 0.8s ease;
     transform: translateY(-80px);
-    margin-top: -80px;
+    margin-top: -100px;
     &.hide {
         transform: translateY(0px);
         margin-top: 0px;

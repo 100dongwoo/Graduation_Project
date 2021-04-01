@@ -4,16 +4,21 @@ import { useFormik } from 'formik';
 import styled from 'styled-components';
 import './button.css';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+import api from '../../settings/api';
+import axios from 'axios';
+import { BASE_URL } from '../../settings/url';
 
 function RegisterPage(props) {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            email: '',
+            login_id: '',
             password: '',
+            checkPassword: '',
+            nickname: '',
         },
         validationSchema: yup.object().shape({
-            email: yup.string().email('존재하지 않는 형식입니다.'),
+            login_id: yup.string().email('존재하지 않는 형식입니다.'),
             // .required('필수 항목입니다.'),
             password: yup.string().min(8, '비밀번호는 최소 4자리 이상입니다.'),
             // .required('필수 항목입니다.'),
@@ -32,6 +37,35 @@ function RegisterPage(props) {
                 .max(6, '최대 6자리 이하 입니다'),
             // .required('필수 항목입니다.'),
         }),
+        onSubmit: (values, { setSubmitting, setErrors }) => {
+            console.log(values);
+            axios
+                .post('v1/users/sign-up/', values)
+                .then((res) => {
+                    console.log('성공', res);
+                })
+                .catch((err) => {
+                    console.log('실aa패', err.message);
+                    console.log('실패', err);
+                });
+            // api.post('v1/users/sign-up/', values)
+            //     .then((res) => {
+            //         // console.log(res)
+            //         if (res.data.code === 'exists') {
+            //             alert(res.data.msg);
+            //             return;
+            //         } else if (!res.ok) {
+            //             alert('회원가입에 실패하였습니다.');
+            //             return;
+            //         }
+            //         alert('회원가입 되었습니다.');
+            //         props.history.replace('/');
+            //         // resetForm();
+            //     })
+            //     .catch((err) => {
+            //         console.log('err', err);
+            //     });
+        },
     });
     const {
         values,
@@ -55,13 +89,6 @@ function RegisterPage(props) {
         } else if (id === 'checkPassword')
             setCheckPasswordHide(!checkPasswordHide);
     };
-    const onClickReset = (e) => {
-        e.preventDefault();
-        values.id = '21312321321';
-        values.password = '';
-        values.checkPassword = '';
-        values.nickname = '';
-    };
     return (
         <Container>
             <LoginContainer>
@@ -76,25 +103,25 @@ function RegisterPage(props) {
                         <Textbox>
                             <Input
                                 type="email"
-                                value={values.email}
-                                onChange={handleChange('email')}
+                                value={values.login_id}
+                                onChange={handleChange('login_id')}
                                 style={{
                                     border:
-                                        values.email.length === 0
+                                        values.login_id.length === 0
                                             ? 'border: 1px solid #adaabf'
-                                            : !errors.email
+                                            : !errors.login_id
                                             ? '1px solid #00d8be'
                                             : '1px solid #ff5631',
                                 }}
                             />
-                            {values.email && !errors.email && (
+                            {values.login_id && !errors.login_id && (
                                 <SuccessIcons className="far fa-check-circle" />
                             )}
-                            {values.email && errors.email && (
+                            {values.login_id && errors.login_id && (
                                 <FailIcons className="far fa-times-circle" />
                             )}
-                            {errors.email && (
-                                <ErrorFont>{errors.email}</ErrorFont>
+                            {errors.login_id && (
+                                <ErrorFont>{errors.login_id}</ErrorFont>
                             )}
                         </Textbox>
                     </TextContainer>
