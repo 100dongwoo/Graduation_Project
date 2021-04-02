@@ -35,7 +35,7 @@ function RegisterPage(props) {
             // .required('필수 항목입니다.'),
         }),
         onSubmit: (values, { setSubmitting, setErrors }) => {
-            console.log(values);
+            // console.log(values);
             axios
                 .post('v1/users/sign-up/', values)
                 .then((res) => {

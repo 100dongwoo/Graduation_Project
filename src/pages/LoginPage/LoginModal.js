@@ -4,15 +4,19 @@ import Modal from 'react-bootstrap/Modal';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import store, { LOGIN } from '../../Redux/store';
+import store, { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
 import { useDispatch, useSelector } from 'react-redux';
+
 function LoginModal(props) {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const handleClose = () => {
         setShow(false);
     };
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        resetForm();
+        setShow(true);
+    };
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -45,7 +49,9 @@ function LoginModal(props) {
                 });
         },
     });
-
+    const handleLogout = (e) => {
+        dispatch(LOGOUT());
+    };
     const {
         values,
         handleChange,
@@ -59,9 +65,14 @@ function LoginModal(props) {
         resetForm,
         // setErrors,
     } = formik;
+    const user = useSelector(selectUser);
     return (
         <>
-            <button onClick={handleShow}>로그인</button>
+            {!user ? (
+                <button onClick={handleShow}>로그인</button>
+            ) : (
+                <button onClick={handleLogout}>로그아웃</button>
+            )}
             <Modal
                 show={show}
                 onHide={() => {

@@ -140,6 +140,7 @@ function NavBar(props) {
                         {/*<Nav.Link eventKey={2} href="#memes">*/}
                         {/*    Dank memes*/}
                         {/*</Nav.Link>*/}
+
                         <LoginModal />
                     </Nav>
                 </Navbar.Collapse>
