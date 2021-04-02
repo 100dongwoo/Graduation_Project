@@ -4,7 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import store, { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
+import { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
+import { FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 
 function LoginModal(props) {
@@ -16,6 +17,15 @@ function LoginModal(props) {
     const handleShow = () => {
         resetForm();
         setShow(true);
+    };
+    const onHandleError = () => {
+        if (values.password.length === 0 || values.login_id.length === 0) {
+            FailLoginAlert('필수 항목 입력 바랍니다');
+        } else if (errors.login_id) {
+            FailLoginAlert(errors.login_id);
+        } else if (values.password.length < 8) {
+            FailLoginAlert(errors.password);
+        }
     };
     const formik = useFormik({
         enableReinitialize: true,
@@ -30,21 +40,23 @@ function LoginModal(props) {
                 .required('필수 항목입니다.'),
             password: yup
                 .string()
-                .min(4, '비밀번호는 최소 4자리 이상입니다.')
+                .min(8, '비밀번호는 최소 8자리 이상입니다.')
                 .required('필수 항목입니다.'),
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
-            console.log('onSubmit result', values);
             axios
                 .post('v1/users/login/', values)
                 .then((res) => {
                     handleClose();
+                    SuccessAlert('로그인 성공');
                     // console.log('성공', res);
+                    // alert('로그인 성공');
                     dispatch(LOGIN(res.data));
                 })
                 .catch((err) => {
                     if (err.response.data.msg) {
-                        alert(err.response.data.msg);
+                        FailLoginAlert(err.response.data.msg);
+                        // alert(err.response.data.msg);
                     }
                 });
         },
@@ -64,6 +76,8 @@ function LoginModal(props) {
         // setFieldValue,
         resetForm,
         // setErrors,
+        isSubmitting,
+        dirty,
     } = formik;
     const user = useSelector(selectUser);
     return (
@@ -84,11 +98,15 @@ function LoginModal(props) {
                 <Modal.Header closeButton />
                 <Modal.Body>
                     <LoginLabel>로그인</LoginLabel>
-                    <Form method="post" onSubmit={handleSubmit}>
+                    <Form
+                        method="post"
+                        onSubmit={handleSubmit}
+                        disabled={!formik.dirty}
+                    >
                         <TextBox>
                             <Input
                                 type="text"
-                                required
+                                // required
                                 value={values.login_id}
                                 onChange={handleChange('login_id')}
                             />
@@ -97,7 +115,7 @@ function LoginModal(props) {
                         <TextBox>
                             <Input
                                 type="password"
-                                required
+                                // required
                                 value={values.password}
                                 onChange={handleChange('password')}
                             />
@@ -106,7 +124,13 @@ function LoginModal(props) {
                         <ForgetContainer className="pass">
                             Forgot Password?
                         </ForgetContainer>
-                        <SubmitBtn type="submit" value="login" />
+                        <SubmitBtn
+                            type="submit"
+                            value="login"
+                            onClick={(e) => {
+                                onHandleError();
+                            }}
+                        />
                         <SignContainer>
                             Not a member?
                             <SignFont href="register">Signup</SignFont>

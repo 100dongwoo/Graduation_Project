@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import './button.css';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import axios from 'axios';
+import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 function RegisterPage(props) {
     const formik = useFormik({
         enableReinitialize: true,
@@ -17,12 +18,12 @@ function RegisterPage(props) {
         validationSchema: yup.object().shape({
             login_id: yup.string().email('존재하지 않는 형식입니다.'),
             // .required('필수 항목입니다.'),
-            password: yup.string().min(8, '비밀번호는 최소 4자리 이상입니다.'),
+            password: yup.string().min(8, '비밀번호는 최소 8자리 이상입니다.'),
             // .required('필수 항목입니다.'),
             // checkPassword: yup.string().required('필수 항목입니다.'),
             checkPassword: yup
                 .string()
-                .min(8, '비밀번호는 최소 4자리 이상입니다.')
+                .min(8, '비밀번호는 최소 8자리 이상입니다.')
                 .oneOf([yup.ref('password'), null], '비밀번호와 같지않습니다.'),
             // phoneNumber: yup
             //     .string()
@@ -40,15 +41,18 @@ function RegisterPage(props) {
                 .post('v1/users/sign-up/', values)
                 .then((res) => {
                     if (res.data.code !== 'OK') {
-                        alert(res.data.msg);
+                        FailAlert(res.data.msg);
+                        // alert(res.data.msg);
                         return;
                     }
-                    alert('회원가입 되었습니다.');
+                    SuccessAlert('회원가입 되었습니다');
+                    // alert('회원가입 되었습니다.');
                     props.history.replace('/');
                 })
                 .catch((err) => {
                     if (err.response.data.msg) {
-                        alert(err.response.data.msg);
+                        FailAlert(err.response.data.msg);
+                        // alert(err.response.data.msg);
                     }
                 });
         },
