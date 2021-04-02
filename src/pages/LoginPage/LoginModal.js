@@ -20,7 +20,6 @@ function LoginModal(props) {
     };
     const onHandleError = () => {
         if (values.password.length === 0 || values.login_id.length === 0) {
-            FailLoginAlert('필수 항목 입력 바랍니다');
         } else if (errors.login_id) {
             FailLoginAlert(errors.login_id);
         } else if (values.password.length < 8) {
@@ -106,7 +105,7 @@ function LoginModal(props) {
                         <TextBox>
                             <Input
                                 type="text"
-                                // required
+                                required
                                 value={values.login_id}
                                 onChange={handleChange('login_id')}
                             />
@@ -115,7 +114,7 @@ function LoginModal(props) {
                         <TextBox>
                             <Input
                                 type="password"
-                                // required
+                                required
                                 value={values.password}
                                 onChange={handleChange('password')}
                             />
