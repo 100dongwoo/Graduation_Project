@@ -4,8 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-
+import store, { LOGIN } from '../../Redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 function LoginModal(props) {
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const handleClose = () => {
         setShow(false);
@@ -32,7 +34,9 @@ function LoginModal(props) {
             axios
                 .post('v1/users/login/', values)
                 .then((res) => {
-                    console.log('성공', res);
+                    handleClose();
+                    // console.log('성공', res);
+                    dispatch(LOGIN(res.data));
                 })
                 .catch((err) => {
                     if (err.response.data.msg) {

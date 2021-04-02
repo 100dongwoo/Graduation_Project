@@ -40,8 +40,8 @@ const Banner = () => {
     return (
         <Container id="banner">
             <Carousel fade>
-                {main.map((array) => (
-                    <CarouselBox>
+                {main.map((array, index) => (
+                    <CarouselBox key={index}>
                         {array.backImage && (
                             <IMG
                                 className="d-block w-100"
