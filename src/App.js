@@ -7,6 +7,9 @@ import Home from './pages/MainPage/home';
 import LoginPage from './pages/LoginPage/LoginPage';
 import Help from './pages/Help/Help';
 import UploadPage from './pages/UploadPage/UploadPage';
+import NoticePage from './pages/NoticePage/NoticePage';
+import RakingPage from './pages/RakingPage/RakingPage';
+import CommunityPage from './pages/CommunityPage/CommunityPage';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -32,6 +35,9 @@ function App() {
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/register" component={RegisterPage} />
                     <Route exact path="/upload" component={UploadPage} />
+                    <Route exact path="/Notice" component={NoticePage} />
+                    <Route exact path="/Raking" component={RakingPage} />
+                    <Route exact path="/Community" component={CommunityPage} />
                 </>
             </Switch>
         </Router>

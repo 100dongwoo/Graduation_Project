@@ -131,9 +131,9 @@ function NavBar(props) {
                             {/**/}
                         </NavDropdown>
 
-                        <Nav.Link href="#Notice">공지사항</Nav.Link>
-                        <Nav.Link href="#Ranking">랭킹</Nav.Link>
-                        <Nav.Link href="#Community">커뮤니티</Nav.Link>
+                        <Nav.Link href="Notice">공지사항</Nav.Link>
+                        <Nav.Link href="Ranking">랭킹</Nav.Link>
+                        <Nav.Link href="Community">커뮤니티</Nav.Link>
                     </Nav>
                     <Nav>
                         {/*<Nav.Link href="#deets">More deets</Nav.Link>*/}
