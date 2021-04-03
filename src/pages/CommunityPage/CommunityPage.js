@@ -51,7 +51,9 @@ function CommunityPage(props) {
                                 </PostInforBox>
                             </div>
                             {SampleData.img && (
-                                <PostImg src={SampleData.img} alt="img" />
+                                <div>
+                                    <PostImg src={SampleData.img} alt="img" />
+                                </div>
                             )}
                         </div>
                     </Post>
