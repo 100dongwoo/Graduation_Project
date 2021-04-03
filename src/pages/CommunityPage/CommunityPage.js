@@ -1,7 +1,154 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { SampleData } from '../../SampleData/SampleData';
+import InputGroup from 'react-bootstrap/InputGroup';
+import styled from 'styled-components';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 function CommunityPage(props) {
-    return <div>CommunityPage</div>;
+    const [search, setSearch] = useState('');
+    return (
+        <Container>
+            <Title>커뮤니티</Title>
+            <Subtitle>사람들과 지식을 공유해보세요</Subtitle>
+            <InputGroups>
+                <InputForm
+                    placeholder="검색어"
+                    value={search}
+                    onChange={(e) => {
+                        setSearch(e.target.value);
+                    }}
+                />
+                <InputGroup.Append>
+                    <SearchBtn variant="outline-secondary">
+                        <i className="fas fa-search" />
+                        검색
+                    </SearchBtn>
+                </InputGroup.Append>
+            </InputGroups>
+            <div>
+                {SampleData.map((SampleData, index) => (
+                    <Post key={index}>
+                        <div style={{ display: 'flex' }}>
+                            <div>
+                                <PostTitle>{SampleData.title}</PostTitle>
+                                <PostContent>{SampleData.content}</PostContent>
+                                <PostInforBox>
+                                    <Breadcrumb>
+                                        <Breadcrumb.Item active>
+                                            조회수 300
+                                        </Breadcrumb.Item>
+                                        <Breadcrumb.Item active>
+                                            댓글 0
+                                        </Breadcrumb.Item>
+                                        <Breadcrumb.Item active>
+                                            55분 전
+                                        </Breadcrumb.Item>
+                                        <Breadcrumb.Item active>
+                                            {SampleData.user}
+                                        </Breadcrumb.Item>
+                                    </Breadcrumb>
+                                </PostInforBox>
+                            </div>
+                            {SampleData.img && (
+                                <PostImg src={SampleData.img} alt="img" />
+                            )}
+                        </div>
+                    </Post>
+                ))}
+            </div>
+        </Container>
+    );
 }
+const Post = styled.div`
+    width: 100%;
+    height: 219.85px;
+    padding: 2rem 1rem;
+    margin-top: 1.5rem;
+    background: #ffffff;
+    border: 8px solid #f5f5f5;
+    box-sizing: border-box;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.8;
+    }
+`;
+const PostImg = styled.img`
+    width: 10rem;
+    height: 10rem;
+    margin-left: 1.5rem;
+`;
+const PostTitle = styled.p`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 127.5%;
+    color: #001129;
+`;
+const PostContent = styled.p`
+    //text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    color: #5a5a5a;
+`;
+const PostInforBox = styled.div`
+    height: 40px;
+    background: #f1f1f1;
+    border: 1px solid #f4f4f4;
+    box-sizing: border-box;
+    border-radius: 4px;
+`;
+// 이위에는 포스트 관련 styled-component
+const Container = styled.div`
+    max-width: 1250px;
+    margin: 2rem auto auto;
+`;
+const Title = styled.p`
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 127.5%;
+    color: #001129;
+`;
+const Subtitle = styled.p`
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
 
+    color: #666666;
+`;
+const InputGroups = styled(InputGroup)`
+    max-width: 800px;
+    margin: 1.5rem auto auto;
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 0.25rem;
+`;
+const SearchBtn = styled(Button)`
+    border: none;
+    border-radius: 0.25rem;
+    background: #052065;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+`;
+const InputForm = styled(FormControl)`
+    height: 44px;
+    :focus {
+        border-color: #ff0000;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+            0 0 8px rgba(255, 0, 0, 0.6);
+    }
+`;
 export default CommunityPage;
