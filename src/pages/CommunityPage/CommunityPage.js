@@ -5,7 +5,12 @@ import styled from 'styled-components';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Table from 'react-bootstrap/Table';
 function CommunityPage(props) {
+    const onChangeDisplay = (e, Display) => {
+        setIsDisplay(Display);
+    };
+    const [isDisplay, setIsDisplay] = useState('big');
     const [search, setSearch] = useState('');
     return (
         <Container>
@@ -26,42 +31,149 @@ function CommunityPage(props) {
                     </SearchBtn>
                 </InputGroup.Append>
             </InputGroups>
+            <IconBox>
+                <Icons
+                    className="fas fa-th-large"
+                    style={{ color: isDisplay !== 'big' ? '#000' : '#7fff00' }}
+                    onClick={(e) => {
+                        onChangeDisplay(e, 'big');
+                    }}
+                />
+                <Icons
+                    className="fas fa-list"
+                    style={{
+                        color: isDisplay !== 'small' ? '#000' : '#7fff00',
+                    }}
+                    onClick={(e) => {
+                        onChangeDisplay(e, 'small');
+                    }}
+                />
+            </IconBox>
             <div>
-                {SampleData.map((SampleData, index) => (
-                    <Post key={index}>
-                        <div style={{ display: 'flex' }}>
-                            <div>
-                                <PostTitle>{SampleData.title}</PostTitle>
-                                <PostContent>{SampleData.content}</PostContent>
-                                <PostInforBox>
-                                    <Breadcrumb>
-                                        <Breadcrumb.Item active>
-                                            조회수 300
-                                        </Breadcrumb.Item>
-                                        <Breadcrumb.Item active>
-                                            댓글 0
-                                        </Breadcrumb.Item>
-                                        <Breadcrumb.Item active>
-                                            55분 전
-                                        </Breadcrumb.Item>
-                                        <Breadcrumb.Item active>
-                                            {SampleData.user}
-                                        </Breadcrumb.Item>
-                                    </Breadcrumb>
-                                </PostInforBox>
-                            </div>
-                            {SampleData.img && (
+                {isDisplay === 'big' ? (
+                    SampleData.map((SampleData, index) => (
+                        <Post key={index}>
+                            <div style={{ display: 'flex' }}>
                                 <div>
-                                    <PostImg src={SampleData.img} alt="img" />
+                                    <PostTitle>{SampleData.title}</PostTitle>
+                                    <PostContent>
+                                        {SampleData.content}
+                                    </PostContent>
+                                    <PostInforBox>
+                                        <Breadcrumb>
+                                            <Breadcrumb.Item active>
+                                                조회수 300
+                                            </Breadcrumb.Item>
+                                            <Breadcrumb.Item active>
+                                                댓글 0
+                                            </Breadcrumb.Item>
+                                            <Breadcrumb.Item active>
+                                                55분 전
+                                            </Breadcrumb.Item>
+                                            <Breadcrumb.Item active>
+                                                {SampleData.user}
+                                            </Breadcrumb.Item>
+                                        </Breadcrumb>
+                                    </PostInforBox>
                                 </div>
-                            )}
-                        </div>
-                    </Post>
-                ))}
+                                {SampleData.img && (
+                                    <div>
+                                        <PostImg
+                                            src={SampleData.img}
+                                            alt="img"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </Post>
+                    ))
+                ) : (
+                    <Table hover size="sm">
+                        <thead>
+                            <Headtr>
+                                <HeadTitleTH>제목</HeadTitleTH>
+                                <HeadUserTH>유저</HeadUserTH>
+                                <HeadSmallTH>댓글</HeadSmallTH>
+                                <HeadSmallTH>조회 수</HeadSmallTH>
+                                <HeadSmallTH>활동</HeadSmallTH>
+                            </Headtr>
+                        </thead>
+                        <tbody>
+                            {SampleData.map((SampleData, index) => (
+                                <TR key={index}>
+                                    <ContentTitle>
+                                        {SampleData.title}
+                                        {SampleData.img && (
+                                            <ImageIcon className="far fa-file-image" />
+                                        )}
+                                    </ContentTitle>
+                                    <ContentUser>{SampleData.user}</ContentUser>
+                                    <ContentSmall>{12}</ContentSmall>
+                                    <ContentSmall>{12}</ContentSmall>
+                                    <ContentSmall>{'3/18'}</ContentSmall>
+                                </TR>
+                            ))}
+                        </tbody>
+                    </Table>
+                )}
             </div>
         </Container>
     );
 }
+const TR = styled.tr`
+    cursor: pointer;
+`;
+const ImageIcon = styled.i`
+    margin-left: 5px;
+    color: #2691d9;
+`;
+const TH = styled.th`
+    line-height: 3.25;
+    font-size: 1rem;
+    color: #919191;
+`;
+const HeadTitleTH = styled(TH)`
+    text-align: left;
+    width: 75%;
+`;
+const HeadUserTH = styled(TH)`
+    text-align: center;
+    width: 10%;
+    min-width: 4.3rem;
+`;
+const HeadSmallTH = styled(TH)`
+    width: 5%;
+    min-width: 4.3rem;
+    text-align: center;
+`;
+const Headtr = styled.tr`
+    border-bottom: 3px solid #919191;
+    border-top: hidden;
+`;
+const TD = styled.td`
+    line-height: 2.25;
+`;
+const ContentTitle = styled(TD)`
+    text-align: left;
+`;
+const ContentUser = styled(TD)`
+    text-align: center;
+`;
+const ContentSmall = styled(TD)`
+    text-align: center;
+`;
+
+//이위는 게시글 작게보기
+const IconBox = styled.div`
+    text-align: right;
+`;
+const Icons = styled.i`
+    font-size: 1.2rem;
+    margin-left: 1.2rem;
+    cursor: pointer;
+`;
+
+// 테스트
 const Post = styled.div`
     width: 100%;
     height: 219.85px;
@@ -107,7 +219,8 @@ const PostInforBox = styled.div`
     box-sizing: border-box;
     border-radius: 4px;
 `;
-// 이위에는 포스트 관련 styled-component
+// 사진있는 이위에는 포스트 관련 styled-component
+
 const Container = styled.div`
     max-width: 1250px;
     margin: 2rem auto auto;
