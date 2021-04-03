@@ -6,12 +6,17 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Table from 'react-bootstrap/Table';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../Redux/store';
+import { useHistory } from 'react-router-dom';
 function CommunityPage(props) {
+    const history = useHistory();
     const onChangeDisplay = (e, Display) => {
         setIsDisplay(Display);
     };
     const [isDisplay, setIsDisplay] = useState('big');
     const [search, setSearch] = useState('');
+    const user = useSelector(selectUser);
     return (
         <Container>
             <Title>커뮤니티</Title>
@@ -32,23 +37,39 @@ function CommunityPage(props) {
                 </InputGroup.Append>
             </InputGroups>
             <IconBox>
-                <Icons
-                    className="fas fa-th-large"
-                    style={{ color: isDisplay !== 'big' ? '#000' : '#7fff00' }}
-                    onClick={(e) => {
-                        onChangeDisplay(e, 'big');
-                    }}
-                />
-                <Icons
-                    className="fas fa-list"
-                    style={{
-                        color: isDisplay !== 'small' ? '#000' : '#7fff00',
-                    }}
-                    onClick={(e) => {
-                        onChangeDisplay(e, 'small');
-                    }}
-                />
+                <div>
+                    {user && (
+                        <button
+                            onClick={() => {
+                                history.push('/upload');
+                            }}
+                        >
+                            글쓰기
+                        </button>
+                    )}
+                </div>
+                <div>
+                    <Icons
+                        className="fas fa-th-large"
+                        style={{
+                            color: isDisplay !== 'big' ? '#000' : '#7fff00',
+                        }}
+                        onClick={(e) => {
+                            onChangeDisplay(e, 'big');
+                        }}
+                    />
+                    <Icons
+                        className="fas fa-list"
+                        style={{
+                            color: isDisplay !== 'small' ? '#000' : '#7fff00',
+                        }}
+                        onClick={(e) => {
+                            onChangeDisplay(e, 'small');
+                        }}
+                    />{' '}
+                </div>
             </IconBox>
+
             <div>
                 {isDisplay === 'big' ? (
                     SampleData.map((SampleData, index) => (
@@ -135,11 +156,13 @@ const TH = styled.th`
 const HeadTitleTH = styled(TH)`
     text-align: left;
     width: 75%;
+    white-space: nowrap;
 `;
 const HeadUserTH = styled(TH)`
     text-align: center;
     width: 10%;
     min-width: 4.3rem;
+    white-space: nowrap;
 `;
 const HeadSmallTH = styled(TH)`
     width: 5%;
@@ -165,7 +188,11 @@ const ContentSmall = styled(TD)`
 
 //이위는 게시글 작게보기
 const IconBox = styled.div`
-    text-align: right;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+    margin-top: 1rem;
 `;
 const Icons = styled.i`
     font-size: 1.2rem;
@@ -223,7 +250,8 @@ const PostInforBox = styled.div`
 
 const Container = styled.div`
     max-width: 1250px;
-    margin: 2rem auto auto;
+    margin: auto;
+    padding: 2rem 2rem;
 `;
 const Title = styled.p`
     font-style: normal;
