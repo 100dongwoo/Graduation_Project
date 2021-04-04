@@ -7,6 +7,7 @@ import axios from 'axios';
 import { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
 import { FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
 import { useDispatch, useSelector } from 'react-redux';
+import api from '../../settings/api';
 
 function LoginModal(props) {
     const dispatch = useDispatch();
@@ -43,9 +44,9 @@ function LoginModal(props) {
                 .required('필수 항목입니다.'),
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
-            console.log('시발 호출이 문제다');
+            console.log('로그인 API 호출 시작');
             axios
-                .post('v1/users/login/', values)
+                .post('users/login/', values)
                 .then((res) => {
                     handleClose();
                     SuccessAlert('로그인 성공');
@@ -54,8 +55,8 @@ function LoginModal(props) {
                     dispatch(LOGIN(res.data));
                 })
                 .catch((err) => {
-                    console.log(err, '이게어레다');
-                    if (err.response.data.msg) {
+                    console.log(err, 'catch err');
+                    if (err.response?.data.msg) {
                         FailLoginAlert(err.response.data.msg);
                         // alert(err.response.data.msg);
                     }
