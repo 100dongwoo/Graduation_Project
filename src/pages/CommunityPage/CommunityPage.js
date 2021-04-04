@@ -9,6 +9,7 @@ import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../Redux/store';
 import { useHistory } from 'react-router-dom';
+
 function CommunityPage(props) {
     const history = useHistory();
     const onChangeDisplay = (e, Display) => {
@@ -141,6 +142,7 @@ function CommunityPage(props) {
         </Container>
     );
 }
+
 const TR = styled.tr`
     cursor: pointer;
 `;

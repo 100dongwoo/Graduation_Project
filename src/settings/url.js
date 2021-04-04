@@ -3,7 +3,7 @@ url = 'http://3.35.167.116';
 // url = 'http://www.side-mate.com';
 
 if (process.env.NODE_ENV === 'production') {
-    url = 'http://3.35.167.116';
+    url = 'http://www.dorestory.com';
 }
 
 export const BASE_URL = url + ':8000/v1/';

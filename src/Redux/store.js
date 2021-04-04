@@ -4,7 +4,7 @@ import {
     createReducer,
     createSlice,
 } from '@reduxjs/toolkit';
-
+import { persistStore } from 'redux-persist';
 const slice = createSlice({
     name: 'USER',
     initialState: {
