@@ -39,7 +39,7 @@ function App() {
                     <Route exact path="/Notice" component={NoticePage} />
                     <Route exact path="/Raking" component={RakingPage} />
                     <Route exact path="/Community" component={CommunityPage} />
-                    <Route exact path="/post/:postId>" component={DetailPage} />
+                    <Route exact path="/post/:postId" component={DetailPage} />
                 </>
             </Switch>
         </Router>

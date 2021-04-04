@@ -59,7 +59,7 @@ function CommunityPage(props) {
     const [search, setSearch] = useState('');
     const user = useSelector(selectUser);
     const onClickToDetail = (e, postId) => {
-        history.push(`/video/${postId}`);
+        history.push(`/post/${postId}`);
     };
     return (
         <Container>
