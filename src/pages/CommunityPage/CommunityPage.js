@@ -12,25 +12,49 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 
+let onEndReached = false;
+
 function CommunityPage(props) {
     const [posts, setPosts] = useState([]);
+    const [isDisplay, setIsDisplay] = useState('big');
+    const [search, setSearch] = useState('');
+    const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
+    const user = useSelector(selectUser);
+
     useEffect(() => {
+        fetchPost();
+    }, []);
+
+    const onClickToDetail = (e, postId) => {
+        history.push(`/post/${postId}`);
+    };
+
+    const fetchPost = (page, keyword) => {
+        let params = { page };
+        if (keyword) {
+            params.keyword = keyword;
+        }
+        console.log(params);
         axios
-            .get('/posts/')
+            .get(`/posts/`, { params })
             .then((res) => {
                 if (res.statusText !== 'OK') {
                     // console.log(res);
                     return;
                 }
+                console.log(res);
                 setPosts(res.data.results);
+                setPage(page + 1);
             })
             .catch((err) => {
                 if (err.response.data.msg) {
                     FailAlert(err.response.data.msg);
-                    // alert(err.response.data.msg);
+                    alert(err.response.data.msg);
                 }
             });
-    }, []);
+    };
+
     const calculateChatDate = (d) => {
         if (d === null) return '';
 
@@ -55,32 +79,40 @@ function CommunityPage(props) {
     const onChangeDisplay = (e, Display) => {
         setIsDisplay(Display);
     };
-    const [isDisplay, setIsDisplay] = useState('big');
-    const [search, setSearch] = useState('');
-    const user = useSelector(selectUser);
-    const onClickToDetail = (e, postId) => {
-        history.push(`/post/${postId}`);
-    };
+
     return (
         <Container>
-            {console.log(posts)}
             <Title>커뮤니티</Title>
             <Subtitle>사람들과 지식을 공유해보세요</Subtitle>
-            <InputGroups>
-                <InputForm
-                    placeholder="검색어"
-                    value={search}
-                    onChange={(e) => {
-                        setSearch(e.target.value);
-                    }}
-                />
-                <InputGroup.Append>
-                    <SearchBtn variant="outline-secondary">
-                        <i className="fas fa-search" />
-                        검색
-                    </SearchBtn>
-                </InputGroup.Append>
-            </InputGroups>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    fetchPost(1, search);
+                }}
+            >
+                <InputGroups>
+                    <InputForm
+                        // onSubmit={() => fetchPost(1, search)}
+                        placeholder="검색어"
+                        value={search}
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                        }}
+                    />
+                    <InputGroup.Append>
+                        <SearchBtn
+                            variant="outline-secondary"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                fetchPost(1, search);
+                            }}
+                        >
+                            <i className="fas fa-search" />
+                            검색
+                        </SearchBtn>
+                    </InputGroup.Append>
+                </InputGroups>
+            </form>
             <IconBox>
                 <div>
                     {user && (
