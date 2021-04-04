@@ -234,6 +234,10 @@ const ContentTitle = styled(TD)`
 `;
 const ContentUser = styled(TD)`
     text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
 `;
 const ContentSmall = styled(TD)`
     text-align: center;
