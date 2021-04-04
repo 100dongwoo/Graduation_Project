@@ -45,6 +45,7 @@ function LoginModal(props) {
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             console.log('로그인 API 호출 시작');
+            console.log('axios url', axios.defaults.baseURL);
             axios
                 .post('users/login/', values)
                 .then((res) => {
