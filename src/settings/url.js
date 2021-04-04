@@ -1,6 +1,6 @@
 let url = 'http://localhost';
 url = 'http://3.35.167.116';
-// url = 'http://www.side-mate.com';
+url = 'http://www.dorestory.com';
 
 if (process.env.NODE_ENV === 'production') {
     url = 'http://www.dorestory.com';
