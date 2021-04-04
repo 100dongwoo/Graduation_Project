@@ -43,6 +43,7 @@ function LoginModal(props) {
                 .required('필수 항목입니다.'),
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
+            console.log('시발 호출이 문제다');
             axios
                 .post('v1/users/login/', values)
                 .then((res) => {
@@ -53,6 +54,7 @@ function LoginModal(props) {
                     dispatch(LOGIN(res.data));
                 })
                 .catch((err) => {
+                    console.log(err, '이게어레다');
                     if (err.response.data.msg) {
                         FailLoginAlert(err.response.data.msg);
                         // alert(err.response.data.msg);
