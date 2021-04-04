@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SampleData } from '../../SampleData/SampleData';
 import InputGroup from 'react-bootstrap/InputGroup';
 import styled from 'styled-components';
@@ -9,8 +9,48 @@ import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../Redux/store';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 
 function CommunityPage(props) {
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        axios
+            .get('/posts/')
+            .then((res) => {
+                if (res.statusText !== 'OK') {
+                    // console.log(res);
+                    return;
+                }
+                setPosts(res.data.results);
+            })
+            .catch((err) => {
+                if (err.response.data.msg) {
+                    FailAlert(err.response.data.msg);
+                    // alert(err.response.data.msg);
+                }
+            });
+    }, []);
+    const calculateChatDate = (d) => {
+        if (d === null) return '';
+
+        const today = new Date();
+        const target = new Date(d);
+
+        const diffM = Math.floor(
+            (today.getTime() - target.getTime()) / 1000 / 60
+        );
+        if (diffM < 1) return '방금전';
+        if (diffM < 60) return `${diffM}분 전`;
+
+        const diffH = Math.floor(diffM / 60);
+        if (diffH < 24) return `${diffH}시간 전`;
+
+        const diffD = Math.floor(diffH / 24);
+        if (diffD < 365) return `${diffD}일 전`;
+
+        return `${Math.floor(diffD / 365)}년 전`;
+    };
     const history = useHistory();
     const onChangeDisplay = (e, Display) => {
         setIsDisplay(Display);
@@ -20,6 +60,7 @@ function CommunityPage(props) {
     const user = useSelector(selectUser);
     return (
         <Container>
+            {console.log(posts)}
             <Title>커뮤니티</Title>
             <Subtitle>사람들과 지식을 공유해보세요</Subtitle>
             <InputGroups>
@@ -73,37 +114,39 @@ function CommunityPage(props) {
 
             <div>
                 {isDisplay === 'big' ? (
-                    SampleData.map((SampleData, index) => (
+                    posts.map((post, index) => (
                         <Post key={index}>
                             <div style={{ display: 'flex' }}>
-                                <div>
-                                    <PostTitle>{SampleData.title}</PostTitle>
-                                    <PostContent>
-                                        {SampleData.content}
-                                    </PostContent>
+                                <div
+                                    style={{
+                                        width: '100%',
+                                    }}
+                                >
+                                    <PostTitle>{post.title}</PostTitle>
+                                    <PostContent>{post.content}</PostContent>
                                     <PostInforBox>
                                         <Breadcrumb>
                                             <Breadcrumb.Item active>
-                                                조회수 300
+                                                조회수 {post.hit_count}
                                             </Breadcrumb.Item>
                                             <Breadcrumb.Item active>
-                                                댓글 0
+                                                댓글 {post.review_count}
                                             </Breadcrumb.Item>
                                             <Breadcrumb.Item active>
-                                                55분 전
+                                                {/*55분 전*/}
+                                                {calculateChatDate(
+                                                    post.created_at
+                                                )}
                                             </Breadcrumb.Item>
                                             <Breadcrumb.Item active>
-                                                {SampleData.user}
+                                                {post.user.nickname}
                                             </Breadcrumb.Item>
                                         </Breadcrumb>
                                     </PostInforBox>
                                 </div>
-                                {SampleData.img && (
+                                {post.image && (
                                     <div>
-                                        <PostImg
-                                            src={SampleData.img}
-                                            alt="img"
-                                        />
+                                        <PostImg src={post.image} alt="img" />
                                     </div>
                                 )}
                             </div>
@@ -121,18 +164,26 @@ function CommunityPage(props) {
                             </Headtr>
                         </thead>
                         <tbody>
-                            {SampleData.map((SampleData, index) => (
+                            {posts.map((post, index) => (
                                 <TR key={index}>
                                     <ContentTitle>
-                                        {SampleData.title}
-                                        {SampleData.img && (
+                                        {post.title}
+                                        {post.image && (
                                             <ImageIcon className="far fa-file-image" />
                                         )}
                                     </ContentTitle>
-                                    <ContentUser>{SampleData.user}</ContentUser>
-                                    <ContentSmall>{12}</ContentSmall>
-                                    <ContentSmall>{12}</ContentSmall>
-                                    <ContentSmall>{'3/18'}</ContentSmall>
+                                    <ContentUser>
+                                        {post.user.nickname}
+                                    </ContentUser>
+                                    <ContentSmall>
+                                        {post.review_count}
+                                    </ContentSmall>
+                                    <ContentSmall>
+                                        {post.hit_count}
+                                    </ContentSmall>
+                                    <ContentSmall>
+                                        {calculateChatDate(post.created_at)}
+                                    </ContentSmall>
                                 </TR>
                             ))}
                         </tbody>

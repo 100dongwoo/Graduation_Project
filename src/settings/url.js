@@ -17,4 +17,4 @@ if (process.env.NODE_ENV === 'production') {
     url = 'http://www.dorestory.com';
 }
 
-export const BASE_URL = url + ':8000/api/v1/';
+export const BASE_URL = url + ':8000/v1/';
