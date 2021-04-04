@@ -46,7 +46,7 @@ function LoginModal(props) {
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             console.log('로그인 API 호출 시작');
             axios
-                .post('users/login/', values)
+                .post(':8000/v1/users/login/', values)
                 .then((res) => {
                     handleClose();
                     SuccessAlert('로그인 성공');
