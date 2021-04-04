@@ -58,6 +58,9 @@ function CommunityPage(props) {
     const [isDisplay, setIsDisplay] = useState('big');
     const [search, setSearch] = useState('');
     const user = useSelector(selectUser);
+    const onClickToDetail = (e, postId) => {
+        history.push(`/video/${postId}`);
+    };
     return (
         <Container>
             {console.log(posts)}
@@ -108,14 +111,19 @@ function CommunityPage(props) {
                         onClick={(e) => {
                             onChangeDisplay(e, 'small');
                         }}
-                    />{' '}
+                    />
                 </div>
             </IconBox>
 
             <div>
                 {isDisplay === 'big' ? (
                     posts.map((post, index) => (
-                        <Post key={index}>
+                        <Post
+                            key={index}
+                            onClick={(e) => {
+                                onClickToDetail(e, post.id);
+                            }}
+                        >
                             <div style={{ display: 'flex' }}>
                                 <div
                                     style={{
@@ -165,7 +173,12 @@ function CommunityPage(props) {
                         </thead>
                         <tbody>
                             {posts.map((post, index) => (
-                                <TR key={index}>
+                                <TR
+                                    key={index}
+                                    onClick={(e) => {
+                                        onClickToDetail(e, post.id);
+                                    }}
+                                >
                                     <ContentTitle>
                                         {post.title}
                                         {post.image && (

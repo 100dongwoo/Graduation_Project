@@ -10,6 +10,7 @@ import UploadPage from './pages/UploadPage/UploadPage';
 import NoticePage from './pages/NoticePage/NoticePage';
 import RakingPage from './pages/RakingPage/RakingPage';
 import CommunityPage from './pages/CommunityPage/CommunityPage';
+import DetailPage from './pages/DetailPage/DetailPage';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -38,6 +39,7 @@ function App() {
                     <Route exact path="/Notice" component={NoticePage} />
                     <Route exact path="/Raking" component={RakingPage} />
                     <Route exact path="/Community" component={CommunityPage} />
+                    <Route exact path="/post/:postId>" component={DetailPage} />
                 </>
             </Switch>
         </Router>
