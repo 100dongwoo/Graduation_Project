@@ -47,7 +47,7 @@ function LoginModal(props) {
             console.log('로그인 API 호출 시작');
             console.log('axios url', axios.defaults.baseURL);
             axios
-                .post('users/login/', values)
+                .post('users/login/', values, { withCredentials: true })
                 .then((res) => {
                     handleClose();
                     SuccessAlert('로그인 성공');
