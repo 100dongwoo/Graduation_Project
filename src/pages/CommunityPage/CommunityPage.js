@@ -11,19 +11,24 @@ import { selectUser } from '../../Redux/store';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
-
+import Pagination from '@material-ui/lab/Pagination';
 let onEndReached = false;
 
 function CommunityPage(props) {
+    const [totalPage, setTotalPage] = useState(1); //  전체 크기
     const [posts, setPosts] = useState([]);
     const [isDisplay, setIsDisplay] = useState('big');
     const [search, setSearch] = useState('');
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(1); //현재 페이지
     const [isLoading, setIsLoading] = useState(true);
     const user = useSelector(selectUser);
-
+    const handleChange = (e, value) => {
+        e.preventDefault();
+        setPage(value);
+        fetchPost(value);
+    };
     useEffect(() => {
-        fetchPost();
+        fetchPost(page);
     }, []);
 
     const onClickToDetail = (e, postId) => {
@@ -35,7 +40,7 @@ function CommunityPage(props) {
         if (keyword) {
             params.keyword = keyword;
         }
-        console.log(params);
+        // console.log(params);
         axios
             .get(`/posts/`, { params })
             .then((res) => {
@@ -43,9 +48,9 @@ function CommunityPage(props) {
                     // console.log(res);
                     return;
                 }
-                console.log(res);
+                // console.log(res);
                 setPosts(res.data.results);
-                setPage(page + 1);
+                setTotalPage(parseInt(res.data.count / 20) + 1);
             })
             .catch((err) => {
                 if (err.response.data.msg) {
@@ -146,7 +151,6 @@ function CommunityPage(props) {
                     />
                 </div>
             </IconBox>
-
             <div>
                 {isDisplay === 'big' ? (
                     posts.map((post, index) => (
@@ -235,6 +239,30 @@ function CommunityPage(props) {
                     </Table>
                 )}
             </div>
+            <Pagination
+                count={totalPage}
+                variant="outlined"
+                shape="rounded"
+                value={page}
+                onChange={handleChange}
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}
+            />
+            {/*반응형 사용*/}
+            {/*<Pagination*/}
+            {/*    count={totalPage}*/}
+            {/*    variant="outlined"*/}
+            {/*    shape="rounded"*/}
+            {/*    value={page}*/}
+            {/*    onChange={handleChange}*/}
+            {/*    siblingCount={0}*/}
+            {/*    style={{*/}
+            {/*        display: 'flex',*/}
+            {/*        justifyContent: 'center',*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Container>
     );
 }
