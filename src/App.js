@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    useHistory,
+} from 'react-router-dom';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import { createGlobalStyle } from 'styled-components';
 import Navbar from './components/Navbar/NavBar';
@@ -24,24 +29,32 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App() {
+function App(props) {
+    const history = useHistory();
     return (
         <Router>
             <GlobalStyle />
-            <Switch>
-                <>
-                    <Help />
-                    <Navbar />
+
+            <div>
+                <Help />
+                <Navbar />
+
+                <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/register" component={RegisterPage} />
                     <Route exact path="/upload" component={UploadPage} />
                     <Route exact path="/Notice" component={NoticePage} />
-                    <Route exact path="/Raking" component={RakingPage} />
+                    <Route exact path="/Ranking" component={RakingPage} />
                     <Route exact path="/Community" component={CommunityPage} />
                     <Route exact path="/post/:postId" component={DetailPage} />
-                </>
-            </Switch>
+                    {/*<Route component={NoMatch} />*/}
+                    <Route
+                        // path 를 따로 정의하지 않으면 모든 상황에 렌더링됨
+                        render={({ history }) => <div>{history.goBack()}</div>}
+                    />
+                </Switch>
+            </div>
         </Router>
     );
 }
