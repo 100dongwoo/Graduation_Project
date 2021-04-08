@@ -4,6 +4,8 @@ import { FailAlert } from '../../Alert/Alert';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import trush from '../../images/brown_trash.jpg';
+import 'moment/locale/ko';
+import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import trush1 from '../../images/tissue_trash.png';
@@ -80,12 +82,18 @@ function DetailPage(props) {
                     </TotalReview>
                 </TitleContainer>
                 {reviews.map((review) => (
-                    <ReviewBox>
+                    <ReviewBox key={review.id}>
                         <Avartar src={trush1} />
                         <ReviewinfoBox>
                             <div>
                                 <ReviewUser>{review.user.nickname}</ReviewUser>
-                                <ReviewDate> {review.created_at}</ReviewDate>
+                                <ReviewDate>
+                                    {moment(review.created_at)
+                                        .subtract(10, 'days')
+                                        .calendar()}
+                                    {moment(review.created_at).format('LTS')}
+                                    {/*{moment(review.created_at).format('LLLL')}*/}
+                                </ReviewDate>
                             </div>
                             <ReviewContent>{review.content}</ReviewContent>
                         </ReviewinfoBox>

@@ -26,7 +26,7 @@ function NoticePage(props) {
                     return;
                 }
                 console.log('성공 공지사항', res);
-                setNoticepost(res.data.results);
+                setNoticepost(res.data);
             })
             .catch((err) => {
                 if (err.response.data.msg) {
