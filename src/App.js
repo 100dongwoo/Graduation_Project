@@ -19,6 +19,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 
 const GlobalStyle = createGlobalStyle`
   body {
+  font-family: Noto Sans KR;
     color: #000000;
      //font-family: payboocLight,serif;
      padding : 0 0;

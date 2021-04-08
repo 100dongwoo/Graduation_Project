@@ -65,7 +65,6 @@ function CommunityPage(props) {
 
         const today = new Date();
         const target = new Date(d);
-
         const diffM = Math.floor(
             (today.getTime() - target.getTime()) / 1000 / 60
         );
@@ -292,7 +291,7 @@ const HeadUserTH = styled(TH)`
 `;
 const HeadSmallTH = styled(TH)`
     width: 5%;
-    min-width: 4.3rem;
+    min-width: 4.9rem;
     text-align: center;
 `;
 const Headtr = styled.tr`
