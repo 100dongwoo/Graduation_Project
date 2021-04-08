@@ -6,7 +6,11 @@ import DURE from '../../images/DURE.png';
 import { Nav, NavItem, NavDropdown, MenuItem, Navbar } from 'react-bootstrap';
 import LoginModal from '../../pages/LoginPage/LoginModal';
 import './css.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../Redux/store';
 function NavBar(props) {
+    const user = useSelector(selectUser);
+    //테스트
     const history = useHistory();
     const toggleHome = () => {
         scroll.scrollToTop();
@@ -159,6 +163,18 @@ function NavBar(props) {
                         >
                             커뮤니티
                         </Nav.Link>
+                        {/*테스트*/}
+                        {user && (
+                            <Nav.Link
+                                href={'/mypage'}
+                                onClick={(e) => {
+                                    onChannelChange(e, `mypage/${user.id}`);
+                                }}
+                            >
+                                마이페이지
+                            </Nav.Link>
+                        )}
+                        {/*테스트*/}
                     </Nav>
                     <Nav>
                         {/*<Nav.Link href="#deets">More deets</Nav.Link>*/}

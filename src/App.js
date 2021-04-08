@@ -4,6 +4,7 @@ import {
     Route,
     Switch,
     useHistory,
+    Redirect,
 } from 'react-router-dom';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import { createGlobalStyle } from 'styled-components';
@@ -16,6 +17,9 @@ import NoticePage from './pages/NoticePage/NoticePage';
 import RakingPage from './pages/RakingPage/RakingPage';
 import CommunityPage from './pages/CommunityPage/CommunityPage';
 import DetailPage from './pages/DetailPage/DetailPage';
+import { useSelector } from 'react-redux';
+import { selectUser } from './Redux/store';
+import Mypage from './pages/Mypage/Mypage';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,11 +35,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App(props) {
-    const history = useHistory();
+    const user = useSelector(selectUser);
     return (
         <Router>
             <GlobalStyle />
-
             <div>
                 <Help />
                 <Navbar />
@@ -49,6 +52,14 @@ function App(props) {
                     <Route exact path="/Ranking" component={RakingPage} />
                     <Route exact path="/Community" component={CommunityPage} />
                     <Route exact path="/post/:postId" component={DetailPage} />
+                    <Route
+                        exact
+                        path="/mypage/:userId"
+                        render={
+                            () => (!user ? <Redirect to="/" /> : <Mypage />)
+                            //    로그인 됬으면                           안됬으면
+                        }
+                    />
                     {/*<Route component={NoMatch} />*/}
                     <Route
                         // path 를 따로 정의하지 않으면 모든 상황에 렌더링됨
