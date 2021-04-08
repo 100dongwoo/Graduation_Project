@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FailAlert } from '../../Alert/Alert';
+import { useHistory } from 'react-router-dom';
 
 function DetailPage(props) {
     const [post, setPost] = useState([]);
     const [reviews, setReviews] = useState([]);
     const postId = props.match.params.postId; ///URL 에서 가져옴
-
+    const history = useHistory();
     useEffect(() => {
         fetchPost();
         fetchReview();
@@ -27,6 +28,8 @@ function DetailPage(props) {
                     FailAlert(err.response.data.msg);
                 } else {
                     console.log('에러 : ', err);
+                    FailAlert('존재하지 않는 게시글 입니다');
+                    history.push('/');
                 }
             });
     };
