@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 import Pagination from '@material-ui/lab/Pagination';
-let onEndReached = false;
+import Spinner from 'react-bootstrap/Spinner';
 
 function CommunityPage(props) {
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
@@ -49,8 +49,13 @@ function CommunityPage(props) {
                     return;
                 }
                 // console.log(res);
+                if (res.data.count === 0) {
+                    FailAlert('게시글이 존재하지 않습니다');
+                    return;
+                }
                 setPosts(res.data.results);
                 setTotalPage(parseInt(res.data.count / 20) + 1);
+                setIsLoading(false);
             })
             .catch((err) => {
                 if (err.response.data.msg) {
@@ -85,187 +90,225 @@ function CommunityPage(props) {
     };
 
     return (
-        <Container>
-            <Title>커뮤니티</Title>
-            <Subtitle>사람들과 지식을 공유해보세요</Subtitle>
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    fetchPost(1, search);
-                }}
-            >
-                <InputGroups>
-                    <InputForm
-                        // onSubmit={() => fetchPost(1, search)}
-                        placeholder="검색어"
-                        value={search}
-                        onChange={(e) => {
-                            setSearch(e.target.value);
-                        }}
-                    />
-                    <InputGroup.Append>
-                        <SearchBtn
-                            variant="outline-secondary"
-                            onClick={(e) => {
+        <>
+            {isLoading ? (
+                <SpinnerContainer>
+                    <Spinner animation="border" />
+                    <h2>&nbsp; 로딩 중 ...</h2>
+                </SpinnerContainer>
+            ) : (
+                <Container>
+                    <div>
+                        <Title>커뮤니티</Title>
+                        <Subtitle>사람들과 지식을 공유해보세요</Subtitle>
+                        <form
+                            onSubmit={(e) => {
                                 e.preventDefault();
                                 fetchPost(1, search);
                             }}
                         >
-                            <i className="fas fa-search" />
-                            검색
-                        </SearchBtn>
-                    </InputGroup.Append>
-                </InputGroups>
-            </form>
-            <IconBox>
-                <div>
-                    {user && (
-                        <button
-                            onClick={() => {
-                                history.push('/upload');
-                            }}
-                        >
-                            글쓰기
-                        </button>
-                    )}
-                </div>
-                <div>
-                    <Icons
-                        className="fas fa-th-large"
-                        style={{
-                            color: isDisplay !== 'big' ? '#000' : '#7fff00',
-                        }}
-                        onClick={(e) => {
-                            onChangeDisplay(e, 'big');
-                        }}
-                    />
-                    <Icons
-                        className="fas fa-list"
-                        style={{
-                            color: isDisplay !== 'small' ? '#000' : '#7fff00',
-                        }}
-                        onClick={(e) => {
-                            onChangeDisplay(e, 'small');
-                        }}
-                    />
-                </div>
-            </IconBox>
-            <div>
-                {isDisplay === 'big' ? (
-                    posts.map((post, index) => (
-                        <Post
-                            key={index}
-                            onClick={(e) => {
-                                onClickToDetail(e, post.id);
-                            }}
-                        >
-                            <div style={{ display: 'flex' }}>
-                                <div
-                                    style={{
-                                        width: '100%',
+                            <InputGroups>
+                                <InputForm
+                                    // onSubmit={() => fetchPost(1, search)}
+                                    placeholder="검색어"
+                                    value={search}
+                                    onChange={(e) => {
+                                        setSearch(e.target.value);
                                     }}
-                                >
-                                    <PostTitle>{post.title}</PostTitle>
-                                    <PostContent>{post.content}</PostContent>
-                                    <PostInforBox>
-                                        <Breadcrumb>
-                                            <Breadcrumb.Item active>
-                                                조회수 {post.hit_count}
-                                            </Breadcrumb.Item>
-                                            <Breadcrumb.Item active>
-                                                댓글 {post.review_count}
-                                            </Breadcrumb.Item>
-                                            <Breadcrumb.Item active>
-                                                {/*55분 전*/}
-                                                {calculateChatDate(
-                                                    post.created_at
-                                                )}
-                                            </Breadcrumb.Item>
-                                            <Breadcrumb.Item active>
-                                                {post.user.nickname}
-                                            </Breadcrumb.Item>
-                                        </Breadcrumb>
-                                    </PostInforBox>
-                                </div>
-                                {post.image && (
-                                    <div>
-                                        <PostImg src={post.image} alt="img" />
-                                    </div>
+                                />
+                                <InputGroup.Append>
+                                    <SearchBtn
+                                        variant="outline-secondary"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            fetchPost(1, search);
+                                        }}
+                                    >
+                                        <i className="fas fa-search" />
+                                        검색
+                                    </SearchBtn>
+                                </InputGroup.Append>
+                            </InputGroups>
+                        </form>
+                        <IconBox>
+                            <div>
+                                {user && (
+                                    <button
+                                        onClick={() => {
+                                            history.push('/upload');
+                                        }}
+                                    >
+                                        글쓰기
+                                    </button>
                                 )}
                             </div>
-                        </Post>
-                    ))
-                ) : (
-                    <Table hover size="sm">
-                        <thead>
-                            <Headtr>
-                                <HeadTitleTH>제목</HeadTitleTH>
-                                <HeadUserTH>유저</HeadUserTH>
-                                <HeadSmallTH>댓글</HeadSmallTH>
-                                <HeadSmallTH>조회 수</HeadSmallTH>
-                                <HeadSmallTH>활동</HeadSmallTH>
-                            </Headtr>
-                        </thead>
-                        <tbody>
-                            {posts.map((post, index) => (
-                                <TR
-                                    key={index}
-                                    onClick={(e) => {
-                                        onClickToDetail(e, post.id);
+                            <div>
+                                <Icons
+                                    className="fas fa-th-large"
+                                    style={{
+                                        color:
+                                            isDisplay !== 'big'
+                                                ? '#000'
+                                                : '#7fff00',
                                     }}
-                                >
-                                    <ContentTitle>
-                                        {post.title}
-                                        {post.image && (
-                                            <ImageIcon className="far fa-file-image" />
-                                        )}
-                                    </ContentTitle>
-                                    <ContentUser>
-                                        {post.user.nickname}
-                                    </ContentUser>
-                                    <ContentSmall>
-                                        {post.review_count}
-                                    </ContentSmall>
-                                    <ContentSmall>
-                                        {post.hit_count}
-                                    </ContentSmall>
-                                    <ContentSmall>
-                                        {calculateChatDate(post.created_at)}
-                                    </ContentSmall>
-                                </TR>
-                            ))}
-                        </tbody>
-                    </Table>
-                )}
-            </div>
-            <Pagination
-                count={totalPage}
-                variant="outlined"
-                shape="rounded"
-                value={page}
-                onChange={handleChange}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}
-            />
-            {/*반응형 사용*/}
-            {/*<Pagination*/}
-            {/*    count={totalPage}*/}
-            {/*    variant="outlined"*/}
-            {/*    shape="rounded"*/}
-            {/*    value={page}*/}
-            {/*    onChange={handleChange}*/}
-            {/*    siblingCount={0}*/}
-            {/*    style={{*/}
-            {/*        display: 'flex',*/}
-            {/*        justifyContent: 'center',*/}
-            {/*    }}*/}
-            {/*/>*/}
-        </Container>
+                                    onClick={(e) => {
+                                        onChangeDisplay(e, 'big');
+                                    }}
+                                />
+                                <Icons
+                                    className="fas fa-list"
+                                    style={{
+                                        color:
+                                            isDisplay !== 'small'
+                                                ? '#000'
+                                                : '#7fff00',
+                                    }}
+                                    onClick={(e) => {
+                                        onChangeDisplay(e, 'small');
+                                    }}
+                                />
+                            </div>
+                        </IconBox>
+                        <div>
+                            {isDisplay === 'big' ? (
+                                posts.map((post, index) => (
+                                    <Post
+                                        key={index}
+                                        onClick={(e) => {
+                                            onClickToDetail(e, post.id);
+                                        }}
+                                    >
+                                        <div style={{ display: 'flex' }}>
+                                            <div
+                                                style={{
+                                                    width: '100%',
+                                                }}
+                                            >
+                                                <PostTitle>
+                                                    {post.title}
+                                                </PostTitle>
+                                                <PostContent>
+                                                    {post.content}
+                                                </PostContent>
+                                                <PostInforBox>
+                                                    <Breadcrumb>
+                                                        <Breadcrumb.Item active>
+                                                            조회수{' '}
+                                                            {post.hit_count}
+                                                        </Breadcrumb.Item>
+                                                        <Breadcrumb.Item active>
+                                                            댓글{' '}
+                                                            {post.review_count}
+                                                        </Breadcrumb.Item>
+                                                        <Breadcrumb.Item active>
+                                                            {/*55분 전*/}
+                                                            {calculateChatDate(
+                                                                post.created_at
+                                                            )}
+                                                        </Breadcrumb.Item>
+                                                        <Breadcrumb.Item active>
+                                                            {post.user.nickname}
+                                                        </Breadcrumb.Item>
+                                                    </Breadcrumb>
+                                                </PostInforBox>
+                                            </div>
+                                            {post.image && (
+                                                <div>
+                                                    <PostImg
+                                                        src={post.image}
+                                                        alt="img"
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Post>
+                                ))
+                            ) : (
+                                <Table hover size="sm">
+                                    <thead>
+                                        <Headtr>
+                                            <HeadTitleTH>제목</HeadTitleTH>
+                                            <HeadUserTH>유저</HeadUserTH>
+                                            <HeadSmallTH>댓글</HeadSmallTH>
+                                            <HeadSmallTH>조회 수</HeadSmallTH>
+                                            <HeadSmallTH>활동</HeadSmallTH>
+                                        </Headtr>
+                                    </thead>
+                                    <tbody>
+                                        {posts.map((post, index) => (
+                                            <TR
+                                                key={index}
+                                                onClick={(e) => {
+                                                    onClickToDetail(e, post.id);
+                                                }}
+                                            >
+                                                <ContentTitle>
+                                                    {post.title}
+                                                    {post.image && (
+                                                        <ImageIcon className="far fa-file-image" />
+                                                    )}
+                                                </ContentTitle>
+                                                <ContentUser>
+                                                    {post.user.nickname}
+                                                </ContentUser>
+                                                <ContentSmall>
+                                                    {post.review_count}
+                                                </ContentSmall>
+                                                <ContentSmall>
+                                                    {post.hit_count}
+                                                </ContentSmall>
+                                                <ContentSmall>
+                                                    {calculateChatDate(
+                                                        post.created_at
+                                                    )}
+                                                </ContentSmall>
+                                            </TR>
+                                        ))}
+                                    </tbody>
+                                </Table>
+                            )}
+                        </div>
+                        <Pagination
+                            count={totalPage}
+                            variant="outlined"
+                            shape="rounded"
+                            value={page}
+                            onChange={handleChange}
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                        />
+                        {/*반응형 사용*/}
+                        {/*<Pagination*/}
+                        {/*    count={totalPage}*/}
+                        {/*    variant="outlined"*/}
+                        {/*    shape="rounded"*/}
+                        {/*    value={page}*/}
+                        {/*    onChange={handleChange}*/}
+                        {/*    siblingCount={0}*/}
+                        {/*    style={{*/}
+                        {/*        display: 'flex',*/}
+                        {/*        justifyContent: 'center',*/}
+                        {/*    }}*/}
+                        {/*/>*/}
+                    </div>
+                </Container>
+            )}
+        </>
     );
 }
-
+const SpinnerContainer = styled.div`
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 const TR = styled.tr`
     cursor: pointer;
 `;
