@@ -21,9 +21,16 @@ function DetailPage(props) {
     useEffect(() => {
         fetchPost();
         fetchReview();
+        {
+            console.log('123');
+        }
     }, []);
     const onSubmitReview = (e) => {
         e.preventDefault();
+        if (!reviewText.length) {
+            FailAlert('댓글을 입력해주세요');
+            return;
+        }
     };
 
     const fetchPost = () => {
@@ -140,6 +147,7 @@ function DetailPage(props) {
                             variant="secondary"
                             size="lg"
                             onClick={onSubmitReview}
+                            disabled={!user}
                         >
                             등록
                         </SubmitButton>

@@ -8,8 +8,10 @@ import { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
 import { FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import api from '../../settings/api';
+import { useHistory } from 'react-router-dom';
 
 function LoginModal(props) {
+    const history = useHistory();
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const handleClose = () => {
@@ -136,7 +138,14 @@ function LoginModal(props) {
                         />
                         <SignContainer>
                             Not a member?
-                            <SignFont href="register">Signup</SignFont>
+                            <SignFont
+                                onClick={() => {
+                                    setShow(false);
+                                    history.push('/register');
+                                }}
+                            >
+                                Signup
+                            </SignFont>
                         </SignContainer>
                     </Form>
                 </Modal.Body>
@@ -228,7 +237,8 @@ const SignContainer = styled.div`
     font-size: 1rem;
     color: #666666;
 `;
-const SignFont = styled.a`
+const SignFont = styled.span`
+    cursor: pointer;
     color: #2691d9;
     text-decoration: none;
     &:hover {

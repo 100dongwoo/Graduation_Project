@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import './button.css';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import axios from 'axios';
-import { FailAlert, SuccessAlert } from '../../Alert/Alert';
+import { FailAlert, FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
 function RegisterPage(props) {
     const formik = useFormik({
         enableReinitialize: true,
@@ -16,15 +16,20 @@ function RegisterPage(props) {
             nickname: '',
         },
         validationSchema: yup.object().shape({
-            login_id: yup.string().email('존재하지 않는 형식입니다.'),
-            // .required('필수 항목입니다.'),
-            password: yup.string().min(8, '비밀번호는 최소 8자리 이상입니다.'),
-            // .required('필수 항목입니다.'),
+            login_id: yup
+                .string()
+                .email('존재하지 않는 형식입니다.')
+                .required('필수 항목입니다.'),
+            password: yup
+                .string()
+                .min(8, '비밀번호는 최소 8자리 이상입니다.')
+                .required('필수 항목입니다.'),
             // checkPassword: yup.string().required('필수 항목입니다.'),
             checkPassword: yup
                 .string()
                 .min(8, '비밀번호는 최소 8자리 이상입니다.')
-                .oneOf([yup.ref('password'), null], '비밀번호와 같지않습니다.'),
+                .oneOf([yup.ref('password'), null], '비밀번호와 같지않습니다.')
+                .required('필수 항목입니다.'),
             // phoneNumber: yup
             //     .string()
             //     .max(11, '최대 11자리입니다 ')
@@ -32,13 +37,21 @@ function RegisterPage(props) {
             nickname: yup
                 .string()
                 .min(2, '최소 2자리 이상 입니다 ')
-                .max(6, '최대 6자리 이하 입니다'),
-            // .required('필수 항목입니다.'),
+                .max(6, '최대 6자리 이하 입니다')
+                .required('필수 항목입니다.'),
         }),
         onSubmit: (values, { setSubmitting, setErrors }) => {
-            // console.log(values);
+            // if (
+            //     values.password.length === 0 ||
+            //     values.password.length === 0 ||
+            //     values.checkPassword.length === 0 ||
+            //     values.nickname.length === 0
+            // ) {
+            //     FailAlert('모든항목 입력');
+            //     return;
+            // }
             axios
-                .post('v1/users/sign-up/', values)
+                .post('users/sign-up/', values)
                 .then((res) => {
                     if (res.data.code !== 'OK') {
                         FailAlert(res.data.msg);
@@ -53,10 +66,13 @@ function RegisterPage(props) {
                     if (err.response.data.msg) {
                         FailAlert(err.response.data.msg);
                         // alert(err.response.data.msg);
+                    } else {
+                        console.log(err);
                     }
                 });
         },
     });
+
     const {
         values,
         handleChange,
