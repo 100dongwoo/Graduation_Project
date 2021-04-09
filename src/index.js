@@ -7,7 +7,7 @@ import axios from 'axios';
 import { PersistGate } from 'redux-persist/integration/react';
 
 if (process.env.NODE_ENV === 'production') {
-    axios.defaults.baseURL = 'http://www.dorestory.com:8000/v1/';
+    axios.defaults.baseURL = 'http://3.35.167.116:8000/v1/';
     axios.defaults.headers.post['Content-Type'] =
         'application/json;charset=utf-8';
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
