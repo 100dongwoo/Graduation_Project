@@ -42,7 +42,7 @@ function CommunityPage(props) {
         }
         // console.log(params);
         axios
-            .get(`/posts/`, { params })
+            .get(`/posts/`, { params }, { withCredentials: true })
             .then((res) => {
                 if (res.statusText !== 'OK') {
                     // console.log(res);
