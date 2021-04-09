@@ -58,7 +58,7 @@ function CommunityPage(props) {
                 setIsLoading(false);
             })
             .catch((err) => {
-                if (err.response.data.msg) {
+                if (err.response.data?.msg) {
                     FailAlert(err.response.data.msg);
                     alert(err.response.data.msg);
                 }
