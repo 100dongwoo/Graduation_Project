@@ -83,7 +83,21 @@ function DetailPage(props) {
                 </TitleContainer>
                 {reviews.map((review) => (
                     <ReviewBox key={review.id}>
-                        <Avartar src={trush1} />
+                        <AvartarContainer
+                            style={{
+                                // backgroundImage: `url(${trush1})`,
+
+                                backgroundImage:
+                                    'url(https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg)',
+                            }}
+                        >
+                            {/*<Avartar*/}
+                            {/*    src={trush1}*/}
+                            {/*    // src={*/}
+                            {/*    //     'https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg'*/}
+                            {/*    // }*/}
+                            {/*/>*/}
+                        </AvartarContainer>
                         <ReviewinfoBox>
                             <div>
                                 <ReviewUser>{review.user.nickname}</ReviewUser>
@@ -165,7 +179,21 @@ const InputForm = styled(FormControl)`
             0 0 8px rgba(255, 0, 0, 0.6);
     }
 `;
-const Avartar = styled.img``;
+const AvartarContainer = styled.div`
+    width: 70px;
+    height: 60px;
+
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+`;
+const Avartar = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+`;
 const ReviewContent = styled.p`
     font-size: 13px;
     color: #666666;
