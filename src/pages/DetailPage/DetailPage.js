@@ -11,6 +11,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import trush1 from '../../images/tissue_trash.png';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../Redux/store';
+import Pagination from '@material-ui/lab/Pagination';
 function DetailPage(props) {
     const user = useSelector(selectUser);
     const [reviewText, setReviewText] = useState('');
@@ -18,12 +19,20 @@ function DetailPage(props) {
     const [reviews, setReviews] = useState([]);
     const postId = props.match.params.postId; ///URL 에서 가져옴
     const history = useHistory();
+    const [page, setPage] = useState(1); //현재 페이지
+    const [totalPage, setTotalPage] = useState(1); //  전체 크기
+    const [totalReview, setTotalReview] = useState(0); //총 리뷰 갯수
+    const handleChange = (e, value) => {
+        // e.preventDefault();
+        setPage(value);
+        fetchReview(value);
+    };
     useEffect(() => {
         fetchPost();
-        fetchReview();
+        fetchReview(1);
     }, []);
     const onSubmitReview = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         if (!reviewText.length) {
             FailAlert('댓글을 입력해주세요');
             return;
@@ -36,11 +45,14 @@ function DetailPage(props) {
         axios
             .post('/reviews/', params)
             .then((res) => {
-                if (res.statusText !== 'OK') {
+                if (res.statusText !== 'Created') {
                     console.log(res);
                     return;
                 }
                 SuccessAlert('댓글작성 성공');
+                fetchReview(1);
+                setPage(1);
+                setReviewText('');
             })
             .catch((err) => {
                 if (err.response.data.msg) {
@@ -50,7 +62,6 @@ function DetailPage(props) {
                 }
             });
     };
-
     const fetchPost = () => {
         axios
             .get(`/posts/${postId}/`)
@@ -72,9 +83,10 @@ function DetailPage(props) {
                 }
             });
     };
-    const fetchReview = () => {
+    const fetchReview = (page) => {
+        let params = { page };
         axios
-            .get(`/reviews/?post=${postId}`)
+            .get(`/reviews/?post=${postId}`, { params })
             .then((res) => {
                 // console.log('res', res);
                 if (res.statusText !== 'OK') {
@@ -82,6 +94,12 @@ function DetailPage(props) {
                     return;
                 }
                 setReviews(res.data.results);
+                setTotalPage(
+                    parseInt(res.data.count) % 4 === 0
+                        ? parseInt(res.data.count / 4)
+                        : parseInt(res.data.count / 4) + 1
+                );
+                setTotalReview(res.data.count);
                 // console.log('댓글불러오기 성공', res);
             })
             .catch((err) => {
@@ -103,7 +121,7 @@ function DetailPage(props) {
                 <TitleContainer>
                     <TotalReview>
                         댓글
-                        <TotalReviewCount>{reviews?.length}</TotalReviewCount>
+                        <TotalReviewCount>{totalReview}</TotalReviewCount>
                     </TotalReview>
                 </TitleContainer>
                 {reviews.map((review) => (
@@ -138,7 +156,17 @@ function DetailPage(props) {
                         </ReviewinfoBox>
                     </ReviewBox>
                 ))}
-
+                <Pagination
+                    count={totalPage}
+                    variant="outlined"
+                    shape="rounded"
+                    page={page}
+                    onChange={handleChange}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                />
                 {/*<InputForm as="textarea" aria-label="With textarea" />*/}
                 <ReviewSubmitBox>
                     <TextArea
