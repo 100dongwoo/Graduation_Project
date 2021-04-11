@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Table from 'react-bootstrap/Table';
 import Pagination from '@material-ui/lab/Pagination';
 import api from '../../settings/api';
+import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
 function NoticePage(props) {
     const [noticePost, setNoticepost] = useState([]);
@@ -99,17 +100,22 @@ function NoticePage(props) {
                     margin: 0,
                 }}
             />
-            <Pagination
-                count={totalPage}
-                variant="outlined"
-                shape="rounded"
+            <PaginationComponent
+                totalPage={totalPage}
                 page={page}
-                onChange={handleChange}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}
+                handleChange={handleChange}
             />
+            {/*<Pagination*/}
+            {/*    count={totalPage}*/}
+            {/*    variant="outlined"*/}
+            {/*    shape="rounded"*/}
+            {/*    page={page}*/}
+            {/*    onChange={handleChange}*/}
+            {/*    style={{*/}
+            {/*        display: 'flex',*/}
+            {/*        justifyContent: 'center',*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Container>
     );
 }

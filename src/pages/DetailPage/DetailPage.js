@@ -12,6 +12,7 @@ import trush1 from '../../images/tissue_trash.png';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../Redux/store';
 import Pagination from '@material-ui/lab/Pagination';
+import PaginationComponent from '../../components/Pagination/PaginationComponent';
 function DetailPage(props) {
     const user = useSelector(selectUser);
     const [reviewText, setReviewText] = useState('');
@@ -158,17 +159,22 @@ function DetailPage(props) {
                         </ReviewinfoBox>
                     </ReviewBox>
                 ))}
-                <Pagination
-                    count={totalPage}
-                    variant="outlined"
-                    shape="rounded"
+                <PaginationComponent
+                    totalPage={totalPage}
                     page={page}
-                    onChange={handleChange}
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                    }}
+                    handleChange={handleChange}
                 />
+                {/*<Pagination*/}
+                {/*    count={totalPage}*/}
+                {/*    variant="outlined"*/}
+                {/*    shape="rounded"*/}
+                {/*    page={page}*/}
+                {/*    onChange={handleChange}*/}
+                {/*    style={{*/}
+                {/*        display: 'flex',*/}
+                {/*        justifyContent: 'center',*/}
+                {/*    }}*/}
+                {/*/>*/}
                 {/*<InputForm as="textarea" aria-label="With textarea" />*/}
                 <ReviewSubmitBox>
                     <TextArea
