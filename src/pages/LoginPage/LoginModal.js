@@ -46,11 +46,10 @@ function LoginModal(props) {
                 .required('필수 항목입니다.'),
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
-            console.log('axios url', axios.defaults.baseURL);
+            // console.log('axios url', axios.defaults.baseURL);
             axios
                 .post('/users/login/', values)
                 .then((res) => {
-                    console.log('res', res);
                     handleClose();
                     SuccessAlert('로그인 성공');
                     // console.log('성공', res);

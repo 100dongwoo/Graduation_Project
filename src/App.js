@@ -63,7 +63,9 @@ function App(props) {
                     {/*<Route component={NoMatch} />*/}
                     <Route
                         // path 를 따로 정의하지 않으면 모든 상황에 렌더링됨
-                        render={({ history }) => <div>{history.goBack()}</div>}
+                        render={({ history }) => {
+                            history.push('/');
+                        }}
                     />
                 </Switch>
             </div>
