@@ -27,7 +27,12 @@ function NoticePage(props) {
                     // console.log(res);
                     return;
                 }
-                setNoticepost(res.data);
+                setNoticepost(res.data.results);
+                setTotalPage(
+                    parseInt(res.data.count) % 10 === 0
+                        ? parseInt(res.data.count / 10)
+                        : parseInt(res.data.count / 10) + 1
+                );
             })
             .catch((err) => {
                 if (err.response?.data.msg) {
@@ -95,7 +100,7 @@ function NoticePage(props) {
                 count={totalPage}
                 variant="outlined"
                 shape="rounded"
-                value={page}
+                page={page}
                 onChange={handleChange}
                 style={{
                     display: 'flex',

@@ -23,7 +23,6 @@ function CommunityPage(props) {
     const [isLoading, setIsLoading] = useState(true);
     const user = useSelector(selectUser);
     const handleChange = (e, value) => {
-        e.preventDefault();
         setPage(value);
         fetchPost(value);
     };
@@ -54,7 +53,11 @@ function CommunityPage(props) {
                     return;
                 }
                 setPosts(res.data.results);
-                setTotalPage(parseInt(res.data.count / 20) + 1);
+                setTotalPage(
+                    parseInt(res.data.count) % 20 === 0
+                        ? parseInt(res.data.count / 20)
+                        : parseInt(res.data.count / 20) + 1
+                );
                 setIsLoading(false);
             })
             .catch((err) => {
@@ -272,7 +275,7 @@ function CommunityPage(props) {
                             count={totalPage}
                             variant="outlined"
                             shape="rounded"
-                            value={page}
+                            page={page}
                             onChange={handleChange}
                             style={{
                                 display: 'flex',
