@@ -13,6 +13,8 @@ import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 import Pagination from '@material-ui/lab/Pagination';
 import Spinner from 'react-bootstrap/Spinner';
+import CommunityTable from './CommunityTable';
+import CommunityBig from './CommunityBig';
 
 function CommunityPage(props) {
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
@@ -22,6 +24,10 @@ function CommunityPage(props) {
     const [page, setPage] = useState(1); //현재 페이지
     const [isLoading, setIsLoading] = useState(true);
     const user = useSelector(selectUser);
+    const history = useHistory();
+    const onChangeDisplay = (e, Display) => {
+        setIsDisplay(Display);
+    };
     const handleChange = (e, value) => {
         setPage(value);
         fetchPost(value);
@@ -88,10 +94,6 @@ function CommunityPage(props) {
         if (diffD < 365) return `${diffD}일 전`;
 
         return `${Math.floor(diffD / 365)}년 전`;
-    };
-    const history = useHistory();
-    const onChangeDisplay = (e, Display) => {
-        setIsDisplay(Display);
     };
 
     return (
@@ -174,105 +176,12 @@ function CommunityPage(props) {
                                 />
                             </div>
                         </IconBox>
-                        <div>
-                            {isDisplay === 'big' ? (
-                                posts.map((post, index) => (
-                                    <Post
-                                        key={index}
-                                        onClick={(e) => {
-                                            onClickToDetail(e, post.id);
-                                        }}
-                                    >
-                                        <div style={{ display: 'flex' }}>
-                                            <div
-                                                style={{
-                                                    width: '100%',
-                                                }}
-                                            >
-                                                <PostTitle>
-                                                    {post.title}
-                                                </PostTitle>
-                                                <PostContent>
-                                                    {post.content}
-                                                </PostContent>
-                                                <PostInforBox>
-                                                    <Breadcrumb>
-                                                        <Breadcrumb.Item active>
-                                                            조회수{' '}
-                                                            {post.hit_count}
-                                                        </Breadcrumb.Item>
-                                                        <Breadcrumb.Item active>
-                                                            댓글{' '}
-                                                            {post.review_count}
-                                                        </Breadcrumb.Item>
-                                                        <Breadcrumb.Item active>
-                                                            {/*55분 전*/}
-                                                            {calculateChatDate(
-                                                                post.created_at
-                                                            )}
-                                                        </Breadcrumb.Item>
-                                                        <Breadcrumb.Item active>
-                                                            {post.user.nickname}
-                                                        </Breadcrumb.Item>
-                                                    </Breadcrumb>
-                                                </PostInforBox>
-                                            </div>
-                                            {post.image && (
-                                                <div>
-                                                    <PostImg
-                                                        src={post.image}
-                                                        alt="img"
-                                                    />
-                                                </div>
-                                            )}
-                                        </div>
-                                    </Post>
-                                ))
-                            ) : (
-                                <Table hover size="sm">
-                                    <thead>
-                                        <Headtr>
-                                            <HeadTitleTH>제목</HeadTitleTH>
-                                            <HeadUserTH>유저</HeadUserTH>
-                                            <HeadSmallTH>댓글</HeadSmallTH>
-                                            <HeadSmallTH>조회 수</HeadSmallTH>
-                                            <HeadSmallTH>활동</HeadSmallTH>
-                                        </Headtr>
-                                    </thead>
-                                    <tbody>
-                                        {posts.map((post, index) => (
-                                            <TR
-                                                key={index}
-                                                onClick={(e) => {
-                                                    onClickToDetail(e, post.id);
-                                                }}
-                                            >
-                                                <ContentTitle>
-                                                    {post.title}
-                                                    {post.image && (
-                                                        <ImageIcon className="far fa-file-image" />
-                                                    )}
-                                                </ContentTitle>
-                                                <ContentUser>
-                                                    {post.user.nickname}
-                                                </ContentUser>
-                                                <ContentSmall>
-                                                    {post.review_count}
-                                                </ContentSmall>
-                                                <ContentSmall>
-                                                    {post.hit_count}
-                                                </ContentSmall>
-                                                <ContentSmall>
-                                                    {calculateChatDate(
-                                                        post.created_at
-                                                    )}
-                                                </ContentSmall>
-                                            </TR>
-                                        ))}
-                                    </tbody>
-                                </Table>
-                            )}
-                        </div>
+
+                        {isDisplay === 'big' ? (
+                            <CommunityBig posts={posts} />
+                        ) : (
+                            <CommunityTable posts={posts} />
+                        )}
                         <Pagination
                             count={totalPage}
                             variant="outlined"
