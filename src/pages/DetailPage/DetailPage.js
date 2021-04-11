@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FailAlert } from '../../Alert/Alert';
+import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import trush from '../../images/brown_trash.jpg';
@@ -21,9 +21,6 @@ function DetailPage(props) {
     useEffect(() => {
         fetchPost();
         fetchReview();
-        {
-            console.log('123');
-        }
     }, []);
     const onSubmitReview = (e) => {
         e.preventDefault();
@@ -31,6 +28,27 @@ function DetailPage(props) {
             FailAlert('댓글을 입력해주세요');
             return;
         }
+        let params = {
+            post: postId,
+            content: reviewText,
+        };
+
+        axios
+            .post('/reviews/', params)
+            .then((res) => {
+                if (res.statusText !== 'OK') {
+                    console.log(res);
+                    return;
+                }
+                SuccessAlert('댓글작성 성공');
+            })
+            .catch((err) => {
+                if (err.response.data.msg) {
+                    FailAlert(err.response.data.msg);
+                } else {
+                    console.log('에러 : ', err.response);
+                }
+            });
     };
 
     const fetchPost = () => {
@@ -38,7 +56,7 @@ function DetailPage(props) {
             .get(`/posts/${postId}/`)
             .then((res) => {
                 if (res.statusText !== 'OK') {
-                    // console.log(res);
+                    FailAlert('존재하지 않는 게시글 입니다');
                     return;
                 }
                 // console.log(res);
@@ -120,6 +138,7 @@ function DetailPage(props) {
                         </ReviewinfoBox>
                     </ReviewBox>
                 ))}
+
                 {/*<InputForm as="textarea" aria-label="With textarea" />*/}
                 <ReviewSubmitBox>
                     <TextArea

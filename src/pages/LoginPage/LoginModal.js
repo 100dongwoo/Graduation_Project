@@ -46,11 +46,11 @@ function LoginModal(props) {
                 .required('필수 항목입니다.'),
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
-            console.log('로그인 API 호출 시작');
             console.log('axios url', axios.defaults.baseURL);
             axios
-                .post('users/login/', values, { withCredentials: true })
+                .post('/users/login/', values)
                 .then((res) => {
+                    console.log('res', res);
                     handleClose();
                     SuccessAlert('로그인 성공');
                     // console.log('성공', res);
@@ -59,6 +59,7 @@ function LoginModal(props) {
                 })
                 .catch((err) => {
                     console.log(err, 'catch err');
+                    console.log(err.response, 'catch err');
                     if (err.response?.data.msg) {
                         FailLoginAlert(err.response.data.msg);
                         // alert(err.response.data.msg);

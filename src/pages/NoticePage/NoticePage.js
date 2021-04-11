@@ -4,6 +4,7 @@ import { FailAlert } from '../../Alert/Alert';
 import styled from 'styled-components';
 import Table from 'react-bootstrap/Table';
 import Pagination from '@material-ui/lab/Pagination';
+import api from '../../settings/api';
 
 function NoticePage(props) {
     const [noticePost, setNoticepost] = useState([]);
@@ -19,17 +20,17 @@ function NoticePage(props) {
     };
     const fetchNotice = () => {
         axios
-            .get('/notices/')
+            .get('notices/')
             .then((res) => {
+                console.log('공지사항 결과', res);
                 if (res.statusText !== 'OK') {
                     // console.log(res);
                     return;
                 }
-                console.log('성공 공지사항', res);
                 setNoticepost(res.data);
             })
             .catch((err) => {
-                if (err.response.data.msg) {
+                if (err.response?.data.msg) {
                     FailAlert(err.response.data.msg);
                 } else {
                     console.log('에러 : ', err);
@@ -39,29 +40,57 @@ function NoticePage(props) {
     return (
         <Container>
             <Title>공지사항</Title>
-            <Table hover size="sm" style={{ borderBottom: '4px solid #222' }}>
-                <thead>
-                    <Headtr>
-                        <HeadTitleTH>제목</HeadTitleTH>
-                        <HeadUserTH>등록일</HeadUserTH>
-                    </Headtr>
-                </thead>
-                <tbody>
-                    {noticePost.map((post, index) => (
-                        <TR
-                            key={index}
-                            // onClick={(e) => {
-                            //     onClickToDetail(e, post.id);
-                            // }}
-                        >
-                            <ContentTitle>{post.title}</ContentTitle>
-                            <ContentSmall>
-                                {post.created_at.substr(0, 10)}
-                            </ContentSmall>
-                        </TR>
-                    ))}
-                </tbody>
-            </Table>
+            {/*<Table hover size="sm" style={{ borderBottom: '4px solid #222' }}>*/}
+            {/*    <thead>*/}
+            {/*        <Headtr>*/}
+            {/*            <HeadTitleTH>제목</HeadTitleTH>*/}
+            {/*            <HeadUserTH>등록일</HeadUserTH>*/}
+            {/*        </Headtr>*/}
+            {/*    </thead>*/}
+            {/*    <tbody>*/}
+            {/*        {noticePost.map((post, index) => (*/}
+            {/*            <TR*/}
+            {/*                key={index}*/}
+            {/*                // onClick={(e) => {*/}
+            {/*                //     onClickToDetail(e, post.id);*/}
+            {/*                // }}*/}
+            {/*            >*/}
+            {/*                <ContentTitle>{post.title}</ContentTitle>*/}
+            {/*                <ContentSmall>*/}
+            {/*                    {post.created_at.substr(0, 10)}*/}
+            {/*                </ContentSmall>*/}
+            {/*            </TR>*/}
+            {/*        ))}*/}
+            {/*    </tbody>*/}
+            {/*</Table>*/}
+            {/**/}
+            {/**/}
+            {/**/}
+            <TableContainer>
+                <HeadTitle>제목</HeadTitle>
+                <HeadDate>등록일</HeadDate>
+            </TableContainer>
+            {noticePost.map((post, index) => (
+                <TableRowContainer
+                    key={index}
+                    // onClick={(e) => {
+                    //     onClickToDetail(e, post.id);
+                    // }}
+                >
+                    <div>
+                        <TitleRow>{post.title}</TitleRow>
+                        <CreatedRow>{post.created_at.substr(0, 10)}</CreatedRow>
+                    </div>
+                    <CreatedRow1>{post.created_at.substr(0, 10)}</CreatedRow1>
+                </TableRowContainer>
+            ))}
+            <hr
+                style={{
+                    backgroundColor: '#222',
+                    height: '1px',
+                    margin: 0,
+                }}
+            />
             <Pagination
                 count={totalPage}
                 variant="outlined"
@@ -76,6 +105,78 @@ function NoticePage(props) {
         </Container>
     );
 }
+const HeadTitle = styled.p`
+    margin: 0;
+    font-weight: 600;
+    color: #000;
+    font-size: 20px;
+`;
+const HeadDate = styled.p`
+    margin: 0;
+    font-weight: 600;
+    color: #000;
+    font-size: 20px;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+`;
+const Date = styled.div`
+    display: block;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+`;
+const TitleRow = styled.p`
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+`;
+const CreatedRow = styled.p`
+    margin: 0;
+    color: #777777;
+    display: none;
+    font-weight: bolder;
+    @media only screen and (max-width: 768px) {
+        display: block;
+    }
+`;
+const CreatedRow1 = styled.p`
+    margin: 0;
+    color: #777777;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: bolder;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+`;
+const TableRowContainer = styled.div`
+    border-top: 1px solid #dee2e6;
+    align-items: center;
+    padding: 17px;
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+        cursor: pointer;
+        background: #dbd7d7;
+    }
+`;
+const TableContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid #919191;
+    border-top: 4px solid #222;
+    padding: 17px 21px 16px;
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: 'NotoSansKR', sans-serif;
+    font-weight: bold;
+`;
+//
+//
+//
+
 const Container = styled.div`
     max-width: 1100px;
     padding: 1.5rem;
