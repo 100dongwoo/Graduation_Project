@@ -95,9 +95,11 @@ function DetailPage(props) {
                 }
                 setReviews(res.data.results);
                 setTotalPage(
-                    parseInt(res.data.count) % 4 === 0
-                        ? parseInt(res.data.count / 4)
-                        : parseInt(res.data.count / 4) + 1
+                    parseInt(res.data.count) !== 0
+                        ? parseInt(res.data.count) % 4 === 0
+                            ? parseInt(res.data.count / 4)
+                            : parseInt(res.data.count / 4) + 1
+                        : 1
                 );
                 setTotalReview(res.data.count);
                 // console.log('댓글불러오기 성공', res);

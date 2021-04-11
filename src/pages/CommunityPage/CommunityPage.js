@@ -54,9 +54,11 @@ function CommunityPage(props) {
                 }
                 setPosts(res.data.results);
                 setTotalPage(
-                    parseInt(res.data.count) % 20 === 0
-                        ? parseInt(res.data.count / 20)
-                        : parseInt(res.data.count / 20) + 1
+                    parseInt(res.data.count) !== 0
+                        ? parseInt(res.data.count) % 20 === 0
+                            ? parseInt(res.data.count / 20)
+                            : parseInt(res.data.count / 20) + 1
+                        : 1
                 );
                 setIsLoading(false);
             })

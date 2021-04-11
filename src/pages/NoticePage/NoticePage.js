@@ -28,10 +28,13 @@ function NoticePage(props) {
                     return;
                 }
                 setNoticepost(res.data.results);
+
                 setTotalPage(
-                    parseInt(res.data.count) % 10 === 0
-                        ? parseInt(res.data.count / 10)
-                        : parseInt(res.data.count / 10) + 1
+                    parseInt(res.data.count) !== 0
+                        ? parseInt(res.data.count) % 10 === 0
+                            ? parseInt(res.data.count / 10)
+                            : parseInt(res.data.count / 10) + 1
+                        : 1
                 );
             })
             .catch((err) => {
