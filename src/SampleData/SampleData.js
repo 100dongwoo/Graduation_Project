@@ -32,3 +32,23 @@ export const SampleData = [
             'https://i.pinimg.com/564x/2a/f6/d7/2af6d74b0ba62616bf1a3a2926b952f6.jpg',
     },
 ];
+export const QuizSample = [
+    {
+        title: '화분은 일반 쓰레기다?',
+        Reality: 'O',
+        solution:
+            '부피가 클 경우 대형 폐기물 신고후 배출 수수료를 납부하고 배출해야합니다',
+    },
+    {
+        title: '선풍기를 버리려면 폐기물 스티커를 사서 붙여야 할까요',
+        Reality: 'X',
+        solution:
+            '선풍기, 다리미, 밥솥 같은 소형 폐가전은대부분 지자체에서무료로 수거한답니다!',
+    },
+    {
+        title: '양파껍질은 음식물 쓰레기니까 음식물 쓰레기 봉투에 버려야 한다?',
+        Reality: 'X',
+        solution:
+            '양파껍질과 파뿌리 등 채소 껍질과 뿌리는 음식물 쓰레기가 아닌 일반쓰레기 입니다!',
+    },
+];

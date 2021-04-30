@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SampleData } from '../../../SampleData/SampleData';
-import PostBox from '../postBox';
+import PostBox from './postBox';
 
 function RecycleBox(props) {
     return (
