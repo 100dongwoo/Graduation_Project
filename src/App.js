@@ -20,6 +20,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import { useSelector } from 'react-redux';
 import { selectUser } from './Redux/store';
 import Mypage from './pages/Mypage/Mypage';
+import RecyclingPage from './pages/RecyclingPage/RecyclingPage';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -52,6 +53,7 @@ function App(props) {
                     <Route exact path="/Ranking" component={RakingPage} />
                     <Route exact path="/Community" component={CommunityPage} />
                     <Route exact path="/post/:postId" component={DetailPage} />
+                    <Route exact path="/recycling" component={RecyclingPage} />
                     <Route
                         exact
                         path="/mypage/:userId"
