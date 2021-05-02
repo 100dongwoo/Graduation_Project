@@ -10,7 +10,7 @@ function PostBox({ post }) {
     return (
         <Container>
             <Box>
-                <Image src={post.img} alt="test" />
+                <Image src={post.image} alt="test" />
                 <RightContainer>
                     <TextBox>
                         <Title>{post.title}</Title>
@@ -36,6 +36,8 @@ const RightContainer = styled.div`
 `;
 const TYpography = styled(Typography)`
     padding: 0 16px 0 0;
+    word-break: keep-all;
+    white-space: pre-line;
 `;
 const ICON = styled.i`
     background: transparent;
@@ -51,6 +53,8 @@ const Title = styled.span`
     font-weight: bold;
 `;
 const Container = styled.div`
+    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 1rem;
     width: 370px;
     box-shadow: rgb(175 181 186 / 30%) 0px 2px 6px 0px,

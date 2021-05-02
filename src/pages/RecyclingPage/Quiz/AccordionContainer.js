@@ -2,7 +2,6 @@ import React from 'react';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
 import styled from 'styled-components';
 
 function AccordionContainer({ quiz }) {
@@ -14,11 +13,11 @@ function AccordionContainer({ quiz }) {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <TYpography variant="h7">{quiz.title}</TYpography>
+                    <TYpography variant="h7">{quiz.question}</TYpography>
                 </AccordionSummary>
                 <SolutionBox>
-                    <RealityFont>정답 : {quiz.Reality}</RealityFont>
-                    <SolutionFont>{quiz.solution}</SolutionFont>
+                    <RealityFont>정답 : {quiz.answer}</RealityFont>
+                    <SolutionFont>{quiz.content}</SolutionFont>
                 </SolutionBox>
             </Accordion>
         </div>
