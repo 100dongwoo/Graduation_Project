@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-bootstrap/Modal';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
+// import { selectUser } from '../../Redux/store';
+import { LOGIN, LOGOUT, selectUser } from '../../Redux/userSlice';
+// import { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
 import { FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import api from '../../settings/api';
@@ -12,8 +14,11 @@ import { useHistory } from 'react-router-dom';
 
 function LoginModal(props) {
     const history = useHistory();
+    const auth = useSelector((state) => state.auth);
+    const { user } = auth;
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
+    console.log('aa', user);
     const handleClose = () => {
         setShow(false);
     };
@@ -47,6 +52,7 @@ function LoginModal(props) {
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             // console.log('axios url', axios.defaults.baseURL);
+
             axios
                 .post('/users/login/', values)
                 .then((res) => {
@@ -84,7 +90,7 @@ function LoginModal(props) {
         isSubmitting,
         dirty,
     } = formik;
-    const user = useSelector(selectUser);
+
     return (
         <>
             {!user ? (

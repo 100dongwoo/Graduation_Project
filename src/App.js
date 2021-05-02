@@ -18,7 +18,7 @@ import RakingPage from './pages/RakingPage/RakingPage';
 import CommunityPage from './pages/CommunityPage/CommunityPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import { useSelector } from 'react-redux';
-import { selectUser } from './Redux/store';
+import { selectUser } from './Redux/userSlice';
 import Mypage from './pages/Mypage/Mypage';
 import RecyclingPage from './pages/RecyclingPage/RecyclingPage';
 
@@ -36,7 +36,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App(props) {
-    const user = useSelector(selectUser);
+    // const user = useSelector(selectUser);
+    const auth = useSelector((state) => state.auth);
+    const { user } = auth;
     return (
         <Router>
             <GlobalStyle />

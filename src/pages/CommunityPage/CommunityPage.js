@@ -7,7 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../Redux/store';
+// import { selectUser } from '../../Redux/store';
+import { selectUser } from '../../Redux/userSlice';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
@@ -24,7 +25,9 @@ function CommunityPage(props) {
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1); //현재 페이지
     const [isLoading, setIsLoading] = useState(true);
-    const user = useSelector(selectUser);
+    // const user = useSelector(selectUser);
+    const auth = useSelector((state) => state.auth);
+    const { user } = auth;
     const history = useHistory();
     const onChangeDisplay = (e, Display) => {
         setIsDisplay(Display);

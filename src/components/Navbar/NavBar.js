@@ -7,9 +7,12 @@ import { Nav, NavItem, NavDropdown, MenuItem, Navbar } from 'react-bootstrap';
 import LoginModal from '../../pages/LoginPage/LoginModal';
 import './css.css';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../Redux/store';
+// import { selectUser } from '../../Redux/store';
+import { selectUser } from '../../Redux/userSlice';
 function NavBar(props) {
-    const user = useSelector(selectUser);
+    // const user = useSelector(selectUser);
+    const auth = useSelector((state) => state.auth);
+    const { user } = auth;
     //테스트
     const history = useHistory();
     const toggleHome = () => {

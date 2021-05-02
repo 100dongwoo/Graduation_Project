@@ -10,11 +10,14 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import trush1 from '../../images/tissue_trash.png';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../Redux/store';
+// import { selectUser } from '../../Redux/store';
+import { selectUser } from '../../Redux/userSlice';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 function DetailPage(props) {
-    const user = useSelector(selectUser);
+    // const user = useSelector(selectUser);
+    const auth = useSelector((state) => state.auth);
+    const { user } = auth;
     const [reviewText, setReviewText] = useState('');
     const [post, setPost] = useState([]);
     const [reviews, setReviews] = useState([]);
