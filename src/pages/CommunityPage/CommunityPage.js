@@ -17,7 +17,6 @@ import Spinner from 'react-bootstrap/Spinner';
 import CommunityTable from './CommunityTable';
 import CommunityBig from './CommunityBig';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
-import api from '../../settings/api';
 
 function CommunityPage(props) {
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
@@ -47,7 +46,8 @@ function CommunityPage(props) {
             params.keyword = keyword;
         }
         // console.log(params);
-        api.get(`/posts/`, { params }, { withCredentials: true })
+        axios
+            .get(`/posts/`, { params }, { withCredentials: true })
             .then((res) => {
                 if (res.statusText !== 'OK') {
                     // console.log(res);
