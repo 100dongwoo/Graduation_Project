@@ -18,7 +18,7 @@ function LoginModal(props) {
     const { user } = auth;
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
-    console.log('aa', user);
+
     const handleClose = () => {
         setShow(false);
     };
