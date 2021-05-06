@@ -58,5 +58,5 @@
     "react-router-dom": "5.2.0",
     "yup": "0.32.9"
   },
-  "proxy": "http://www.dorestory.com:8000/v1/"
+  "proxy": "http://54.180.217.191:8000/v1/"
 }
