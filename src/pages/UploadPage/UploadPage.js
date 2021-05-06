@@ -4,14 +4,45 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
 import { convertToRaw, EditorState } from 'draft-js';
 import styled from 'styled-components';
+import axios from 'axios';
+import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 
 function UploadPage(props) {
     const [editor, setEditor] = useState(EditorState.createEmpty());
+
     const onEditorChange = (editorState) => {
         setEditor(editorState);
     };
     const onHandleSubmit = (e) => {
         e.preventDefault();
+        if (
+            draftToHtml(convertToRaw(editor.getCurrentContent())).length === 8
+        ) {
+            console.log('빈값입니다');
+            return;
+        }
+        let params = {
+            title: '메롱',
+            content: draftToHtml(convertToRaw(editor.getCurrentContent())),
+        };
+        axios
+            .post('/posts/', params)
+            .then((res) => {
+                console.log(res);
+                if (res.statusText !== 'Created') {
+                    console.log(res);
+                    return;
+                }
+                SuccessAlert('게시글 등록 성공');
+            })
+            .catch((err) => {
+                console.log(err);
+                if (err.response.data.msg) {
+                    FailAlert(err.response.data.msg);
+                } else {
+                    console.log('에러 : ', err.response);
+                }
+            });
     };
     // const uploadImageCallBack = (file) => {
     //     return new Promise((resolve, reject) => {
