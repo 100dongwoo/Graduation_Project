@@ -60,9 +60,6 @@ function UploadPage(props) {
                             borderColor: 'lightgray',
                         }}
                         editorState={editor}
-                        toolbarClassName="toolbarClassName"
-                        wrapperClassName="wrapperClassName"
-                        editorClassName="editorClassName"
                         onEditorStateChange={onEditorChange}
                         toolbar={{
                             inline: { inDropdown: true },
