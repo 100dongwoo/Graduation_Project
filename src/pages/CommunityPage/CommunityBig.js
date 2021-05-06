@@ -14,7 +14,7 @@ function CommunityBig({ posts }) {
     };
     return (
         <div>
-            {posts.map((post, index) => (
+            {posts?.map((post, index) => (
                 <Post
                     key={index}
                     onClick={(e) => {

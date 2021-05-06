@@ -22,7 +22,7 @@ function CommunityTable({ posts }) {
                     </Headtr>
                 </thead>
                 <tbody>
-                    {posts.map((post, index) => (
+                    {posts?.map((post, index) => (
                         <TR
                             key={index}
                             onClick={(e) => {
