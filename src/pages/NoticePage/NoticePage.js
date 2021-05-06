@@ -79,7 +79,7 @@ function NoticePage(props) {
                 <HeadTitle>제목</HeadTitle>
                 <HeadDate>등록일</HeadDate>
             </TableContainer>
-            {noticePost.map((post, index) => (
+            {noticePost?.map((post, index) => (
                 <TableRowContainer
                     key={index}
                     // onClick={(e) => {

@@ -39,7 +39,7 @@ function Quiz(props) {
                     통해 재활용 IQ를 성장 시키세요. <br /> 올바른 재활용을 통해
                     다른 사람과 환경을 보호 하려면 문제를 통해 배우십시오.
                 </p>
-                {quizs.map((quiz, index) => (
+                {quizs?.map((quiz, index) => (
                     <AccordionContainer quiz={quiz} key={quiz.id} />
                 ))}
             </Content>

@@ -130,7 +130,7 @@ function DetailPage(props) {
                         <TotalReviewCount>{totalReview}</TotalReviewCount>
                     </TotalReview>
                 </TitleContainer>
-                {reviews.map((review) => (
+                {reviews?.map((review) => (
                     <ReviewBox key={review.id}>
                         <AvartarContainer
                             style={{
