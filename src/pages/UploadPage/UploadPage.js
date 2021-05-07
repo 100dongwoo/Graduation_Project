@@ -102,6 +102,11 @@ function UploadPage(props) {
                                 uploadCallback: uploadImageCallBack,
                             },
                         }}
+                        placeholder="내용을 작성해주세요."
+                        // 한국어 설정
+                        localization={{
+                            locale: 'ko',
+                        }}
                     />
 
                     <SubmitBtn

@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 // import { selectUser } from '../../Redux/store';
 import { selectUser } from '../../Redux/userSlice';
 import Pagination from '@material-ui/lab/Pagination';
+
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 function DetailPage(props) {
     // const user = useSelector(selectUser);
@@ -26,6 +27,7 @@ function DetailPage(props) {
     const [page, setPage] = useState(1); //현재 페이지
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
     const [totalReview, setTotalReview] = useState(0); //총 리뷰 갯수
+
     const handleChange = (e, value) => {
         // e.preventDefault();
         setPage(value);
