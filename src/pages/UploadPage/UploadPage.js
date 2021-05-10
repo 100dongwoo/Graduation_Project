@@ -9,6 +9,7 @@ import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 
 function UploadPage(props) {
     const [editor, setEditor] = useState(EditorState.createEmpty());
+    const [title, setTitle] = useState('');
 
     const onEditorChange = (editorState) => {
         setEditor(editorState);
@@ -22,7 +23,7 @@ function UploadPage(props) {
             return;
         }
         let params = {
-            title: '메롱',
+            title: title,
             content: draftToHtml(convertToRaw(editor.getCurrentContent())),
         };
         axios
@@ -82,6 +83,17 @@ function UploadPage(props) {
             <Title> 게시글 등록</Title>
             <form>
                 <div>
+                    <TitleContainer>
+                        <InputBox
+                            placeholder="제목을 입력하세요."
+                            type="text"
+                            maxLength="60"
+                            value={title}
+                            onChange={(e) => setTitle(e.currentTarget.value)}
+                        />
+                        <LengthTitle>{title.length} / 60</LengthTitle>
+                    </TitleContainer>
+
                     <Editor
                         editorStyle={{
                             width: '100%',
@@ -89,6 +101,7 @@ function UploadPage(props) {
                             borderWidth: 1,
                             borderStyle: 'solid',
                             borderColor: 'lightgray',
+                            padding: '10px 20px 10px 20px',
                         }}
                         editorState={editor}
                         onEditorStateChange={onEditorChange}
@@ -135,6 +148,41 @@ function UploadPage(props) {
     );
 }
 
+const TitleContainer = styled.div`
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    max-width: 800px;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+`;
+const LengthTitle = styled.span`
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.055em;
+    color: #c4c4c4;
+    margin-right: 15px;
+`;
+const InputBox = styled.input`
+    width: 100%;
+    height: 100%;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 23px;
+    letter-spacing: 0.055em;
+    //color: #292c30;
+    border: none;
+    outline: none;
+    flex: 1;
+    margin-left: 16px;
+`;
 const Container = styled.div`
     max-width: 1250px;
     margin: auto;
@@ -149,12 +197,19 @@ const SubmitBtn = styled.button`
 `;
 const Title = styled.p`
     font-family: Noto Sans KR;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 35px;
+    //margin-top: 2rem;
+    //margin-bottom: 2rem;
+    //font-style: normal;
+    //font-weight: bold;
+    //font-size: 24px;
+    //line-height: 35px;
+    font-size: 34px;
+    color: #333;
+    margin-top: 60px;
+    width: 100%;
+    float: left;
+    margin-bottom: 60px;
+    height: 40px;
 `;
 // export default UploadPage;
 

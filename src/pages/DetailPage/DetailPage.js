@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import trush from '../../images/brown_trash.jpg';
 import 'moment/locale/ko';
 import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
-import trush1 from '../../images/tissue_trash.png';
 import { useSelector } from 'react-redux';
-// import { selectUser } from '../../Redux/store';
-import { selectUser } from '../../Redux/userSlice';
-import Pagination from '@material-ui/lab/Pagination';
-
+import { convertToRaw, convertFromRaw, EditorState, Editor } from 'draft-js';
+import { convertToHTML, convertFromHTML } from 'draft-convert';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 function DetailPage(props) {
-    // const user = useSelector(selectUser);
     const auth = useSelector((state) => state.auth);
     const { user } = auth;
     const [reviewText, setReviewText] = useState('');
@@ -27,6 +22,10 @@ function DetailPage(props) {
     const [page, setPage] = useState(1); //현재 페이지
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
     const [totalReview, setTotalReview] = useState(0); //총 리뷰 갯수
+    const [editor, setEditor] = useState(EditorState.createEmpty());
+    const onChange = (editorState) => {
+        setEditor(editorState);
+    };
 
     const handleChange = (e, value) => {
         // e.preventDefault();
@@ -36,6 +35,7 @@ function DetailPage(props) {
     useEffect(() => {
         fetchPost();
         fetchReview(1);
+        // importHTML();
     }, []);
     const onSubmitReview = (e) => {
         // e.preventDefault();
@@ -76,7 +76,10 @@ function DetailPage(props) {
                     FailAlert('존재하지 않는 게시글 입니다');
                     return;
                 }
-                // console.log(res);
+                console.log(res.data.content);
+                onChange(
+                    EditorState.push(editor, convertFromHTML(res.data.content))
+                );
                 setPost(res.data);
             })
             .catch((err) => {
@@ -118,8 +121,28 @@ function DetailPage(props) {
                 }
             });
     };
+    const onBlur = (state) => {
+        //  convertToRaw from draft-js;
+        const contentState = convertToRaw(editor.getCurrentContent());
+        // save contentState
+    };
+    const editorRef = useRef(null);
+    const [editable, setEditable] = useState(false);
     return (
         <Container>
+            <Editor
+                // editorState={e}
+                readOnly={true}
+                // onBlur={onBlur}
+                // ref={editorRef}
+                // autoCapitalize="none"
+                // autoComplete="off"
+                // autoCorrect="off"
+                // spellCheck={false}
+                editorState={editor}
+                onChange={onChange}
+            />
+
             {/*{console.log('제목', post.title)}*/}
             {/*{console.log('내용', post.content)}*/}
             {/*{console.log(reviews)}*/}
