@@ -8,8 +8,8 @@ import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import { useSelector } from 'react-redux';
-import { convertToRaw, convertFromRaw, EditorState, Editor } from 'draft-js';
-import { convertToHTML, convertFromHTML } from 'draft-convert';
+import { EditorState, Editor } from 'draft-js';
+import { convertFromHTML } from 'draft-convert';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 function DetailPage(props) {
     const auth = useSelector((state) => state.auth);
@@ -121,13 +121,13 @@ function DetailPage(props) {
                 }
             });
     };
-    const onBlur = (state) => {
-        //  convertToRaw from draft-js;
-        const contentState = convertToRaw(editor.getCurrentContent());
-        // save contentState
-    };
-    const editorRef = useRef(null);
-    const [editable, setEditable] = useState(false);
+    // const onBlur = (state) => {
+    //     //  convertToRaw from draft-js;
+    //     const contentState = convertToRaw(editor.getCurrentContent());
+    //     // save contentState
+    // };
+    // const editorRef = useRef(null);
+    // const [editable, setEditable] = useState(false);
     return (
         <Container>
             <Editor
@@ -146,7 +146,7 @@ function DetailPage(props) {
             {/*{console.log('제목', post.title)}*/}
             {/*{console.log('내용', post.content)}*/}
             {/*{console.log(reviews)}*/}
-            <h1>{postId}</h1>
+
             {/*리뷰*/}
             <ReviewContainer>
                 <TitleContainer>
@@ -326,7 +326,7 @@ const Container = styled.div`
 `;
 const ReviewContainer = styled.div`
     margin: auto;
-    max-width: 900px;
+    max-width: 1250px;
 `;
 const TitleContainer = styled.div`
     width: 100%;

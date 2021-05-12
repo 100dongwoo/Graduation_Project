@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Chatting from './Chatting/Chatting';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function Help(props) {
     const [isHelp, setIsHelp] = useState(false);
@@ -18,10 +20,16 @@ function Help(props) {
                     onClick={onHandleHelp}
                 />
             </HelpBox>
-            {isHelp && <HelpContainer></HelpContainer>}
+            {isHelp && <Chatting />}
         </Container>
     );
 }
+// const Container = styled.div`
+//     position: fixed;
+//     right: 12px;
+//     bottom: 10px;
+//     z-index: 10000;
+// `;
 const Container = styled.div`
     position: fixed;
     right: 12px;
@@ -33,6 +41,7 @@ const Social = styled.i`
     color: #000;
 `;
 const HelpBox = styled.div`
+    background: white;
     font-size: 3rem;
     width: 80px;
     height: 80px;
@@ -42,9 +51,9 @@ const HelpBox = styled.div`
     cursor: pointer;
     border-radius: 50%;
     text-decoration: none;
-    &: hover {
-        opacity: 0.8;
-    }
+    //&: hover {
+    //    opacity: 0.8;
+    //}
 `;
 const HelpContainer = styled.div`
     position: absolute;

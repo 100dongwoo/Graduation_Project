@@ -10,7 +10,7 @@ import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 function UploadPage(props) {
     const [editor, setEditor] = useState(EditorState.createEmpty());
     const [title, setTitle] = useState('');
-
+    const [image, setImage] = useState(null);
     const onEditorChange = (editorState) => {
         setEditor(editorState);
     };
@@ -25,6 +25,7 @@ function UploadPage(props) {
         let params = {
             title: title,
             content: draftToHtml(convertToRaw(editor.getCurrentContent())),
+            image: image,
         };
         axios
             .post('/posts/', params)
