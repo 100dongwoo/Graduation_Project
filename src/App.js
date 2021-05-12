@@ -21,7 +21,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from './Redux/userSlice';
 import Mypage from './pages/Mypage/Mypage';
 import RecyclingPage from './pages/RecyclingPage/RecyclingPage';
-
+import NoticeDetaiPage from './pages/NoticeDetailPage/NoticeDetaiPage';
 const GlobalStyle = createGlobalStyle`
   body {
      font-family: Noto Sans KR;
@@ -56,6 +56,11 @@ function App(props) {
                     <Route exact path="/Community" component={CommunityPage} />
                     <Route exact path="/post/:postId" component={DetailPage} />
                     <Route exact path="/recycling" component={RecyclingPage} />
+                    <Route
+                        exact
+                        path="/notice/:postId"
+                        component={NoticeDetaiPage}
+                    />
                     <Route
                         exact
                         path="/mypage/:userId"

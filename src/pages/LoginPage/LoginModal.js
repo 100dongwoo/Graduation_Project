@@ -161,7 +161,11 @@ function LoginModal(props) {
 }
 
 export default LoginModal;
-const LoginButton = styled.button``;
+const LoginButton = styled.button`
+    width: 120px;
+    height: 38px;
+    border-radius: 16px;
+`;
 const LoginLabel = styled.h1`
     text-align: center;
     padding: 20px 0 20px 0;

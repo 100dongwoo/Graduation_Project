@@ -6,11 +6,13 @@ import Table from 'react-bootstrap/Table';
 import Pagination from '@material-ui/lab/Pagination';
 import api from '../../settings/api';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
+import { useHistory } from 'react-router-dom';
 
 function NoticePage(props) {
     const [noticePost, setNoticepost] = useState([]);
     const [page, setPage] = useState(1); //현재 페이지
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
+    const history = useHistory();
     useEffect(() => {
         fetchNotice();
     }, []);
@@ -18,6 +20,9 @@ function NoticePage(props) {
         e.preventDefault();
         setPage(value);
         fetchNotice(value);
+    };
+    const onClickToDetail = (e, postId) => {
+        history.push(`/notice/${postId}`);
     };
     const fetchNotice = () => {
         axios
@@ -82,9 +87,9 @@ function NoticePage(props) {
             {noticePost?.map((post, index) => (
                 <TableRowContainer
                     key={index}
-                    // onClick={(e) => {
-                    //     onClickToDetail(e, post.id);
-                    // }}
+                    onClick={(e) => {
+                        onClickToDetail(e, post.id);
+                    }}
                 >
                     <div>
                         <TitleRow>{post.title}</TitleRow>
