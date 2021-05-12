@@ -120,13 +120,13 @@ function CommunityPage(props) {
                         <IconBox>
                             <div>
                                 {user && (
-                                    <button
+                                    <WriteButton
                                         onClick={() => {
                                             history.push('/upload');
                                         }}
                                     >
                                         글쓰기
-                                    </button>
+                                    </WriteButton>
                                 )}
                             </div>
                             <div>
@@ -197,6 +197,22 @@ function CommunityPage(props) {
         </>
     );
 }
+const WriteButton = styled.button`
+    min-width: 53px;
+    font-size: 16px;
+    color: #fff !important;
+    text-align: center;
+    background-color: #455d9d;
+    border-radius: 2px;
+    padding: 10px 14px 10px 14px;
+    border: 1px solid #455d9d;
+    display: inline-block;
+    line-height: 1;
+    &:hover {
+        background: #263d7a;
+        //opacity: 0.9;
+    }
+`;
 const SpinnerContainer = styled.div`
     position: fixed;
     z-index: 999;

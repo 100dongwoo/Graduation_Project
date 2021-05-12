@@ -94,9 +94,9 @@ function LoginModal(props) {
     return (
         <>
             {!user ? (
-                <button onClick={handleShow}>로그인</button>
+                <LoginButton onClick={handleShow}>로그인</LoginButton>
             ) : (
-                <button onClick={handleLogout}>로그아웃</button>
+                <LoginButton onClick={handleLogout}>로그아웃</LoginButton>
             )}
             <Modal
                 show={show}
@@ -161,6 +161,7 @@ function LoginModal(props) {
 }
 
 export default LoginModal;
+const LoginButton = styled.button``;
 const LoginLabel = styled.h1`
     text-align: center;
     padding: 20px 0 20px 0;

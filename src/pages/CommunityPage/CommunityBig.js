@@ -28,7 +28,12 @@ function CommunityBig({ posts }) {
                             }}
                         >
                             <PostTitle>{post.title}</PostTitle>
-                            <PostContent>{post.content}</PostContent>
+                            <PostContent>
+                                {
+                                    // post.content
+                                    post.content.replace(/(<([^>]+)>)/gi, '') // 태그제거
+                                }
+                            </PostContent>
                             <PostInforBox>
                                 <Breadcrumb>
                                     <Breadcrumb.Item active>
