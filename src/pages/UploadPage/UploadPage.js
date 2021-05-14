@@ -6,20 +6,26 @@ import { convertToRaw, EditorState } from 'draft-js';
 import styled from 'styled-components';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
+import { useHistory } from 'react-router-dom';
 
 function UploadPage(props) {
     const [editor, setEditor] = useState(EditorState.createEmpty());
     const [title, setTitle] = useState('');
     const [image, setImage] = useState(null);
+    const history = useHistory();
     const onEditorChange = (editorState) => {
         setEditor(editorState);
     };
     const onHandleSubmit = (e) => {
         e.preventDefault();
+        if (!title) {
+            FailAlert('제목을 입력해주세요');
+            return;
+        }
         if (
             draftToHtml(convertToRaw(editor.getCurrentContent())).length === 8
         ) {
-            console.log('빈값입니다');
+            FailAlert('내용을 입력해주세요');
             return;
         }
         let params = {
@@ -36,6 +42,7 @@ function UploadPage(props) {
                     return;
                 }
                 SuccessAlert('게시글 등록 성공');
+                history.push('/Community');
             })
             .catch((err) => {
                 console.log(err);
@@ -136,13 +143,13 @@ function UploadPage(props) {
                     >
                         작성
                     </SubmitBtn>
-                    <textarea
-                        style={{ width: '100%', height: 200 }}
-                        disabled
-                        value={draftToHtml(
-                            convertToRaw(editor.getCurrentContent())
-                        )}
-                    />
+                    {/*<textarea*/}
+                    {/*    style={{ width: '100%', height: 200 }}*/}
+                    {/*    disabled*/}
+                    {/*    value={draftToHtml(*/}
+                    {/*        convertToRaw(editor.getCurrentContent())*/}
+                    {/*    )}*/}
+                    {/*/>*/}
                 </div>
             </form>
         </Container>
@@ -195,6 +202,7 @@ const SubmitBtn = styled.button`
     height: 56px;
     margin-top: 1.5rem;
     border: 1px solid #e7e7e7;
+    box-shadow: 0 2px 15px 0 rgb(0 0 0 / 70%);
 `;
 const Title = styled.p`
     font-family: Noto Sans KR;

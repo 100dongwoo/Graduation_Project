@@ -51,7 +51,7 @@ const Content = styled.p`
     white-space: pre-wrap;
     font-family: Arial;
     letter-spacing: -0.045em;
-    line-height: 1.65; ;
+    line-height: 1.9; ;
 `;
 const CreateDate = styled.p`
     line-height: 27px;
