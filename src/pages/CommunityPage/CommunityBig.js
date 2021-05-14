@@ -88,6 +88,10 @@ const PostTitle = styled.p`
     font-size: 22px;
     line-height: 127.5%;
     color: #001129;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
 `;
 const PostContent = styled.p`
     //text-overflow: ellipsis;

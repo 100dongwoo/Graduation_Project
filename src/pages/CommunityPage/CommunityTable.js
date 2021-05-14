@@ -30,10 +30,23 @@ function CommunityTable({ posts }) {
                             }}
                         >
                             <ContentTitle>
-                                {post.title}
-                                {post.image && (
-                                    <ImageIcon className="far fa-file-image" />
-                                )}
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <TitleFont>
+                                        {post.title}
+                                        {/*{post.image && (*/}
+                                        {/*    <ImageIcon className="far fa-file-image" />*/}
+                                        {/*)}*/}
+                                    </TitleFont>
+                                    {/*{post.title}*/}
+                                    {post.image && (
+                                        <ImageIcon className="far fa-file-image" />
+                                    )}
+                                </div>
                             </ContentTitle>
                             <ContentUser>{post.user.nickname}</ContentUser>
                             <ContentSmall>{post.review_count}</ContentSmall>
@@ -49,16 +62,15 @@ function CommunityTable({ posts }) {
     );
 }
 
-const SpinnerContainer = styled.div`
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const TitleFont = styled.span`
+    overflow: hidden;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
 `;
 const TR = styled.tr`
     cursor: pointer;
