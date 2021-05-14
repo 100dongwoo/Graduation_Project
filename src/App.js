@@ -25,6 +25,7 @@ import NoticeDetaiPage from './pages/NoticeDetailPage/NoticeDetaiPage';
 const GlobalStyle = createGlobalStyle`
   body {
      font-family: Noto Sans KR;
+     font-weight: 400;
     color: #000000;
      //font-family: payboocLight,serif;
      padding : 0 0;
