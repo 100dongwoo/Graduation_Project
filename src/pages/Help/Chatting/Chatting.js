@@ -49,6 +49,7 @@ function Chatting(props) {
                         onChange={(e) => setChatContent(e.currentTarget.value)}
                     />
                     <SubmitIcon
+                        user={user}
                         className="fas fa-arrow-circle-up"
                         onClick={onSubmitHandler}
                     />
@@ -65,9 +66,10 @@ function Chatting(props) {
 const SubmitIcon = styled.i`
     font-size: 1.7rem;
     color: #adadad;
-    &: hover {
-        color: #14adea;
+    &:hover {
+        color: ${(props) => (props.user ? '#14adea' : '#adadad')};
     }
+    cursor: ${(props) => (props.user ? 'pointer' : 'unset')};
 `;
 const InputShowBox = styled.form`
     border: 1px solid #e3e3e3;
