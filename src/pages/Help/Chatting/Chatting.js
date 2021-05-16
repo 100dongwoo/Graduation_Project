@@ -56,7 +56,7 @@ function Chatting(props) {
                 </InputShowBox>
             ) : (
                 <InputShowBox style={{ color: '#adadad' }}>
-                    로그인 후 사용 바랍니다{' '}
+                    로그인 후 사용 바랍니다
                 </InputShowBox>
             )}
         </HelpContainer>

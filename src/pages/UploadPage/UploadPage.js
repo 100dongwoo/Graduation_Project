@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
@@ -12,7 +12,10 @@ function UploadPage(props) {
     const [editor, setEditor] = useState(EditorState.createEmpty());
     const [title, setTitle] = useState('');
     const [image, setImage] = useState(null);
+    const [file, setFile] = useState('');
+    const [preview, setPreview] = useState('');
     const history = useHistory();
+    const fileInput = useRef();
     const onEditorChange = (editorState) => {
         setEditor(editorState);
     };
@@ -28,13 +31,22 @@ function UploadPage(props) {
             FailAlert('내용을 입력해주세요');
             return;
         }
-        let params = {
-            title: title,
-            content: draftToHtml(convertToRaw(editor.getCurrentContent())),
-            image: image,
-        };
+        // let params = {
+        //     title: title,
+        //     content: draftToHtml(convertToRaw(editor.getCurrentContent())),
+        //     image: file,
+        // };
+        let form = new FormData();
+        form.append('title', title);
+        form.append(
+            'content',
+            draftToHtml(convertToRaw(editor.getCurrentContent()))
+        );
+        if (!!file) {
+            form.append('image', file);
+        }
         axios
-            .post('/posts/', params)
+            .post('/posts/', form)
             .then((res) => {
                 console.log(res);
                 if (res.statusText !== 'Created') {
@@ -129,7 +141,54 @@ function UploadPage(props) {
                             locale: 'ko',
                         }}
                     />
+                    {/**/}
 
+                    <div className="FileUp">
+                        <p style={{ marginRight: '20px' }}>첨부 이미지</p>
+                        {preview && (
+                            <div>
+                                <Preview src={preview} alt="previewImage" />
+                                <DeleteImage
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        fileInput.current.value = '';
+                                        setFile('');
+                                        setPreview('');
+                                    }}
+                                >
+                                    이미지 삭제
+                                </DeleteImage>
+                            </div>
+                        )}
+                        <label
+                            className="input-file-button"
+                            htmlFor="input-file"
+                        >
+                            업로드
+                        </label>
+                        <input
+                            ref={fileInput}
+                            id="input-file"
+                            style={{ display: 'none' }}
+                            type="file"
+                            // name="file"
+                            accept=".jpg, .jpeg, .png"
+                            onChange={(e) => {
+                                // setFile(e.target.value);
+                                e.preventDefault();
+
+                                let reader = new FileReader();
+                                let file = e.target.files[0];
+                                reader.onloadend = () => {
+                                    setFile(file);
+                                    setPreview(reader.result);
+                                };
+                                reader.readAsDataURL(file);
+                            }}
+                        />
+                    </div>
+
+                    {/**/}
                     <SubmitBtn
                         style={{
                             background:
@@ -155,7 +214,14 @@ function UploadPage(props) {
         </Container>
     );
 }
-
+const Preview = styled.img`
+    width: 12.5rem;
+    height: 12.5rem;
+    margin: 1.5rem 0;
+    @media only screen and (max-width: 1024px) {
+    }
+`;
+const DeleteImage = styled.button``;
 const TitleContainer = styled.div`
     border: 1px solid #e3e3e3;
     border-radius: 4px;
