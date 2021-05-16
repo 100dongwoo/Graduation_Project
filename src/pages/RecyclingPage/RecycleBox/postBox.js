@@ -44,7 +44,8 @@ const ICON = styled.i`
     font-size: 1rem;
     border: 3px solid #20c997;
     border-radius: 50%;
-    color: #20c997; ;
+    color: #20c997;
+    cursor: pointer;
 `;
 const Title = styled.span`
     color: #67696d;

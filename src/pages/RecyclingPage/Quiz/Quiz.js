@@ -29,7 +29,7 @@ function Quiz(props) {
             });
     };
     return (
-        <Container>
+        <Container id="quizes">
             {console.log(quizs)}
             <Content>
                 <h1>재활용 QUIZ</h1>
@@ -49,6 +49,7 @@ function Quiz(props) {
 const Container = styled.div`
     width: 100%;
     margin-bottom: 3rem;
+    margin-top: 2.5rem;
 `;
 const Content = styled.div`
     max-width: 1250px;
