@@ -39,6 +39,18 @@ function NoticeDetaiPage(props) {
 
                 <Title>{post.title}</Title>
                 <Content>{post.content}</Content>
+                <img
+                    src="https://t1.daumcdn.net/cfile/tistory/99BC3C335BBF093F1B"
+                    style={{
+                        width: 300,
+                        height: 250,
+                        position: 'absolute',
+                        top: '20px',
+                        right: '20px',
+                        fontSize: '100px',
+                    }}
+                    alt="image"
+                />
             </NoticeContainer>
         </Container>
     );
@@ -88,6 +100,7 @@ const NoticeContainer = styled.div`
     border-bottom: 1px solid #e8e8e8;
     box-sizing: border-box;
     color: #000;
+    position: relative;
 `;
 const Container = styled.div`
     max-width: 1100px;
