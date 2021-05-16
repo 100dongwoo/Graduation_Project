@@ -5,6 +5,7 @@ import './css.css';
 function Character(props) {
     const onClickStart = (e) => {
         e.preventDefault();
+        window.open('http://naver.me/Gw5JVQYC');
     };
     return (
         <Container id="character">
