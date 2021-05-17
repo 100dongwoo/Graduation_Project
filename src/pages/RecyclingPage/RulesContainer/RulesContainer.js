@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import trush1 from './1.jpg';
+import trush2 from './2.jpg';
+import trush3 from './3.jpg';
 function RulesContainer(props) {
     return (
         <Container id="rules">
@@ -16,30 +18,71 @@ function RulesContainer(props) {
                 </Information>
                 <TipContent>
                     <Tipbox>
-                        <img
-                            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131211_39%2Flskart_1386740994178FgCSR_PNG%2Fmobius_eng.png&type=sc960_832"
+                        <Image
+                            src={trush3}
+                            // src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131211_39%2Flskart_1386740994178FgCSR_PNG%2Fmobius_eng.png&type=sc960_832"
                             alt="tip1"
                         />
+                        <TipInforBox>
+                            <TipInformation>
+                                깨끗한 병, 캔, 종이는 재활용이 가능해요.
+                                {/*Recycle clean bottles,*/}
+                                {/*<br /> cans, paper and <br />*/}
+                                {/*cardboard.*/}
+                            </TipInformation>
+                        </TipInforBox>
                     </Tipbox>
                     <Tipbox>
-                        <img
-                            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131211_39%2Flskart_1386740994178FgCSR_PNG%2Fmobius_eng.png&type=sc960_832"
+                        <Image
+                            src={trush2}
+                            // src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131211_39%2Flskart_1386740994178FgCSR_PNG%2Fmobius_eng.png&type=sc960_832"
                             alt="tip1"
                         />
+                        <TipInforBox>
+                            <TipInformation>
+                                종이팩 분리배출함이 없는 경우, 다른 재활용품과
+                                함께 배출합니다
+                            </TipInformation>
+                        </TipInforBox>
                     </Tipbox>
                     <Tipbox>
-                        <img
-                            style={{ width: '100%', height: '100%' }}
-                            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131211_39%2Flskart_1386740994178FgCSR_PNG%2Fmobius_eng.png&type=sc960_832"
+                        <Image
+                            src={trush1}
+                            // src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131211_39%2Flskart_1386740994178FgCSR_PNG%2Fmobius_eng.png&type=sc960_832"
                             alt="tip1"
                         />
+                        <TipInforBox>
+                            <TipInformation>
+                                플라스틱과 우우팩은 봉지에 넣으면 안됩니다
+                            </TipInformation>
+                        </TipInforBox>
                     </Tipbox>
                 </TipContent>
             </Content>
         </Container>
     );
 }
-
+const TipInforBox = styled.div`
+    height: 100%;
+    padding-left: 2rem;
+    //padding-top: 0.1rem;
+    margin-top: 1rem;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
+`;
+const Image = styled.img`
+    height: 273px;
+    width: 100%;
+    //object-fit: cover;
+`;
+const TipInformation = styled.p`
+    font-size: 24px;
+    color: #065920;
+    line-height: 1.8rem;
+    align-items: center;
+    word-break: keep-all;
+`;
 const TipContent = styled.div`
     display: flex;
     justify-content: space-between;
@@ -47,13 +90,14 @@ const TipContent = styled.div`
     margin-top: 3rem;
 `;
 const Tipbox = styled.div`
-    padding: 1rem;
+    padding: 0;
     width: 380px;
     height: 390px;
     box-shadow: rgb(0 0 0 / 6%) 0px 4px 8px 0px;
     background-color: rgb(255, 255, 255);
-    border: 0px;
     //background: red;
+    //display: flex;
+    //flex-direction: column;
 `;
 const Information = styled.div`
     font-size: medium;

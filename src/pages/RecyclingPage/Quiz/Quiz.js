@@ -48,7 +48,7 @@ function Quiz(props) {
 }
 const Container = styled.div`
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     margin-top: 2.5rem;
 `;
 const Content = styled.div`
