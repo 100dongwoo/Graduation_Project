@@ -52,7 +52,7 @@ function DetailPage(props) {
             .post('/reviews/', params)
             .then((res) => {
                 if (res.statusText !== 'Created') {
-                    console.log(res);
+                    // console.log(res);
                     return;
                 }
                 SuccessAlert('댓글작성 성공');
@@ -76,7 +76,7 @@ function DetailPage(props) {
                     FailAlert('존재하지 않는 게시글 입니다');
                     return;
                 }
-                console.log(res.data.content);
+                // console.log(res.data.content);
                 onChange(
                     EditorState.push(editor, convertFromHTML(res.data.content))
                 );
@@ -121,31 +121,46 @@ function DetailPage(props) {
                 }
             });
     };
-    // const onBlur = (state) => {
-    //     //  convertToRaw from draft-js;
-    //     const contentState = convertToRaw(editor.getCurrentContent());
-    //     // save contentState
-    // };
-    // const editorRef = useRef(null);
-    // const [editable, setEditable] = useState(false);
+    const onClickDelete = (e) => {
+        axios
+            .delete(`/posts/${postId}/`)
+            .then((res) => {
+                console.log(res);
+                if (res.statusText !== 'No Content') {
+                    FailAlert('삭제를 실패하였습니다');
+                    return;
+                }
+                SuccessAlert('게시글 삭제 성공');
+                history.push('/Community');
+            })
+            .catch((err) => {
+                if (err.response.data.msg) {
+                    FailAlert(err.response.data.msg);
+                    return;
+                }
+                console.log(err);
+            });
+    };
     return (
         <Container>
-            <Editor
-                // editorState={e}
-                readOnly={true}
-                // onBlur={onBlur}
-                // ref={editorRef}
-                // autoCapitalize="none"
-                // autoComplete="off"
-                // autoCorrect="off"
-                // spellCheck={false}
-                editorState={editor}
-                onChange={onChange}
-            />
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Editor
+                    // editorState={e}
+                    readOnly={true}
+                    // onBlur={onBlur}
+                    // ref={editorRef}
+                    // autoCapitalize="none"
+                    // autoComplete="off"
+                    // autoCorrect="off"
+                    // spellCheck={false}
+                    editorState={editor}
+                    onChange={onChange}
+                />
 
-            {/*{console.log('제목', post.title)}*/}
-            {/*{console.log('내용', post.content)}*/}
-            {/*{console.log(reviews)}*/}
+                {user && user?.id === post?.user?.id && (
+                    <DeleteButton onClick={onClickDelete}>삭제</DeleteButton>
+                )}
+            </div>
 
             {/*리뷰*/}
             <ReviewContainer>
@@ -240,6 +255,9 @@ function DetailPage(props) {
         </Container>
     );
 }
+const DeleteButton = styled.button`
+    width: 30px;
+`;
 const BottomContainer = styled.div`
     align-items: center;
     margin-top: 0.7rem;

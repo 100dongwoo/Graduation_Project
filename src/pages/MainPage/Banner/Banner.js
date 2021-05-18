@@ -4,36 +4,38 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'react-bootstrap-carousel/dist/react-bootstrap-carousel.css';
 import Carousel from 'react-bootstrap/Carousel';
 
-import trush1 from '../../../images/brown_trash.jpg';
-import trush2 from '../../../images/tissue_trash.png';
+import convenienceStore from '../../../images/map/convenienceStoreMap.png';
+import countrysideMap from '../../../images/map/countrysideMap.png';
+import scienceRoom from '../../../images/map/ScienceRoomMap.png';
+import sunset from '../../../images/map/sunsetMap.png';
+import ramen from '../../../images/monsters/ConvenienceStoreMonster/ramenMonster.png';
 const Banner = () => {
     const [main, setMain] = useState([
         {
-            backImage: trush1,
+            backImage: convenienceStore,
             title: '흰색 돼지',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
-            image:
-                'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
+            // image: trush3,
+            // 'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
         },
         {
-            backImage: trush2,
+            backImage: countrysideMap,
             title: '엘사 딱가리',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
-            image:
-                'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
+            // image:
+            //     'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
         },
         {
-            backImage:
-                'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZG9nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+            backImage: scienceRoom,
             title: '댕댕이',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
-            image: trush1,
+            image: ramen,
         },
         {
-            backImage: '',
+            backImage: sunset,
             title: '????????????',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
-            image: trush2,
+            image: ramen,
         },
     ]);
 
@@ -50,10 +52,13 @@ const Banner = () => {
                             />
                         )}
                         <Carousel.Caption>
-                            <img
-                                src={array.image}
-                                style={{ width: 300, height: 300 }}
-                            />
+                            {array.image && (
+                                <img
+                                    alt={'이미지'}
+                                    src={array.image}
+                                    style={{ width: 300, height: 300 }}
+                                />
+                            )}
                             <h3>{array.title}</h3>
                             <p>{array.sub}</p>
                         </Carousel.Caption>

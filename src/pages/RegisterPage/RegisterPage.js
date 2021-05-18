@@ -51,13 +51,14 @@ function RegisterPage(props) {
             //     return;
             // }
             axios
-                .post('users/sign-up/', values)
+                .post('/users/sign-up/', values)
                 .then((res) => {
                     if (res.data.code !== 'OK') {
                         FailAlert(res.data.msg);
                         // alert(res.data.msg);
                         return;
                     }
+
                     SuccessAlert('회원가입 되었습니다');
                     // alert('회원가입 되었습니다.');
                     props.history.replace('/');
@@ -67,7 +68,7 @@ function RegisterPage(props) {
                         FailAlert(err.response.data.msg);
                         // alert(err.response.data.msg);
                     } else {
-                        console.log(err);
+                        console.log('에러', err);
                     }
                 });
         },
