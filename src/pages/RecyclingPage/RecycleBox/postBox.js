@@ -52,6 +52,7 @@ const Title = styled.span`
     line-height: 1.5;
     font-size: 1rem;
     font-weight: bold;
+    word-break: keep-all;
 `;
 const Container = styled.div`
     margin-left: 20px;
