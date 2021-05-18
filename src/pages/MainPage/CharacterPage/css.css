@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+
 .snip1445 {
     font-family: 'Raleway', Arial, sans-serif;
     position: relative;
@@ -12,6 +13,7 @@
     background-color: #000000;
 
 }
+
 .snip1445 *,
 .snip1445 *:before,
 .snip1445 *:after {
@@ -20,17 +22,20 @@
     -webkit-transition: all 0.55s ease;
     transition: all 0.55s ease;
 }
+
 .snip1445 img {
     max-width: 100%;
     backface-visibility: hidden;
     vertical-align: top;
 }
+
 .snip1445 figcaption {
     position: absolute;
     bottom: 25%;
     right: 25%;
     padding: 5px 10px 10px;
 }
+
 .snip1445 figcaption:before,
 .snip1445 figcaption:after {
     height: 2px;
@@ -39,18 +44,21 @@
     content: '';
     background-color: #ffffff;
 }
+
 .snip1445 figcaption:before {
     top: 0;
     left: 0;
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
 }
+
 .snip1445 figcaption:after {
     bottom: 0;
     right: 0;
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
 }
+
 .snip1445 figcaption div:before,
 .snip1445 figcaption div:after {
     width: 2px;
@@ -59,26 +67,31 @@
     content: '';
     background-color: #ffffff;
 }
+
 .snip1445 figcaption div:before {
     top: 0;
     left: 0;
     -webkit-transform: translateY(100%);
     transform: translateY(100%);
 }
+
 .snip1445 figcaption div:after {
     bottom: 0;
     right: 0;
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
 }
+
 .snip1445 h2,
 .snip1445 h4 {
     margin: 0;
     text-transform: uppercase;
 }
+
 .snip1445 h2 {
     font-weight: 400;
 }
+
 .snip1445 h4 {
     display: block;
     font-weight: 700;
@@ -86,6 +99,7 @@
     padding: 5px 10px;
     color: #000000;
 }
+
 .snip1445 a {
     position: absolute;
     top: 0;
@@ -93,6 +107,7 @@
     left: 0;
     right: 0;
 }
+
 .snip1445:hover img,
 .snip1445.hover img {
     zoom: 1;
@@ -100,6 +115,7 @@
     -webkit-opacity: 0.5;
     opacity: 0.5;
 }
+
 .snip1445:hover figcaption:before,
 .snip1445.hover figcaption:before,
 .snip1445:hover figcaption:after,
@@ -111,6 +127,7 @@
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
 }
+
 .snip1445:hover figcaption:before,
 .snip1445.hover figcaption:before,
 .snip1445:hover figcaption:after,

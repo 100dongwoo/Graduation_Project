@@ -32,8 +32,8 @@ function Home(props) {
 
             {/*<Menubar />*/}
             <Banner />
-            <Character />
             <Worldview />
+            <Character />
             <Medias />
         </>
     );
