@@ -1,30 +1,32 @@
 {
   "files": {
     "main.css": "/static/css/main.10f62d3a.chunk.css",
-    "main.js": "/static/js/main.dc87a8b0.chunk.js",
-    "main.js.map": "/static/js/main.dc87a8b0.chunk.js.map",
+    "main.js": "/static/js/main.981e62ae.chunk.js",
+    "main.js.map": "/static/js/main.981e62ae.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.8f692a01.js",
     "runtime-main.js.map": "/static/js/runtime-main.8f692a01.js.map",
     "static/css/2.74744521.chunk.css": "/static/css/2.74744521.chunk.css",
-    "static/js/2.0985b98a.chunk.js": "/static/js/2.0985b98a.chunk.js",
-    "static/js/2.0985b98a.chunk.js.map": "/static/js/2.0985b98a.chunk.js.map",
+    "static/js/2.a6424dd9.chunk.js": "/static/js/2.a6424dd9.chunk.js",
+    "static/js/2.a6424dd9.chunk.js.map": "/static/js/2.a6424dd9.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.74744521.chunk.css.map": "/static/css/2.74744521.chunk.css.map",
     "static/css/main.10f62d3a.chunk.css.map": "/static/css/main.10f62d3a.chunk.css.map",
-    "static/js/2.0985b98a.chunk.js.LICENSE.txt": "/static/js/2.0985b98a.chunk.js.LICENSE.txt",
+    "static/js/2.a6424dd9.chunk.js.LICENSE.txt": "/static/js/2.a6424dd9.chunk.js.LICENSE.txt",
     "static/media/1.ef1f485c.jpg": "/static/media/1.ef1f485c.jpg",
     "static/media/2.f8958efc.jpg": "/static/media/2.f8958efc.jpg",
     "static/media/3.bd91cd54.jpg": "/static/media/3.bd91cd54.jpg",
     "static/media/DURE.ac8f9a32.png": "/static/media/DURE.ac8f9a32.png",
-    "static/media/brown_trash.d19c6d88.jpg": "/static/media/brown_trash.d19c6d88.jpg",
+    "static/media/ScienceRoomMap.b4cc14ce.png": "/static/media/ScienceRoomMap.b4cc14ce.png",
+    "static/media/convenienceStoreMap.84824dac.png": "/static/media/convenienceStoreMap.84824dac.png",
+    "static/media/ramenMonster.9a4e8bfd.png": "/static/media/ramenMonster.9a4e8bfd.png",
     "static/media/react-bootstrap-carousel.css": "/static/media/react-bootstrap-carousel.f4133112.ttf",
-    "static/media/tissue_trash.80d5723d.png": "/static/media/tissue_trash.80d5723d.png"
+    "static/media/sunsetMap.55837182.png": "/static/media/sunsetMap.55837182.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8f692a01.js",
     "static/css/2.74744521.chunk.css",
-    "static/js/2.0985b98a.chunk.js",
+    "static/js/2.a6424dd9.chunk.js",
     "static/css/main.10f62d3a.chunk.css",
-    "static/js/main.dc87a8b0.chunk.js"
+    "static/js/main.981e62ae.chunk.js"
   ]
 }
