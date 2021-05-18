@@ -169,7 +169,10 @@ function DetailPage(props) {
             </UserContainer>
             <Container>
                 <div
-                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                    }}
                 >
                     <Editor
                         // editorState={e}
@@ -324,7 +327,7 @@ const UserContainer = styled.div`
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
     //border-bottom: 1px solid #89898a; ;
-    margin-bottom: 3.3rem;
+    //margin-bottom: 3.3rem;
 `;
 const Title = styled.p`
     font-style: normal;

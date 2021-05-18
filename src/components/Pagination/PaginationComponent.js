@@ -2,7 +2,7 @@ import React from 'react';
 import Pagination from '@material-ui/lab/Pagination';
 function PaginationComponent({ totalPage, page, handleChange }) {
     return (
-        <div>
+        <div style={{ marginTop: '1.4rem' }}>
             <Pagination
                 count={totalPage}
                 variant="outlined"
