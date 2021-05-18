@@ -11,6 +11,9 @@ import { useSelector } from 'react-redux';
 import { EditorState, Editor } from 'draft-js';
 import { convertFromHTML } from 'draft-convert';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
+import Avatar from '@material-ui/core/Avatar';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import { calculateChatDate } from '../../Util/Util';
 function DetailPage(props) {
     const auth = useSelector((state) => state.auth);
     const { user } = auth;
@@ -23,6 +26,7 @@ function DetailPage(props) {
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
     const [totalReview, setTotalReview] = useState(0); //총 리뷰 갯수
     const [editor, setEditor] = useState(EditorState.createEmpty());
+
     const onChange = (editorState) => {
         setEditor(editorState);
     };
@@ -121,11 +125,10 @@ function DetailPage(props) {
                 }
             });
     };
-    const onClickDelete = (e) => {
+    const onClickDelete = () => {
         axios
             .delete(`/posts/${postId}/`)
             .then((res) => {
-                console.log(res);
                 if (res.statusText !== 'No Content') {
                     FailAlert('삭제를 실패하였습니다');
                     return;
@@ -142,119 +145,197 @@ function DetailPage(props) {
             });
     };
     return (
-        <Container>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Editor
-                    // editorState={e}
-                    readOnly={true}
-                    // onBlur={onBlur}
-                    // ref={editorRef}
-                    // autoCapitalize="none"
-                    // autoComplete="off"
-                    // autoCorrect="off"
-                    // spellCheck={false}
-                    editorState={editor}
-                    onChange={onChange}
-                />
-
-                {user && user?.id === post?.user?.id && (
-                    <DeleteButton onClick={onClickDelete}>삭제</DeleteButton>
-                )}
-            </div>
-
-            {/*리뷰*/}
-            <ReviewContainer>
-                <TitleContainer>
-                    <TotalReview>
-                        댓글
-                        <TotalReviewCount>{totalReview}</TotalReviewCount>
-                    </TotalReview>
-                </TitleContainer>
-                {reviews?.map((review) => (
-                    <ReviewBox key={review.id}>
-                        <AvartarContainer
+        <div style={{ marginBottom: '3rem' }}>
+            <Title>{post.title}</Title>
+            <UserContainer>
+                <TopContainer>
+                    <Userbox>
+                        <Avatar
                             style={{
-                                // backgroundImage: `url(${trush1})`,
-
-                                backgroundImage:
-                                    'url(https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg)',
+                                width: 55,
+                                height: 55,
                             }}
                         >
-                            {/*<Avartar*/}
-                            {/*    src={trush1}*/}
-                            {/*    // src={*/}
-                            {/*    //     'https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg'*/}
-                            {/*    // }*/}
-                            {/*/>*/}
-                        </AvartarContainer>
-                        <ReviewinfoBox>
-                            <div>
-                                <ReviewUser>{review.user.nickname}</ReviewUser>
-                                <ReviewDate>
-                                    {moment(review.created_at)
-                                        .subtract(10, 'days')
-                                        .calendar()}
-                                    {moment(review.created_at).format('LTS')}
-                                    {/*{moment(review.created_at).format('LLLL')}*/}
-                                </ReviewDate>
-                            </div>
-                            <ReviewContent>{review.content}</ReviewContent>
-                        </ReviewinfoBox>
-                    </ReviewBox>
-                ))}
-                <PaginationComponent
-                    totalPage={totalPage}
-                    page={page}
-                    handleChange={handleChange}
-                />
-                {/*<Pagination*/}
-                {/*    count={totalPage}*/}
-                {/*    variant="outlined"*/}
-                {/*    shape="rounded"*/}
-                {/*    page={page}*/}
-                {/*    onChange={handleChange}*/}
-                {/*    style={{*/}
-                {/*        display: 'flex',*/}
-                {/*        justifyContent: 'center',*/}
-                {/*    }}*/}
-                {/*/>*/}
-                {/*<InputForm as="textarea" aria-label="With textarea" />*/}
-                <ReviewSubmitBox>
-                    <TextArea
-                        value={reviewText}
-                        className="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows={4}
-                        maxLength="99"
-                        disabled={!user}
-                        placeholder={
-                            user
-                                ? '댓글을 입력 해보세요!'
-                                : '로그인 후, 이용해주세요'
-                        }
-                        onChange={(e) => {
-                            // reviewText.length < 100 &&
-                            setReviewText(e.currentTarget.value);
-                        }}
+                            {post.user?.nickname[0] + post.user?.nickname[1]}
+                        </Avatar>
+                        <UserName>{post.user?.nickname}</UserName>
+                    </Userbox>
+                    <PostInforBox>
+                        조회수 {post.hit_count} &nbsp;|&nbsp; 댓글
+                        {post.review_count}&nbsp; |&nbsp; &nbsp;
+                        {calculateChatDate(post.created_at)}
+                    </PostInforBox>
+                </TopContainer>
+            </UserContainer>
+            <Container>
+                <div
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                    <Editor
+                        // editorState={e}
+                        readOnly={true}
+                        // onBlur={onBlur}
+                        // ref={editorRef}
+                        // autoCapitalize="none"
+                        // autoComplete="off"
+                        // autoCorrect="off"
+                        // spellCheck={false}
+                        editorState={editor}
+                        onChange={onChange}
                     />
-                    <BottomContainer>
-                        <CountReviewText>
-                            {reviewText.length}/100
-                        </CountReviewText>
-                        <SubmitButton
-                            variant="secondary"
-                            size="lg"
-                            onClick={onSubmitReview}
+
+                    {user && user?.id === post?.user?.id && (
+                        <DeleteButton onClick={onClickDelete}>
+                            삭제
+                        </DeleteButton>
+                    )}
+                </div>
+
+                {/*리뷰*/}
+                <ReviewContainer>
+                    <TitleContainer>
+                        <TotalReview>
+                            댓글
+                            <TotalReviewCount>{totalReview}</TotalReviewCount>
+                        </TotalReview>
+                    </TitleContainer>
+                    {reviews?.map((review) => (
+                        <ReviewBox key={review.id}>
+                            <AvartarContainer
+                                style={{
+                                    // backgroundImage: `url(${trush1})`,
+
+                                    backgroundImage:
+                                        'url(https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg)',
+                                }}
+                            >
+                                {/*<Avartar*/}
+                                {/*    src={trush1}*/}
+                                {/*    // src={*/}
+                                {/*    //     'https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg'*/}
+                                {/*    // }*/}
+                                {/*/>*/}
+                            </AvartarContainer>
+                            <ReviewinfoBox>
+                                <div>
+                                    <ReviewUser>
+                                        {review.user.nickname}
+                                    </ReviewUser>
+                                    <ReviewDate>
+                                        {moment(review.created_at)
+                                            .subtract(10, 'days')
+                                            .calendar()}
+                                        {moment(review.created_at).format(
+                                            'LTS'
+                                        )}
+                                        {/*{moment(review.created_at).format('LLLL')}*/}
+                                    </ReviewDate>
+                                </div>
+                                <ReviewContent>{review.content}</ReviewContent>
+                            </ReviewinfoBox>
+                        </ReviewBox>
+                    ))}
+                    <PaginationComponent
+                        totalPage={totalPage}
+                        page={page}
+                        handleChange={handleChange}
+                    />
+                    {/*<Pagination*/}
+                    {/*    count={totalPage}*/}
+                    {/*    variant="outlined"*/}
+                    {/*    shape="rounded"*/}
+                    {/*    page={page}*/}
+                    {/*    onChange={handleChange}*/}
+                    {/*    style={{*/}
+                    {/*        display: 'flex',*/}
+                    {/*        justifyContent: 'center',*/}
+                    {/*    }}*/}
+                    {/*/>*/}
+                    {/*<InputForm as="textarea" aria-label="With textarea" />*/}
+                    <ReviewSubmitBox>
+                        <TextArea
+                            value={reviewText}
+                            className="form-control"
+                            id="exampleFormControlTextarea1"
+                            rows={4}
+                            maxLength="99"
                             disabled={!user}
-                        >
-                            등록
-                        </SubmitButton>
-                    </BottomContainer>
-                </ReviewSubmitBox>
-            </ReviewContainer>
-        </Container>
+                            placeholder={
+                                user
+                                    ? '댓글을 입력 해보세요!'
+                                    : '로그인 후, 이용해주세요'
+                            }
+                            onChange={(e) => {
+                                // reviewText.length < 100 &&
+                                setReviewText(e.currentTarget.value);
+                            }}
+                        />
+                        <BottomContainer>
+                            <CountReviewText>
+                                {reviewText.length}/100
+                            </CountReviewText>
+                            <SubmitButton
+                                variant="secondary"
+                                size="lg"
+                                onClick={onSubmitReview}
+                                disabled={!user}
+                            >
+                                등록
+                            </SubmitButton>
+                        </BottomContainer>
+                    </ReviewSubmitBox>
+                </ReviewContainer>
+            </Container>
+        </div>
     );
 }
+const PostInforBox = styled.p`
+    margin: auto 0;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    color: #666666;
+`;
+const TopContainer = styled.div`
+    margin: auto;
+    max-width: 1250px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.4rem 0;
+`;
+const Userbox = styled.div`
+    display: flex;
+    align-items: center;
+`;
+const UserName = styled.p`
+    margin: 0 0 0 0.8rem;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    //line-height: 29px;
+    letter-spacing: 0.04em;
+    color: #828ea2;
+`;
+const UserContainer = styled.div`
+    width: 100%;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    //border-bottom: 1px solid #89898a; ;
+    margin-bottom: 3.3rem;
+`;
+const Title = styled.p`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 135.5%;
+    color: #001129;
+    max-width: 1250px;
+    margin: 3.3rem auto 1.5rem;
+    word-break: keep-all;
+`;
 const DeleteButton = styled.button`
     width: 30px;
 `;
@@ -345,6 +426,7 @@ const Container = styled.div`
 const ReviewContainer = styled.div`
     margin: auto;
     max-width: 1250px;
+    margin-top: 3rem;
 `;
 const TitleContainer = styled.div`
     width: 100%;
