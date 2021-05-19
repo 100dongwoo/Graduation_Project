@@ -16,7 +16,9 @@ function MonsterContainer({ Monster }) {
                             src={monster}
                             alt={index}
                             onClick={(e) => {
-                                setBigImage(Monster[e.target.alt]);
+                                console.log(e.target.src);
+                                // setBigImage(Monster[e.target.alt]);
+                                setBigImage(e.target.src);
                             }}
                         />
                     </MonsterImageBox>
@@ -32,6 +34,7 @@ const BigImage = styled.img`
 `;
 const Container = styled.div`
     display: flex;
+    justify-content: space-between;
 `;
 
 const MonsterImage = styled.img`

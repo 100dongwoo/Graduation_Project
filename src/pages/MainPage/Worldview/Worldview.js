@@ -18,40 +18,60 @@ function Worldview(props) {
         <TotalContainer>
             <Container id="worldview">
                 <MapListContainer>
-                    <button
+                    <Button
                         className="snip1535"
                         onClick={(e) => {
                             onClickChangeMap(e, convenienceStoreMonster);
                         }}
+                        active={pickMaps === convenienceStoreMonster}
                     >
                         편의점
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         className="snip1535"
                         onClick={(e) => {
                             onClickChangeMap(e, countrySideMonster);
                         }}
+                        active={pickMaps === countrySideMonster}
                     >
                         마트
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         className="snip1535"
                         onClick={(e) => {
                             onClickChangeMap(e, martMonster);
                         }}
+                        active={pickMaps === martMonster}
                     >
                         시골
-                    </button>
+                    </Button>
                 </MapListContainer>
                 <MonsterContainer Monster={pickMaps} />
             </Container>
         </TotalContainer>
     );
 }
+const Button = styled.button`
+    //background-color: #c47135;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'BenchNine', Arial, sans-serif;
+    font-size: 1em;
+    font-size: 22px;
+    line-height: 1em;
+    margin: 15px 40px;
+    outline: none;
+    padding: 12px 40px 10px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: ${(props) => (props.active ? '#ff534b' : '#c47135')};
+`;
 const MapListContainer = styled.div`
     text-align: center;
     width: 100%;
-    background-color: red;
     max-width: 800px;
     margin: auto;
 `;

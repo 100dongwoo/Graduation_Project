@@ -1,20 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 .snip1535 {
-    background-color: #c47135;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'BenchNine', Arial, sans-serif;
-    font-size: 1em;
-    font-size: 22px;
-    line-height: 1em;
-    margin: 15px 40px;
-    outline: none;
-    padding: 12px 40px 10px;
-    position: relative;
-    text-transform: uppercase;
-    font-weight: 700;
+    /*background-color: #c47135;*/
+    /*border: none;*/
+    /*color: #ffffff;*/
+    /*cursor: pointer;*/
+    /*display: inline-block;*/
+    /*font-family: 'BenchNine', Arial, sans-serif;*/
+    /*font-size: 1em;*/
+    /*font-size: 22px;*/
+    /*line-height: 1em;*/
+    /*margin: 15px 40px;*/
+    /*outline: none;*/
+    /*padding: 12px 40px 10px;*/
+    /*position: relative;*/
+    /*text-transform: uppercase;*/
+    /*font-weight: 700;*/
 
 }
 .snip1535:before,
@@ -45,7 +45,7 @@
 }
 .snip1535:hover,
 .snip1535.hover {
-    background-color: #c47135;
+    background-color: #343a40;
 }
 .snip1535:hover:before,
 .snip1535.hover:before,
