@@ -144,6 +144,9 @@ function DetailPage(props) {
                 console.log(err);
             });
     };
+    const onClickUpdate = () => {
+        props.history.push({ pathname: '/upload', state: { post } });
+    };
     return (
         <div style={{ marginBottom: '3rem' }}>
             <Title>{post.title}</Title>
@@ -186,10 +189,14 @@ function DetailPage(props) {
                         editorState={editor}
                         onChange={onChange}
                     />
-
                     {user && user?.id === post?.user?.id && (
                         <DeleteButton onClick={onClickDelete}>
                             삭제
+                        </DeleteButton>
+                    )}
+                    {user && user?.id === post?.user?.id && (
+                        <DeleteButton onClick={onClickUpdate}>
+                            수정
                         </DeleteButton>
                     )}
                 </div>

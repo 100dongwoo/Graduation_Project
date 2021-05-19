@@ -3,19 +3,34 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
 import { convertToRaw, EditorState } from 'draft-js';
+import { ContentState, convertFromHTML } from 'draft-js';
 import styled from 'styled-components';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 import { useHistory } from 'react-router-dom';
+// import { convertFromHTML } from 'draft-convert';
 
 function UploadPage(props) {
-    const [editor, setEditor] = useState(EditorState.createEmpty());
-    const [title, setTitle] = useState('');
+    const post = !!props.location.state ? props.location.state.post : null;
+    const [editor, setEditor] = useState(
+        post
+            ? EditorState.createWithContent(
+                  ContentState.createFromBlockArray(
+                      convertFromHTML(post?.content)
+                  )
+              )
+            : EditorState.createEmpty()
+    );
+    const [title, setTitle] = useState(post ? post?.title : '');
     const [image, setImage] = useState(null);
     const [file, setFile] = useState('');
     const [preview, setPreview] = useState('');
     const history = useHistory();
     const fileInput = useRef();
+
+    // onChange(
+    //     EditorState.push(EditorState, convertFromHTML(post?.content))
+    // );
     const onEditorChange = (editorState) => {
         setEditor(editorState);
     };
@@ -36,6 +51,8 @@ function UploadPage(props) {
         //     content: draftToHtml(convertToRaw(editor.getCurrentContent())),
         //     image: file,
         // };
+        let request = post ? axios.patch : axios.post;
+        let url = post ? `/posts/${post.id}/` : '/posts/';
         let form = new FormData();
         form.append('title', title);
         form.append(
@@ -45,15 +62,16 @@ function UploadPage(props) {
         if (!!file) {
             form.append('image', file);
         }
-        axios
-            .post('/posts/', form)
+        // axios
+        //     .post('/posts/', form)
+        request(url, form)
             .then((res) => {
                 console.log(res);
-                if (res.statusText !== 'Created') {
+                if (res.statusText !== 'Created' && res.statusText !== 'OK') {
                     console.log(res);
                     return;
                 }
-                SuccessAlert('게시글 등록 성공');
+                SuccessAlert(`${post ? '수정' : '추가'}성공.`);
                 history.push('/Community');
             })
             .catch((err) => {
@@ -200,7 +218,7 @@ function UploadPage(props) {
                         }}
                         onClick={onHandleSubmit}
                     >
-                        작성
+                        {post ? '수 정' : '등 록'}
                     </SubmitBtn>
                     {/*<textarea*/}
                     {/*    style={{ width: '100%', height: 200 }}*/}
