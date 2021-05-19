@@ -13,7 +13,7 @@ function RecycleBox(props) {
         axios
             .get('/recycle_infos/')
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 if (res.statusText !== 'OK') {
                     console.log(res);
                     return;
@@ -123,6 +123,9 @@ const TitleBox = styled.div`
     width: 100%;
     text-align: center;
     align-items: center;
+    @media only screen and (max-width: 767px) {
+        margin: 1rem 0rem;
+    }
 `;
 const Container = styled.div`
     background: #f4f4f4;
@@ -137,8 +140,19 @@ const Content = styled.div`
     max-width: 1250px;
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    @media only screen and (max-width: 767px) {
+        flex-direction: column;
+    }
     //flex-direction: column;
 `;
-const BoxContainer = styled.div``;
+const BoxContainer = styled.div`
+    //background-color: red;
+    width: 370px;
+    @media only screen and (max-width: 767px) {
+        ////display: flex;
+        //overflow: scroll;
+        width: 100%;
+    }
+`;
 export default RecycleBox;

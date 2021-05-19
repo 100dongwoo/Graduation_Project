@@ -63,7 +63,6 @@ function RulesContainer(props) {
     );
 }
 const TipInforBox = styled.div`
-    height: 100%;
     padding-left: 2rem;
     //padding-top: 0.1rem;
     margin-top: 1rem;
@@ -77,9 +76,6 @@ const Image = styled.img`
     //object-fit: cover;
 `;
 const TipInformation = styled.p`
-    font-size: 24px;
-    color: #065920;
-    line-height: 1.8rem;
     align-items: center;
     word-break: keep-all;
 `;
@@ -88,16 +84,31 @@ const TipContent = styled.div`
     justify-content: space-between;
     padding-bottom: 2rem;
     margin-top: 3rem;
+    //
+    font-size: 24px;
+    color: #065920;
+    line-height: 1.8rem;
+    //
+    overflow-x: scroll;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `;
 const Tipbox = styled.div`
     padding: 0;
+    min-width: 320px;
+    max-width: 380px;
     width: 380px;
     height: 390px;
     box-shadow: rgb(0 0 0 / 6%) 0px 4px 8px 0px;
     background-color: rgb(255, 255, 255);
+    margin-right: 3rem;
     //background: red;
     //display: flex;
     //flex-direction: column;
+    @media only screen and (max-width: 767px) {
+        margin-right: 1.5rem;
+    }
 `;
 const Information = styled.div`
     font-size: medium;

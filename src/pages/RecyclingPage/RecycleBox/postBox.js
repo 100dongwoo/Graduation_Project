@@ -55,10 +55,12 @@ const Title = styled.span`
     word-break: keep-all;
 `;
 const Container = styled.div`
-    margin-left: 20px;
+    //margin-left: 20px;
     margin-right: 20px;
     margin-top: 1rem;
-    width: 370px;
+    min-width: 290px;
+    width: 100%;
+    //background-color: black;
     box-shadow: rgb(175 181 186 / 30%) 0px 2px 6px 0px,
         rgb(175 181 186 / 30%) 0px -1px 6px 0px;
     box-sizing: inherit;
