@@ -58,13 +58,15 @@ function UploadPage(props) {
             'content',
             draftToHtml(convertToRaw(editor.getCurrentContent()))
         );
-        if (!!file) {
+        if (post && !!file) {
+        } else if (!!file) {
             console.log('12');
             form.append('image', file);
         }
-        {
-            console.log('파일입니다', file);
+        if (post && !file) {
+            form.append('image', '');
         }
+
         // axios
         //     .post('/posts/', form)
         request(url, form)
@@ -121,7 +123,7 @@ function UploadPage(props) {
 
     return (
         <Container>
-            <Title> 게시글 등록</Title>
+            <Title> 게시글 {post ? '수정' : '등록'}</Title>
             <form>
                 <div>
                     <TitleContainer>
