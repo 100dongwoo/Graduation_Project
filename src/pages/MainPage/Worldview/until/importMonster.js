@@ -30,9 +30,4 @@ import fruitMonster from '../../../../images/monsters/MartMonster/fruitMonster.p
 import paperBoxMonster from '../../../../images/monsters/MartMonster/paperBoxMonster.png';
 import spamMonster from '../../../../images/monsters/MartMonster/spamMonster.png';
 
-export const martMonster = [
-    fruitMonster,
-    paperBoxMonster,
-    spamMonster,
-    paperBoxMonster,
-];
+export const martMonster = [fruitMonster, paperBoxMonster, spamMonster];
