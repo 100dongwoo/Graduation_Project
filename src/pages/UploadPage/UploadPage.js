@@ -22,9 +22,8 @@ function UploadPage(props) {
             : EditorState.createEmpty()
     );
     const [title, setTitle] = useState(post ? post?.title : '');
-    const [image, setImage] = useState(null);
-    const [file, setFile] = useState('');
-    const [preview, setPreview] = useState('');
+    const [file, setFile] = useState(post ? post?.image : '');
+    const [preview, setPreview] = useState(post ? post?.image : '');
     const history = useHistory();
     const fileInput = useRef();
 
@@ -60,13 +59,17 @@ function UploadPage(props) {
             draftToHtml(convertToRaw(editor.getCurrentContent()))
         );
         if (!!file) {
+            console.log('12');
             form.append('image', file);
+        }
+        {
+            console.log('파일입니다', file);
         }
         // axios
         //     .post('/posts/', form)
         request(url, form)
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 if (res.statusText !== 'Created' && res.statusText !== 'OK') {
                     console.log(res);
                     return;
@@ -170,8 +173,8 @@ function UploadPage(props) {
                                     onClick={(e) => {
                                         e.preventDefault();
                                         fileInput.current.value = '';
-                                        setFile('');
-                                        setPreview('');
+                                        setFile(null);
+                                        setPreview(null);
                                     }}
                                 >
                                     이미지 삭제
