@@ -58,9 +58,9 @@ function UploadPage(props) {
             'content',
             draftToHtml(convertToRaw(editor.getCurrentContent()))
         );
-        if (post && !!file) {
+        if (post && file === post?.image) {
         } else if (!!file) {
-            console.log('12');
+            // console.log('12');
             form.append('image', file);
         }
         if (post && !file) {
