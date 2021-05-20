@@ -16,6 +16,7 @@ function Worldview(props) {
     };
     return (
         <TotalContainer>
+            {console.log()}
             <Container id="worldview">
                 <MapListContainer>
                     <Button
