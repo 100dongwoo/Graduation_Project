@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.c8feb143.chunk.css",
-    "main.js": "/static/js/main.45676daf.chunk.js",
-    "main.js.map": "/static/js/main.45676daf.chunk.js.map",
+    "main.js": "/static/js/main.39129c39.chunk.js",
+    "main.js.map": "/static/js/main.39129c39.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.8f692a01.js",
     "runtime-main.js.map": "/static/js/runtime-main.8f692a01.js.map",
     "static/css/2.74744521.chunk.css": "/static/css/2.74744521.chunk.css",
@@ -26,7 +26,7 @@
     "static/media/ramenMonster.9a4e8bfd.png": "/static/media/ramenMonster.9a4e8bfd.png",
     "static/media/react-bootstrap-carousel.css": "/static/media/react-bootstrap-carousel.f4133112.ttf",
     "static/media/sojuMonster.1c6acab3.png": "/static/media/sojuMonster.1c6acab3.png",
-    "static/media/styrofoamMonster.dbdafb5e.png": "/static/media/styrofoamMonster.dbdafb5e.png",
+    "static/media/styrofoamMonster.1d3151c4.png": "/static/media/styrofoamMonster.1d3151c4.png",
     "static/media/sunsetMap.55837182.png": "/static/media/sunsetMap.55837182.png",
     "static/media/vegetableMonster.e71d9b48.png": "/static/media/vegetableMonster.e71d9b48.png",
     "static/media/whiteRamenMonseter.edbcc17a.png": "/static/media/whiteRamenMonseter.edbcc17a.png"
@@ -36,6 +36,6 @@
     "static/css/2.74744521.chunk.css",
     "static/js/2.119e62d1.chunk.js",
     "static/css/main.c8feb143.chunk.css",
-    "static/js/main.45676daf.chunk.js"
+    "static/js/main.39129c39.chunk.js"
   ]
 }

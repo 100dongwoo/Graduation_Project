@@ -34,7 +34,7 @@ function Worldview(props) {
                         }}
                         active={pickMaps === countrySideMonster}
                     >
-                        마트
+                        시골
                     </Button>
                     <Button
                         className="snip1535"
@@ -43,7 +43,7 @@ function Worldview(props) {
                         }}
                         active={pickMaps === martMonster}
                     >
-                        시골
+                        마트
                     </Button>
                 </MapListContainer>
                 <MonsterContainer Monster={pickMaps} />
