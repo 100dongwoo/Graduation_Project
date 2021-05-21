@@ -209,23 +209,38 @@ function DetailPage(props) {
                             <TotalReviewCount>{totalReview}</TotalReviewCount>
                         </TotalReview>
                     </TitleContainer>
+
                     {reviews?.map((review) => (
                         <ReviewBox key={review.id}>
-                            <AvartarContainer
+                            <Avatar
+                                //                                #bdbdbd
                                 style={{
-                                    // backgroundImage: `url(${trush1})`,
-
-                                    backgroundImage:
-                                        'url(https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg)',
+                                    backgroundColor:
+                                        post.user?.id !== review.user.id
+                                            ? '#ff5722'
+                                            : '#bdbdbd',
+                                    width: 55,
+                                    height: 55,
                                 }}
                             >
-                                {/*<Avartar*/}
-                                {/*    src={trush1}*/}
-                                {/*    // src={*/}
-                                {/*    //     'https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg'*/}
-                                {/*    // }*/}
-                                {/*/>*/}
-                            </AvartarContainer>
+                                {review.user?.nickname[0] +
+                                    review.user?.nickname[1]}
+                            </Avatar>
+                            {/*<AvartarContainer*/}
+                            {/*    style={{*/}
+                            {/*        // backgroundImage: `url(${trush1})`,*/}
+
+                            {/*        backgroundImage:*/}
+                            {/*            'url(https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg)',*/}
+                            {/*    }}*/}
+                            {/*>*/}
+                            {/*<Avartar*/}
+                            {/*    src={trush1}*/}
+                            {/*    // src={*/}
+                            {/*    //     'https://i.pinimg.com/originals/4a/d4/e6/4ad4e67b19d6e4c91877b317aed51f26.jpg'*/}
+                            {/*    // }*/}
+                            {/*/>*/}
+                            {/*</AvartarContainer>*/}
                             <ReviewinfoBox>
                                 <div>
                                     <ReviewUser>
@@ -250,18 +265,6 @@ function DetailPage(props) {
                         page={page}
                         handleChange={handleChange}
                     />
-                    {/*<Pagination*/}
-                    {/*    count={totalPage}*/}
-                    {/*    variant="outlined"*/}
-                    {/*    shape="rounded"*/}
-                    {/*    page={page}*/}
-                    {/*    onChange={handleChange}*/}
-                    {/*    style={{*/}
-                    {/*        display: 'flex',*/}
-                    {/*        justifyContent: 'center',*/}
-                    {/*    }}*/}
-                    {/*/>*/}
-                    {/*<InputForm as="textarea" aria-label="With textarea" />*/}
                     <ReviewSubmitBox>
                         <TextArea
                             value={reviewText}
@@ -422,7 +425,7 @@ const ReviewBox = styled.div`
 const ReviewinfoBox = styled.div`
     width: 100%;
     height: 100%;
-    margin-left: 1rem;
+    margin-left: 0.8rem;
     //border-bottom: 1px solid #e3e3e3;
     //padding: 25px 30px;
     display: flex;
