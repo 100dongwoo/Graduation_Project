@@ -7,7 +7,6 @@ import {
     martMonster,
 } from './until/importMonster';
 import MonsterContainer from './MonsterContainer/MonsterContainer';
-
 function MapMonsters(props) {
     const [pickMaps, setPickMaps] = useState(convenienceStoreMonster);
     const onClickChangeMap = (e, map) => {
