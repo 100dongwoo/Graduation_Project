@@ -82,7 +82,7 @@ const ImageContainer = styled.div`
     width: 100%;
     height: 400px;
     background: url(${(props) => props.image}) no-repeat center;
-    background-size: cover;
+    background-size: contain;
     object-fit: contain;
 `;
 const Image = styled.div``;
