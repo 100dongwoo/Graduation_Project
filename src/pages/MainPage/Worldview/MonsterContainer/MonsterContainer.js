@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 function MonsterContainer({ Monster }) {
-    const [bigImage, setBigImage] = useState(Monster[0].image);
-    const [bigImageNumber, setBigNumber] = useState(0);
+    const [bigImage, setBigImage] = useState(Monster[0]?.image);
+    const [bigImageNumber, setBigImageNumber] = useState(0);
     useEffect(() => {
         setBigImage(Monster[0].image);
-        setBigNumber(0);
+        setBigImageNumber(0);
     }, [Monster]);
     const onClickHandleRight = (e) => {
         e.preventDefault();
         setBigImage(
             Monster.length === bigImageNumber + 1
-                ? Monster[0].image
-                : Monster[bigImageNumber + 1].image
+                ? Monster[0]?.image
+                : Monster[bigImageNumber + 1]?.image
         );
-        setBigNumber(
+        setBigImageNumber(
             Monster.length === bigImageNumber + 1 ? 0 : bigImageNumber + 1
         );
     };
@@ -23,10 +23,10 @@ function MonsterContainer({ Monster }) {
         e.preventDefault();
         setBigImage(
             bigImageNumber - 1 < 0
-                ? Monster[Monster.length - 1].image
-                : Monster[bigImageNumber - 1].image
+                ? Monster[Monster.length - 1]?.image
+                : Monster[bigImageNumber - 1]?.image
         );
-        setBigNumber(
+        setBigImageNumber(
             bigImageNumber - 1 < 0 ? Monster.length - 1 : bigImageNumber - 1
         );
     };
@@ -42,8 +42,9 @@ function MonsterContainer({ Monster }) {
                             src={monster.image}
                             alt={index}
                             onClick={(e) => {
-                                setBigNumber(e.target.alt);
+                                e.preventDefault();
                                 setBigImage(Monster[e.target.alt].image);
+                                setBigImageNumber(parseInt(e.target.alt));
                                 // setBigImage(e.target.src);
                             }}
                         />
@@ -53,9 +54,9 @@ function MonsterContainer({ Monster }) {
             <BottomContainer>
                 <BigImage src={bigImage} alt="몬스터" />
                 <InforContainer>
-                    <MonsterName>{Monster[bigImageNumber].title}</MonsterName>
+                    <MonsterName>{Monster[bigImageNumber]?.title}</MonsterName>
                     <MonsterInfor>
-                        {Monster[bigImageNumber].infor}
+                        {Monster[bigImageNumber]?.infor}
                         {/*비밀스러운 숲 속에 천년의 영광을 누리던 고목이 있었다.*/}
                         {/*대지를 돌보기 위해 땅 속 깊이 뿌리를 뻗어나가던 이*/}
                         {/*나무는, 새빨간 저주가 숲을 침범하자 스스로를 봉인하며*/}
