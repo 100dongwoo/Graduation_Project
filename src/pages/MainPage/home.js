@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Banner from './Banner/Banner';
-import Character from './CharacterPage/Character';
-import Worldview from './Worldview/Worldview';
+import Story from './Story/Story';
+import MapMonsters from './Worldview/MapMonsters';
 import Medias from './Medias/Medias';
 import Menubar from './Menubar/Menubar';
 import styled from 'styled-components';
@@ -32,8 +32,8 @@ function Home(props) {
 
             {/*<Menubar />*/}
             <Banner />
-            <Worldview />
-            <Character />
+            <MapMonsters />
+            <Story />
             <Medias />
         </>
     );
