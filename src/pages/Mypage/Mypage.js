@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { SamplePost } from '../../SampleData/SampleData';
 import styled from 'styled-components';
 import UserInformation from './UserInformation/UserInformation';
+import Drawer from './Drawer/Drawer';
 function Mypage(props) {
     const [myPosts, setMyPosts] = useState(SamplePost);
     return (
         <Container>
             <UserInformation />
+            <Drawer />
         </Container>
     );
 }
