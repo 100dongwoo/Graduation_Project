@@ -69,8 +69,9 @@ const SocialBox = styled.a`
     cursor: pointer;
     border-radius: 50%;
     text-decoration: none;
-    &: hover {
+    &:hover {
         opacity: 0.8;
+        text-decoration: none;
     }
 `;
 const SocialContainer = styled.div`

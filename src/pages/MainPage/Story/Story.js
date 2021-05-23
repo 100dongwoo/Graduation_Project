@@ -116,5 +116,7 @@ const Container = styled.div`
     margin: auto;
     display: flex;
     justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
 `;
 export default Story;
