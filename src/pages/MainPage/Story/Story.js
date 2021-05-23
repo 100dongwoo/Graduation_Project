@@ -56,7 +56,7 @@ function Story(props) {
                         //     <Image src={step} alt={'이미지'} />
                         //     {/*) : null}*/}
                         // </ImageContainer>
-                        <Image src={step} alt={'이미지'} />
+                        <Image src={step} alt={'이미지'} key={index} />
                     ))}
                 </AutoPlaySwipeableViews>
                 <MobileStepper

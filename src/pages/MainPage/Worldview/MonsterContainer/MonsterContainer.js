@@ -121,9 +121,12 @@ const ImageList = styled.div`
 const BigImage = styled.img`
     max-width: 450px;
     height: 400px;
+
     animation: ${motion} 0.6s linear 0s infinite alternate;
     @media only screen and (max-width: 768px) {
         margin: auto;
+        max-width: 300px;
+        max-height: 300px;
     }
 `;
 const Container = styled.div`
