@@ -57,14 +57,11 @@ function MonsterContainer({ Monster }) {
                     <MonsterName>{Monster[bigImageNumber]?.title}</MonsterName>
                     <MonsterInfor>
                         {Monster[bigImageNumber]?.infor}
-                        {/*비밀스러운 숲 속에 천년의 영광을 누리던 고목이 있었다.*/}
-                        {/*대지를 돌보기 위해 땅 속 깊이 뿌리를 뻗어나가던 이*/}
-                        {/*나무는, 새빨간 저주가 숲을 침범하자 스스로를 봉인하며*/}
-                        {/*잎을 떨구고 잠에 들었다. 쿠키들의 정성으로 깨어난 이후,*/}
-                        {/*다른 쿠키들과 함께 세상 밖을 나선 천년나무 쿠키.*/}
                     </MonsterInfor>
-                    <Button onClick={onClickHandleLeft}> > </Button>
-                    <Button onClick={onClickHandleRight}> > </Button>
+                    <div>
+                        <Button onClick={onClickHandleLeft}> > </Button>
+                        <Button onClick={onClickHandleRight}> > </Button>
+                    </div>
                 </InforContainer>
             </BottomContainer>
         </Container>
@@ -84,7 +81,14 @@ const motion = keyframes`
 const Button = styled.button``;
 const InforContainer = styled.div`
     max-width: 500px;
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 430px;
+    @media only screen and (max-width: 768px) {
+        margin: auto;
+    }
 `;
 const MonsterName = styled.h1`
     font-size: 3.125rem;
@@ -101,8 +105,13 @@ const MonsterInfor = styled.p`
 `;
 const BottomContainer = styled.div`
     display: flex;
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     justify-content: space-between;
+
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 const ImageList = styled.div`
     display: flex;
@@ -110,9 +119,12 @@ const ImageList = styled.div`
     justify-content: space-around;
 `;
 const BigImage = styled.img`
-    width: 450px;
-    height: 600px;
+    max-width: 450px;
+    height: 400px;
     animation: ${motion} 0.6s linear 0s infinite alternate;
+    @media only screen and (max-width: 768px) {
+        margin: auto;
+    }
 `;
 const Container = styled.div`
     display: flex;

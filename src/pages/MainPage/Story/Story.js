@@ -42,7 +42,7 @@ function Story(props) {
             {/*    </figcaption>*/}
             {/*    /!*<a href="#"></a>*!/*/}
             {/*</figure>*/}
-            <button onClick={handleBack}>왼쪽이동</button>
+            <Icon className="fas fa-chevron-circle-left" onClick={handleBack} />
             <CarouselContainer>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -51,11 +51,12 @@ function Story(props) {
                     enableMouseEvents
                 >
                     {story?.map((step, index) => (
-                        <ImageContainer key={index} image={step}>
-                            {/*{Math.abs(activeStep - index) <= 2 ? (*/}
-                            {/*    <img src={step} alt={'이미지'} />*/}
-                            {/*) : null}*/}
-                        </ImageContainer>
+                        // <ImageContainer key={index}>
+                        //     {/*{Math.abs(activeStep - index) <= 2 ? (*/}
+                        //     <Image src={step} alt={'이미지'} />
+                        //     {/*) : null}*/}
+                        // </ImageContainer>
+                        <Image src={step} alt={'이미지'} />
                     ))}
                 </AutoPlaySwipeableViews>
                 <MobileStepper
@@ -71,23 +72,38 @@ function Story(props) {
                     }}
                 />
             </CarouselContainer>
-            <button onClick={handleNext}>오른 이동</button>
+            {/*<button onClick={handleNext}>*/}
+            <Icon
+                className="fas fa-chevron-circle-right"
+                onClick={handleNext}
+            />
+            {/*</button>*/}
         </Container>
     );
 }
 
-const ImageContainer = styled.div`
-    //background-size: cover;
-    //object-fit: cover;
+const ImageContainer = styled.div``;
+const Image = styled.img`
     width: 100%;
-    height: 400px;
-    background: url(${(props) => props.image}) no-repeat center;
-    background-size: contain;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: opacity 500ms ease 0s;
 `;
-const Image = styled.div``;
+const Icon = styled.i`
+    text-align: center;
+    margin: auto 0;
+    font-size: 2.5rem;
+    padding: 1rem;
+    color: #343a40;
+    cursor: pointer;
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+`;
 const CarouselContainer = styled.div`
-    width: 600px;
+    width: 100%;
+    max-width: 800px;
 `;
 const MoveButton = styled.button`
     display: none;

@@ -54,7 +54,7 @@ const Banner = () => {
                         <Carousel.Caption>
                             {array.image && (
                                 <img
-                                    alt={'이미지'}
+                                    alt="이미지"
                                     src={array.image}
                                     style={{ width: 300, height: 300 }}
                                 />

@@ -77,6 +77,7 @@ const MapListContainer = styled.div`
 const TotalContainer = styled.div`
     width: 100%;
     background-color: #594d46;
+    padding: 3rem 0 5rem;
 `;
 const Container = styled.div`
     max-width: 1250px;
