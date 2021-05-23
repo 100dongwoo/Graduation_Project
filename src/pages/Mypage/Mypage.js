@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SamplePost } from '../../SampleData/SampleData';
 import styled from 'styled-components';
-
+import UserInformation from './UserInformation/UserInformation';
 function Mypage(props) {
-    return <div>mypage</div>;
+    const [myPosts, setMyPosts] = useState(SamplePost);
+    return (
+        <Container>
+            <UserInformation />
+        </Container>
+    );
 }
 const Container = styled.div`
     max-width: 1250px;
