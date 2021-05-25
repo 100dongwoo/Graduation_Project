@@ -68,25 +68,25 @@ function Chatting(props) {
                     <Comment chat={chat} key={index} />
                 ))}
             </ChatContainer>
-            {/*{user ? (*/}
-            <InputShowBox onSubmit={onSubmitHandler}>
-                <InputBox
-                    placeholder="입력하세요"
-                    type="text"
-                    value={chatContent}
-                    onChange={(e) => setChatContent(e.currentTarget.value)}
-                />
-                <SubmitIcon
-                    user={user}
-                    className="fas fa-arrow-circle-up"
-                    onClick={onSubmitHandler}
-                />
-            </InputShowBox>
-            {/*) : (*/}
-            <InputShowBox style={{ color: '#adadad' }}>
-                로그인 후 사용 바랍니다
-            </InputShowBox>
-            {/*)}*/}
+            {true ? (
+                <InputShowBox onSubmit={onSubmitHandler}>
+                    <InputBox
+                        placeholder="입력하세요"
+                        type="text"
+                        value={chatContent}
+                        onChange={(e) => setChatContent(e.currentTarget.value)}
+                    />
+                    <SubmitIcon
+                        user={user}
+                        className="fas fa-arrow-circle-up"
+                        onClick={onSubmitHandler}
+                    />
+                </InputShowBox>
+            ) : (
+                <InputShowBox style={{ color: '#adadad' }}>
+                    로그인 후 사용 바랍니다
+                </InputShowBox>
+            )}
         </HelpContainer>
     );
 }
