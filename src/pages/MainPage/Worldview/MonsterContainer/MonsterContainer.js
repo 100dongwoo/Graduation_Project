@@ -69,7 +69,8 @@ function MonsterContainer({ Monster }) {
 }
 const motion = keyframes`
   0% {
-    padding-top: 0px;
+    padding-top: 0;
+    
   }
   //50% {
   //  opacity: 0;
@@ -117,12 +118,15 @@ const ImageList = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-around;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 const BigImage = styled.img`
     max-width: 450px;
     height: 400px;
-
     animation: ${motion} 0.6s linear 0s infinite alternate;
+
     @media only screen and (max-width: 768px) {
         margin: auto;
         max-width: 300px;

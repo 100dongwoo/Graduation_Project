@@ -57,7 +57,7 @@ const Button = styled.button`
     cursor: pointer;
     display: inline-block;
     font-family: 'BenchNine', Arial, sans-serif;
-    font-size: 1em;
+    //font-size: 1em;
     font-size: 22px;
     line-height: 1em;
     margin: 15px 40px;

@@ -159,7 +159,9 @@ function DetailPage(props) {
                                 height: 55,
                             }}
                         >
-                            {post.user?.nickname[0] + post.user?.nickname[1]}
+                            {post.user?.nickname.length >= 2
+                                ? post.user?.nickname.slice(0, 2)
+                                : post.user?.nickname[0]}
                         </Avatar>
                         <UserName>{post.user?.nickname}</UserName>
                     </Userbox>
@@ -223,8 +225,11 @@ function DetailPage(props) {
                                     height: 55,
                                 }}
                             >
-                                {review.user?.nickname[0] +
-                                    review.user?.nickname[1]}
+                                {review.user?.nickname.length >= 2
+                                    ? review.user?.nickname.slice(0, 2)
+                                    : review.user?.nickname[0]}
+                                {/*{review.user?.nickname[0] +*/}
+                                {/*    review.user?.nickname[1]}*/}
                             </Avatar>
                             {/*<AvartarContainer*/}
                             {/*    style={{*/}

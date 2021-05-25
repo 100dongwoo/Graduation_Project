@@ -43,6 +43,7 @@ const ListMenu = styled.ul`
     background-color: #f68600;
     text-align: center;
     height: 100%;
+    margin-right: 2.5rem;
 `;
 const Lists = styled.li`
     height: 58px;

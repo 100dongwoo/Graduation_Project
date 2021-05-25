@@ -76,11 +76,18 @@ const Post = styled.div`
     &:hover {
         opacity: 0.8;
     }
+    @media only screen and (max-width: 768px) {
+        height: 149.85px;
+        padding: 0.5rem 0.6rem;
+    }
 `;
 const PostImg = styled.img`
     width: 10rem;
     height: 10rem;
     margin-left: 1.5rem;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 const PostTitle = styled.p`
     font-style: normal;
@@ -111,6 +118,9 @@ const PostInforBox = styled.div`
     border: 1px solid #f4f4f4;
     box-sizing: border-box;
     border-radius: 4px;
+    @media only screen and (max-width: 768px) {
+        font-size: 10px;
+    }
 `;
 // 사진있는 이위에는 포스트 관련 styled-component
 

@@ -1,20 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { ChattingSampe } from '../../../SampleData/SampleData';
 import Comment from './Comment';
 import { useSelector } from 'react-redux';
-
+import io from 'socket.io-client';
 function Chatting(props) {
+    const socketRef = useRef();
+    const [chats, setChats] = useState([]);
+    useEffect(() => {
+        socketRef.current = io.connect('http://localhost:4000');
+        socketRef.current.on('message', ({ userName, chatContent }) => {
+            setChats([...chats, { userName, chatContent }]);
+        });
+        return () => socketRef.current.disconnect();
+    }, [chats]);
+    // useEffect(() => {
+    //     socket.on('message', (payload) => {
+    //         setChats([...chats, payload]);
+    //     });
+    // });
+    //
     const [containerSize, setContainerSize] = useState(true);
     const [chatContent, setChatContent] = useState('');
-    const [chats, setChats] = useState(ChattingSampe);
+    const [userName, setUserName] = useState('');
+    // const [chats, setChats] = useState(ChattingSampe);
     const auth = useSelector((state) => state.auth);
     const { user } = auth;
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
+        // console.log(chatContent);
         if (!chatContent) {
             console.log('빈칸');
+            return;
         }
+        //socket
+        // if (chatContent) {
+        //     socket.emit('message', chatContent);
+        //     setChatContent('');
+        // }{ user, message }
+        let userName = user ? user?.nickname : '비 회원';
+        socketRef.current.emit('message', { userName, chatContent });
+        // socket.emit('message', { chatContent });
+        setChatContent('');
     };
 
     return (
@@ -40,25 +68,25 @@ function Chatting(props) {
                     <Comment chat={chat} key={index} />
                 ))}
             </ChatContainer>
-            {user ? (
-                <InputShowBox onSubmit={onSubmitHandler}>
-                    <InputBox
-                        placeholder="입력하세요"
-                        type="text"
-                        value={chatContent}
-                        onChange={(e) => setChatContent(e.currentTarget.value)}
-                    />
-                    <SubmitIcon
-                        user={user}
-                        className="fas fa-arrow-circle-up"
-                        onClick={onSubmitHandler}
-                    />
-                </InputShowBox>
-            ) : (
-                <InputShowBox style={{ color: '#adadad' }}>
-                    로그인 후 사용 바랍니다
-                </InputShowBox>
-            )}
+            {/*{user ? (*/}
+            <InputShowBox onSubmit={onSubmitHandler}>
+                <InputBox
+                    placeholder="입력하세요"
+                    type="text"
+                    value={chatContent}
+                    onChange={(e) => setChatContent(e.currentTarget.value)}
+                />
+                <SubmitIcon
+                    user={user}
+                    className="fas fa-arrow-circle-up"
+                    onClick={onSubmitHandler}
+                />
+            </InputShowBox>
+            {/*) : (*/}
+            <InputShowBox style={{ color: '#adadad' }}>
+                로그인 후 사용 바랍니다
+            </InputShowBox>
+            {/*)}*/}
         </HelpContainer>
     );
 }

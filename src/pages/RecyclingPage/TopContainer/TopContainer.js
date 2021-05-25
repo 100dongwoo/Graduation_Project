@@ -64,6 +64,11 @@ const NavLinkq = styled(LinkS)`
     &:hover {
         border-bottom: 4px solid #01bf71;
     }
+    @media only screen and (max-width: 768px) {
+        font-size: 1rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
     //&.active {
     //    border-bottom: 3px solid #01bf71;
     //    transform: scale(1.04);
@@ -83,6 +88,9 @@ const Container = styled.div`
     border-right: none;
     border-left: none;
     margin-top: 2rem;
+    @media only screen and (max-width: 768px) {
+        font-size: 0.8rem;
+    }
 `;
 //
 const ContainerTop = styled.div`

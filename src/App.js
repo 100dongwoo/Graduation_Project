@@ -22,6 +22,7 @@ import { selectUser } from './Redux/userSlice';
 import Mypage from './pages/Mypage/Mypage';
 import RecyclingPage from './pages/RecyclingPage/RecyclingPage';
 import NoticeDetaiPage from './pages/NoticeDetailPage/NoticeDetaiPage';
+
 const GlobalStyle = createGlobalStyle`
   body {
      font-family: Noto Sans KR;
@@ -30,10 +31,10 @@ const GlobalStyle = createGlobalStyle`
      //font-family: payboocLight,serif;
      padding : 0 0;
      margin: 0;
-
-     text-rendering: optimizelegibility;
-    -webkit-font-smoothing: antialiased;
-  }
+    -ms-overflow-style:none;
+    ::-webkit-scrollbar { display:none;
+}
+ }
 `;
 
 function App(props) {

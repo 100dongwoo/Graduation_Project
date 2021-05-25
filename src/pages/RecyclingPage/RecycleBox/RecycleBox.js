@@ -123,7 +123,7 @@ const TitleBox = styled.div`
     width: 100%;
     text-align: center;
     align-items: center;
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1024px) {
         margin: 1rem 0rem;
     }
 `;
@@ -141,7 +141,7 @@ const Content = styled.div`
     margin: auto;
     display: flex;
     justify-content: space-between;
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1024px) {
         flex-direction: column;
     }
     //flex-direction: column;
@@ -149,7 +149,7 @@ const Content = styled.div`
 const BoxContainer = styled.div`
     //background-color: red;
     width: 370px;
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1024px) {
         ////display: flex;
         //overflow: scroll;
         width: 100%;

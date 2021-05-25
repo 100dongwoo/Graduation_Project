@@ -73,6 +73,10 @@ const SocialBox = styled.a`
         opacity: 0.8;
         text-decoration: none;
     }
+    @media only screen and (max-width: 768px) {
+        width: 65px;
+        height: 65px;
+    }
 `;
 const SocialContainer = styled.div`
     max-width: 55rem;
@@ -84,4 +88,7 @@ const SocialContainer = styled.div`
 `;
 const Social = styled.i`
     color: white;
+    @media only screen and (max-width: 768px) {
+        font-size: 2.5rem;
+    }
 `;

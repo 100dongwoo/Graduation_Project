@@ -16,7 +16,7 @@ function CommunityTable({ posts }) {
                     <Headtr>
                         <HeadTitleTH>제목</HeadTitleTH>
                         <HeadUserTH>유저</HeadUserTH>
-                        <HeadSmallTH>댓글</HeadSmallTH>
+                        <HeadSmallReviewCount>댓글</HeadSmallReviewCount>
                         <HeadSmallTH>조회 수</HeadSmallTH>
                         <HeadSmallTH>활동</HeadSmallTH>
                     </Headtr>
@@ -49,7 +49,9 @@ function CommunityTable({ posts }) {
                                 </div>
                             </ContentTitle>
                             <ContentUser>{post.user.nickname}</ContentUser>
-                            <ContentSmall>{post.review_count}</ContentSmall>
+                            <ContentSmallReview>
+                                {post.review_count}
+                            </ContentSmallReview>
                             <ContentSmall>{post.hit_count}</ContentSmall>
                             <ContentSmall>
                                 {calculateChatDate(post.created_at)}
@@ -95,10 +97,16 @@ const HeadUserTH = styled(TH)`
     min-width: 4.3rem;
     white-space: nowrap;
 `;
+
 const HeadSmallTH = styled(TH)`
     width: 5%;
     min-width: 4.9rem;
     text-align: center;
+`;
+const HeadSmallReviewCount = styled(HeadSmallTH)`
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 const Headtr = styled.tr`
     border-bottom: 3px solid #919191;
@@ -119,5 +127,10 @@ const ContentUser = styled(TD)`
 `;
 const ContentSmall = styled(TD)`
     text-align: center;
+`;
+const ContentSmallReview = styled(ContentSmall)`
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 export default CommunityTable;

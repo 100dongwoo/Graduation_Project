@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Chatting from './Chatting/Chatting';
 
 function Help(props) {
-    const [isHelp, setIsHelp] = useState(false);
+    const [isHelp, setIsHelp] = useState(true);
     const [isTooltipActive, setIsTooltipActive] = useState(false);
     function sleep(ms) {
         const wakeUpTime = Date.now() + ms;

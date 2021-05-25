@@ -15,5 +15,6 @@ function Mypage(props) {
 const Container = styled.div`
     max-width: 1250px;
     margin: auto;
+    padding: 3rem 0rem;
 `;
 export default Mypage;

@@ -118,17 +118,16 @@ function CommunityPage(props) {
                             </InputGroups>
                         </form>
                         <IconBox>
-                            <div>
-                                {user && (
-                                    <WriteButton
-                                        onClick={() => {
-                                            history.push('/upload');
-                                        }}
-                                    >
-                                        글쓰기
-                                    </WriteButton>
-                                )}
-                            </div>
+                            {user && (
+                                <WriteButton
+                                    onClick={() => {
+                                        history.push('/upload');
+                                    }}
+                                >
+                                    글쓰기
+                                </WriteButton>
+                            )}
+
                             <div>
                                 <Icons
                                     className="fas fa-th-large"
@@ -229,7 +228,7 @@ const IconBox = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 0rem 1rem;
+    padding-right: 1rem;
     margin-top: 1rem;
 `;
 const Icons = styled.i`

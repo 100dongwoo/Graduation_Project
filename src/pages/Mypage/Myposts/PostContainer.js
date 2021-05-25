@@ -83,9 +83,12 @@ const RightContainer = styled.div`
 `;
 const LeftContainer = styled.div`
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 `;
 const PostBox = styled.div`
-    width: 860px;
+    max-width: 860px;
     height: 120px;
     background: #ffffff;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);
@@ -105,6 +108,10 @@ const Title = styled.span`
     font-size: 14px;
     line-height: 126%;
     color: #292c30;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
 `;
 const Timer = styled.span`
     font-style: normal;
@@ -112,8 +119,11 @@ const Timer = styled.span`
     font-size: 12px;
     line-height: 17px;
     letter-spacing: 0.055em;
-
     color: #292c30;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
 `;
 const Content = styled.span`
     font-style: normal;

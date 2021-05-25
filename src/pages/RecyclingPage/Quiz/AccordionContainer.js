@@ -13,7 +13,14 @@ function AccordionContainer({ quiz }) {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <TYpography variant="h7">{quiz.question}</TYpography>
+                    <TYpography
+                        style={{
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: '700',
+                        }}
+                    >
+                        {quiz.question}
+                    </TYpography>
                 </AccordionSummary>
                 <SolutionBox>
                     <RealityFont>정답 : {quiz.answer}</RealityFont>

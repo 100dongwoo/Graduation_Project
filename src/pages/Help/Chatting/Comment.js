@@ -5,8 +5,8 @@ import moment from 'moment';
 function Comment({ chat }) {
     return (
         <Container>
-            <UserName>{chat?.user}</UserName>
-            <ChatContent>{chat?.content}</ChatContent>
+            <UserName>{chat.userName}</UserName>
+            <ChatContent>{chat.chatContent}</ChatContent>
             <Time>{moment().locale('en').format('LT')}</Time>
         </Container>
     );
@@ -25,6 +25,7 @@ const ChatContent = styled.p`
 `;
 const UserName = styled.p`
     word-break: keep-all;
+    white-space: nowrap;
     //margin-right: 16px;
     font-weight: 400;
     color: #12c0f9;
@@ -34,7 +35,7 @@ const Container = styled.div`
     padding: 0.1rem 0.8rem;
     display: flex;
     justify-content: space-between;
-    height: 88px;
+    height: 38px;
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.1);
     border-radius: 14px;
     background: #ffffff;
