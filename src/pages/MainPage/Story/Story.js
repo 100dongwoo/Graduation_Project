@@ -67,6 +67,7 @@ function Story(props) {
                     nextButton={<MoveButton>left</MoveButton>}
                     backButton={<MoveButton>Right</MoveButton>}
                     style={{
+                        whiteSpace: 'nowrap',
                         display: 'flex',
                         justifyContent: 'center',
                     }}
