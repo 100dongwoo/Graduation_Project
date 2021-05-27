@@ -8,15 +8,15 @@ import { FailAlert, SuccessAlert } from '../../../Alert/Alert';
 function PostContainer(props) {
     let post = props.post;
     const history = useHistory();
-    const onClickUpdate = (e) => {
+    const onClickUpdate = (e, post) => {
         e.stopPropagation();
-        console.log(post);
-        // props.history.push({ pathname: '/upload', state: { post } });
+        history.push({ pathname: '/upload', state: { post } });
     };
     const onClickToDetail = (e, postId) => {
         history.push(`/post/${postId}`);
     };
     const onClickDelete = (e, postId) => {
+        e.stopPropagation();
         axios
             .delete(`/posts/${postId}/`)
             .then((res) => {
@@ -25,7 +25,6 @@ function PostContainer(props) {
                     return;
                 }
                 SuccessAlert('게시글 삭제 성공');
-                history.push('/Community');
             })
             .catch((err) => {
                 if (err.response.data.msg) {
@@ -51,7 +50,13 @@ function PostContainer(props) {
                 </Timer>
             </LeftContainer>
             <RightContainer>
-                <Button onClick={onClickUpdate}>수 정</Button>
+                <Button
+                    onClick={(e) => {
+                        onClickUpdate(e, post);
+                    }}
+                >
+                    수 정
+                </Button>
                 <Button
                     margin="true"
                     type="delete"
