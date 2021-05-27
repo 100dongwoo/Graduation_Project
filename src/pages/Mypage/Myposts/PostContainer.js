@@ -70,6 +70,10 @@ function PostContainer(props) {
         </PostBox>
     );
 }
+const Container = styled.div`
+    width: 100%;
+    background: red;
+`;
 const Button = styled.button`
     z-index: 9999;
     background: #ffffff;
@@ -100,6 +104,7 @@ const PostBox = styled.div`
     border-radius: 10px;
     margin-bottom: 1rem;
     display: flex;
+    flex: 1;
     padding: 20px 17px;
     cursor: pointer;
     &:hover {

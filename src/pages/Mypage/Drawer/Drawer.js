@@ -31,7 +31,9 @@ function Drawer(props) {
         </Container>
     );
 }
-const RightMenuContainer = styled.div``;
+const RightMenuContainer = styled.div`
+    width: 100%;
+`;
 const Container = styled.div`
     max-width: 1250px;
     margin: auto;
