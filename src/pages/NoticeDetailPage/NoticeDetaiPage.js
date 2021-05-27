@@ -35,12 +35,12 @@ function NoticeDetaiPage(props) {
         <Container>
             <NoticeFont>공지사항</NoticeFont>
             <NoticeContainer>
-                <CreateDate>{moment(post.created_at).format('ll')}</CreateDate>
+                <CreateDate>{moment(post?.created_at).format('ll')}</CreateDate>
 
-                <Title>{post.title}</Title>
-                <Content>{post.content}</Content>
+                <Title>{post?.title}</Title>
+                <Content>{post?.content}</Content>
                 <img
-                    src="https://t1.daumcdn.net/cfile/tistory/99BC3C335BBF093F1B"
+                    src={post?.image}
                     style={{
                         width: 300,
                         height: 250,
