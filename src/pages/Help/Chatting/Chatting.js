@@ -8,7 +8,17 @@ function Chatting(props) {
     const socketRef = useRef();
     const [chats, setChats] = useState([]);
     useEffect(() => {
+        // socketRef.current = io.connect('http://localhost:5000');
         socketRef.current = io.connect('http://54.180.217.191:5000');
+        if (process.env.NODE_ENV === 'development') {
+            socketRef.current = io.connect('http://localhost:5000');
+            {
+                console.log('123');
+            }
+        } else {
+            console.log('312');
+            socketRef.current = io.connect('http://54.180.217.191:5000');
+        }
         socketRef.current.on('message', ({ userName, chatContent }) => {
             setChats([...chats, { userName, chatContent }]);
         });
