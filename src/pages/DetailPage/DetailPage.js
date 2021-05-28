@@ -191,16 +191,16 @@ function DetailPage(props) {
                         editorState={editor}
                         onChange={onChange}
                     />
-                    {user && user?.id === post?.user?.id && (
-                        <DeleteButton onClick={onClickDelete}>
-                            삭제
-                        </DeleteButton>
-                    )}
-                    {user && user?.id === post?.user?.id && (
-                        <DeleteButton onClick={onClickUpdate}>
-                            수정
-                        </DeleteButton>
-                    )}
+                    {/*{user && user?.id === post?.user?.id && (*/}
+                    {/*    <DeleteButton onClick={onClickDelete}>*/}
+                    {/*        삭제*/}
+                    {/*    </DeleteButton>*/}
+                    {/*)}*/}
+                    {/*{user && user?.id === post?.user?.id && (*/}
+                    {/*    <DeleteButton onClick={onClickUpdate}>*/}
+                    {/*        수정*/}
+                    {/*    </DeleteButton>*/}
+                    {/*)}*/}
                 </div>
 
                 {/*리뷰*/}

@@ -55,10 +55,10 @@ function CommunityPage(props) {
                     return;
                 }
                 // console.log(res);
-                if (res.data?.count === 0) {
-                    FailAlert('게시글이 존재하지 않습니다');
-                    return;
-                }
+                // if (res.data?.count === 0) {
+                //     FailAlert('게시글이 존재하지 않습니다');
+                //     return;
+                // }
                 setPosts(res.data?.results);
                 setTotalPage(
                     parseInt(res.data.count) !== 0
