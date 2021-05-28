@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FailAlert } from '../../../Alert/Alert';
 import AchievementPost from './AchievementPost';
+import styled from 'styled-components';
 
 function Achievements({ clear }) {
     const [achievements, setAchievements] = useState([]);
@@ -12,7 +13,7 @@ function Achievements({ clear }) {
         axios
             .get(`/careers/?is_clear=${clear}`)
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 if (res.statusText !== 'OK') {
                     console.log(res);
                     return;
@@ -30,12 +31,17 @@ function Achievements({ clear }) {
     };
     return (
         <div>
-            {<h1>{clear ? '업적' : '미완료 업적'}</h1>}
+            <MenuContainer>
+                {<h1>{clear ? '업적' : '미완료 업적'}</h1>}
+            </MenuContainer>
             {achievements?.map((achievement) => (
-                <AchievementPost post={achievements} key={achievement.id} />
+                <AchievementPost post={achievement} key={achievement.id} />
             ))}
         </div>
     );
 }
 
 export default Achievements;
+const MenuContainer = styled.div`
+    border-bottom: 4px solid #dedede;
+`;
