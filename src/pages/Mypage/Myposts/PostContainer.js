@@ -25,6 +25,7 @@ function PostContainer(props) {
                     return;
                 }
                 SuccessAlert('게시글 삭제 성공');
+                props.fetchPostMyPosts(props.page);
             })
             .catch((err) => {
                 if (err.response.data.msg) {
@@ -83,8 +84,14 @@ const Button = styled.button`
     width: 119px;
     height: 34px;
     float: right;
-    background: ${(props) => (props.type === 'delete' ? '#fff' : 'red')};
+    background: ${(props) => (props.type === 'delete' ? '#fff' : '#042B6C')};
     margin-top: ${(props) => (props.margin ? '0.5rem' : '0px')};
+    //
+    color: ${(props) => (props.type === 'delete' ? '#042B6C' : '#fff')};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
 `;
 const RightContainer = styled.div`
     padding-left: 2rem;
@@ -109,7 +116,6 @@ const PostBox = styled.div`
     cursor: pointer;
     &:hover {
         opacity: 0.7;
-        background: red;
     }
 `;
 const Title = styled.span`

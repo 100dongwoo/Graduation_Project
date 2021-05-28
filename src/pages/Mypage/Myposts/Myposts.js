@@ -19,7 +19,7 @@ function Myposts(props) {
     };
     useEffect(() => {
         fetchPostMyPosts(page);
-    }, [posts]);
+    }, []);
     const fetchPostMyPosts = (page) => {
         axios
             .get(`/posts/`, { user: user?.id, page: page })
@@ -54,7 +54,12 @@ function Myposts(props) {
     return (
         <div>
             {posts.map((post, index) => (
-                <PostContainer post={post} key={index} />
+                <PostContainer
+                    post={post}
+                    key={index}
+                    fetchPostMyPosts={fetchPostMyPosts}
+                    page={page}
+                />
             ))}
             <PaginationComponent
                 totalPage={totalPage}

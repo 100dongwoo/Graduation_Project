@@ -25,7 +25,7 @@ function UserInformation(props) {
                                 alt="inforImage"
                             />
                             <BoxTitle>공격력</BoxTitle>
-                            <p>LV . {user?.damage}</p>
+                            <p> {user?.damage}</p>
                         </CircleBox>
                         <CircleBox>
                             <Circle
@@ -33,7 +33,7 @@ function UserInformation(props) {
                                 alt="inforImage"
                             />
                             <BoxTitle>방어력</BoxTitle>
-                            <p>{user?.damage}</p>
+                            <p>{user?.defence}</p>
                         </CircleBox>
                         <CircleBox>
                             <Circle
@@ -41,7 +41,7 @@ function UserInformation(props) {
                                 alt="inforImage"
                             />
                             <BoxTitle>체 력</BoxTitle>
-                            <p>{user?.damage}</p>
+                            <p>{user?.hp}</p>
                         </CircleBox>
                     </ImageBoxContainer>
                     <TopInfor>
