@@ -148,14 +148,14 @@ function NavBar(props) {
                         >
                             공지사항
                         </Nav.Link>
-                        <Nav.Link
-                            href={'/Ranking'}
-                            onClick={(e) => {
-                                onChannelChange(e, 'Ranking');
-                            }}
-                        >
-                            랭킹
-                        </Nav.Link>
+                        {/*<Nav.Link*/}
+                        {/*    href={'/Ranking'}*/}
+                        {/*    onClick={(e) => {*/}
+                        {/*        onChannelChange(e, 'Ranking');*/}
+                        {/*    }}*/}
+                        {/*>*/}
+                        {/*    랭킹*/}
+                        {/*</Nav.Link>*/}
                         <Nav.Link
                             href={'/Community'}
                             onClick={(e) => {
