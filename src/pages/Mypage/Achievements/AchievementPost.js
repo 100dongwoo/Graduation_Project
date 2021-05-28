@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Collapse } from 'react-collapse';
 
 //career.book.image 이미지
 //career.book.name 페트병
@@ -12,41 +13,62 @@ import styled from 'styled-components';
 //career.current_count
 //
 function AchievementPost({ post }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const onChnageIsOpen = (e) => {
+        setIsOpen(!isOpen);
+    };
     return (
-        <PostBox>
-            {console.log(post)}
-            <Image src={post.career?.book.image} />
-            <div>
-                <CareerContent style={{ color: '#1a7bc6' }}>
-                    <CareerNameTitle>업적 명 : </CareerNameTitle>
-                    {post.career?.name}
-                </CareerContent>
+        <Container>
+            <PostBox>
+                {console.log(post)}
+                <Image src={post.career?.book.image} />
+                <div>
+                    <CareerContent style={{ color: '#1a7bc6' }}>
+                        <CareerNameTitle>업적 명 : </CareerNameTitle>
+                        {post.career?.name}
+                    </CareerContent>
 
-                <CareerContent>
-                    <CareerNameTitle>설명 : </CareerNameTitle>
-                    {post.career?.content}
-                </CareerContent>
-                <CareerContent>
-                    <CareerNameTitle>재활용 분야 : </CareerNameTitle>
-                    {post.career?.type_detail_name}
-                </CareerContent>
-                <CareerContent>
-                    <CareerNameTitle>달성도 : </CareerNameTitle>
-                    달성도 : &nbsp;
-                    {parseInt(
-                        (parseFloat(post?.current_count) /
-                            parseFloat(post?.max_count)) *
-                            100
-                    ) + '%'}
-                    {/*&nbsp; &nbsp; | &nbsp;&nbsp; {post?.current_count} /{' '}*/}
-                    {/*{post?.max_count}*/}
-                </CareerContent>
+                    <CareerContent>
+                        <CareerNameTitle>설명 : </CareerNameTitle>
+                        {post.career?.content}
+                    </CareerContent>
+                    <CareerContent>
+                        <CareerNameTitle>재활용 분야 : </CareerNameTitle>
+                        {post.career?.type_detail_name}
+                    </CareerContent>
+                    <CareerContent>
+                        <CareerNameTitle>달성도 : </CareerNameTitle>
+                        달성도 : &nbsp;
+                        {parseInt(
+                            (parseFloat(post?.current_count) /
+                                parseFloat(post?.max_count)) *
+                                100
+                        ) + '%'}
+                        {/*&nbsp; &nbsp; | &nbsp;&nbsp; {post?.current_count} /{' '}*/}
+                        {/*{post?.max_count}*/}
+                    </CareerContent>
+                    <MoreText onClick={onChnageIsOpen}>
+                        {isOpen ? '도감 접기' : '도감 보기'}
+                    </MoreText>
+                </div>
+            </PostBox>
+            <div>
+                <Collapse isOpened={isOpen}>
+                    <p>
+                        <span>이름 : </span> {post?.career?.book.name}
+                    </p>
+                    <p>{post?.career?.book.content}</p>
+                </Collapse>
             </div>
-        </PostBox>
+        </Container>
     );
 }
 
 export default AchievementPost;
+const MoreText = styled.p``;
+const Container = styled.div`
+    border-bottom: solid 1px #d9d9d9;
+`;
 const CareerNameTitle = styled.strong`
     color: black;
     font-weight: 700;
@@ -63,7 +85,7 @@ const CareerContent = styled.p`
     font-weight: 400;
 `;
 const PostBox = styled.div`
-    border-bottom: solid 1px #d9d9d9;
+    //border-bottom: solid 1px #d9d9d9;
     display: flex;
     padding: 10px 7px 5px 4px;
 `;
