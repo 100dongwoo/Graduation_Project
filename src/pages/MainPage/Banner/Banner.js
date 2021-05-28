@@ -51,17 +51,17 @@ const Banner = () => {
                                 alt="First slide"
                             />
                         )}
-                        <Carousel.Caption>
-                            {array.image && (
-                                <img
-                                    alt="이미지"
-                                    src={array.image}
-                                    style={{ width: 300, height: 300 }}
-                                />
-                            )}
-                            <h3>{array.title}</h3>
-                            <p>{array.sub}</p>
-                        </Carousel.Caption>
+                        {/*<Carousel.Caption>*/}
+                        {/*    {array.image && (*/}
+                        {/*        <img*/}
+                        {/*            alt="이미지"*/}
+                        {/*            src={array.image}*/}
+                        {/*            style={{ width: 300, height: 300 }}*/}
+                        {/*        />*/}
+                        {/*    )}*/}
+                        {/*    <h3>{array.title}</h3>*/}
+                        {/*    <p>{array.sub}</p>*/}
+                        {/*</Carousel.Caption>*/}
                     </CarouselBox>
                 ))}
             </Carousel>

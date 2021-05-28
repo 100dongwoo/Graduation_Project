@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Chatting from './Chatting/Chatting';
 
 function Help(props) {
-    const [isHelp, setIsHelp] = useState(true);
+    const [isHelp, setIsHelp] = useState(false);
     const [isTooltipActive, setIsTooltipActive] = useState(false);
     function sleep(ms) {
         const wakeUpTime = Date.now() + ms;

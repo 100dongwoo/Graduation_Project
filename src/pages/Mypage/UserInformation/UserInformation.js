@@ -24,7 +24,7 @@ function UserInformation(props) {
                                 src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
                                 alt="inforImage"
                             />
-                            <BoxTitle>레 벨</BoxTitle>
+                            <BoxTitle>공격력</BoxTitle>
                             <p>LV . {user?.damage}</p>
                         </CircleBox>
                         <CircleBox>
@@ -32,7 +32,7 @@ function UserInformation(props) {
                                 src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
                                 alt="inforImage"
                             />
-                            <BoxTitle>점 수</BoxTitle>
+                            <BoxTitle>방어력</BoxTitle>
                             <p>{user?.damage}</p>
                         </CircleBox>
                         <CircleBox>
@@ -40,7 +40,7 @@ function UserInformation(props) {
                                 src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
                                 alt="inforImage"
                             />
-                            <BoxTitle>Level</BoxTitle>
+                            <BoxTitle>체 력</BoxTitle>
                             <p>{user?.damage}</p>
                         </CircleBox>
                     </ImageBoxContainer>

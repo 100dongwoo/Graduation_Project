@@ -19,7 +19,7 @@ function Myposts(props) {
     };
     useEffect(() => {
         fetchPostMyPosts(page);
-    }, []);
+    }, [posts]);
     const fetchPostMyPosts = (page) => {
         axios
             .get(`/posts/`, { user: user?.id, page: page })
