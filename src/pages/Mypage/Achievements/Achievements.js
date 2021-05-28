@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FailAlert } from '../../../Alert/Alert';
+import AchievementPost from './AchievementPost';
 
 function Achievements({ clear }) {
     const [achievements, setAchievements] = useState([]);
@@ -27,7 +28,14 @@ function Achievements({ clear }) {
                 }
             });
     };
-    return <div>{<h1>{clear ? '업적' : '미완료 업적'}</h1>}</div>;
+    return (
+        <div>
+            {<h1>{clear ? '업적' : '미완료 업적'}</h1>}
+            {achievements?.map((achievement) => (
+                <AchievementPost post={achievements} key={achievement.id} />
+            ))}
+        </div>
+    );
 }
 
 export default Achievements;
