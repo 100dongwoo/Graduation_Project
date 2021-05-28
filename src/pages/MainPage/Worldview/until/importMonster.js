@@ -50,9 +50,6 @@ import kimchiroomMonster from '../../../../images/monsters/CountrySideMonster/ki
 import pesticideMonster from '../../../../images/monsters/CountrySideMonster/pesticideMonster.png';
 import styrofoamMonster from '../../../../images/monsters/CountrySideMonster/styrofoamMonster.png';
 import vegetableMonster from '../../../../images/monsters/CountrySideMonster/vegetableMonster.png';
-import strawberryMonster from '../../../../images/monsters/CountrySideMonster/strawberryMonster.png';
-import orangeMonster from '../../../../images/monsters/CountrySideMonster/orangeMonster.png';
-import waterMelonMonster from '../../../../images/monsters/CountrySideMonster/waterMelonMonster.png';
 
 export const countrySideMonster = [
     // kimchiroomMonster,
@@ -83,24 +80,6 @@ export const countrySideMonster = [
         infor:
             '음식을 만들 때 거의 매번 들어가는 재료였다. 하지만 사람들의 오해로 인해 음식물쓰레기로 잘못 버려졌다. 그 와중에 마법의 약을 맞아 두 가지 재료가 융합돼서 겉모습이 매우 흉악하다. 흉악하게 생긴 만큼 성격도 좋지 않다. 만나면 피하는 게 상책이다.',
     },
-    {
-        image: strawberryMonster,
-        title: '논산딸기훈련병',
-        infor:
-            '달고 맛있어서 그대로 먹기도 하지만 음료로도 인기 있다. 특히 제철인 겨울에 많이 보이고 많이 찾는 과일이다. 겨울 혹한기 훈련에 찌들어 땅이 꺼져라 한숨만 푹푹 쉬고 신세한탄만 늘어가던 중 마법의 물약에 맞았다. 한창 훈련이 힘들 때 물약에 맞은 터라 생각보다 까칠할 수도 있다. 화가 나면 꼭지가 돈다거나 씨를 뱉는다는 소문도 있으니 조심하자.',
-    },
-    {
-        image: waterMelonMonster,
-        title: '수박쓰',
-        infor:
-            '여름에 안 먹으면 안 되는 과일이다. 사이다와 후르츠칵테일 셋이서 함께라면 더위쯤이야 거뜬하게 물리칠 수 있다. 대부분의 성분이 수분이기 때문에 성격도 물같다. 그렇게 착하던 수박이 마법의 물약을 맞자 단단한 껍질을 이용하여 모두 막아낸다. 때리면 타격감은 좋지만 피해는 크지 않은 것 같다. 날카롭게 공격하면 뚫을 수 있을 것 같으니 참고해보자.',
-    },
-    {
-        image: orangeMonster,
-        title: '오렌지먹은지오렌지',
-        infor:
-            '감귤이나 한라봉같이 친구가 많은 과일이다. 친구가 많아져서 좋은 반면 인기 순위에서 슬슬 밀려나 기분이 좋지 않다. 심지어 아저씨들이 농담거리로 많이 이용하여 짜증이 많아졌다. 어떻게 다시 제 순위를 찾을 수 있을까 고뇌하던 중에 마법의 물약을 맞아 악한 성격이 더 커져버렸다. 상큼한 미소를 띄는 것 같지만 가까이에서 보면 포악한 모습이 보이니 적당한 거리를 유지하자.',
-    },
 ];
 // 마트 몬스터
 import fruitMonster from '../../../../images/monsters/MartMonster/fruitMonster.png';
@@ -126,5 +105,30 @@ export const martMonster = [
         title: '앵그리수팸',
         infor:
             '삼시세끼 챙겨 먹어도 질리지 않는 반찬이었다. 사람들이 제대로 세척하지 않고 버릴 뿐 아니라 뚜껑 또한 같이 잘못 버려졌다. 그때 마법의 약에 맞아 기름때와 뚜껑을 가진 채로 화가 나 있다. 재질 특성상 만지면 베일 수 있으므로 손으로 만져야 될 때 조심하자.',
+    },
+];
+//
+// 비닐하우스
+import strawberryMonster from '../../../../images/monsters/vinylHouseMonster/strawberryMonster.png';
+import orangeMonster from '../../../../images/monsters/vinylHouseMonster/orangeMonster.png';
+import waterMelonMonster from '../../../../images/monsters/vinylHouseMonster/waterMelonMonster.png';
+export const vinyHouseMonster = [
+    {
+        image: strawberryMonster,
+        title: '논산딸기훈련병',
+        infor:
+            '달고 맛있어서 그대로 먹기도 하지만 음료로도 인기 있다. 특히 제철인 겨울에 많이 보이고 많이 찾는 과일이다. 겨울 혹한기 훈련에 찌들어 땅이 꺼져라 한숨만 푹푹 쉬고 신세한탄만 늘어가던 중 마법의 물약에 맞았다. 한창 훈련이 힘들 때 물약에 맞은 터라 생각보다 까칠할 수도 있다. 화가 나면 꼭지가 돈다거나 씨를 뱉는다는 소문도 있으니 조심하자.',
+    },
+    {
+        image: waterMelonMonster,
+        title: '수박쓰',
+        infor:
+            '여름에 안 먹으면 안 되는 과일이다. 사이다와 후르츠칵테일 셋이서 함께라면 더위쯤이야 거뜬하게 물리칠 수 있다. 대부분의 성분이 수분이기 때문에 성격도 물같다. 그렇게 착하던 수박이 마법의 물약을 맞자 단단한 껍질을 이용하여 모두 막아낸다. 때리면 타격감은 좋지만 피해는 크지 않은 것 같다. 날카롭게 공격하면 뚫을 수 있을 것 같으니 참고해보자.',
+    },
+    {
+        image: orangeMonster,
+        title: '오렌지먹은지 오렌지',
+        infor:
+            '감귤이나 한라봉같이 친구가 많은 과일이다. 친구가 많아져서 좋은 반면 인기 순위에서 슬슬 밀려나 기분이 좋지 않다. 심지어 아저씨들이 농담거리로 많이 이용하여 짜증이 많아졌다. 어떻게 다시 제 순위를 찾을 수 있을까 고뇌하던 중에 마법의 물약을 맞아 악한 성격이 더 커져버렸다. 상큼한 미소를 띄는 것 같지만 가까이에서 보면 포악한 모습이 보이니 적당한 거리를 유지하자.',
     },
 ];

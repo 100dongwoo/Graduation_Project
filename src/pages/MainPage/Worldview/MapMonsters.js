@@ -5,6 +5,7 @@ import {
     convenienceStoreMonster,
     countrySideMonster,
     martMonster,
+    vinyHouseMonster,
 } from './until/importMonster';
 import MonsterContainer from './MonsterContainer/MonsterContainer';
 function MapMonsters(props) {
@@ -44,6 +45,15 @@ function MapMonsters(props) {
                     >
                         마트
                     </Button>
+                    <Button
+                        className="snip1535"
+                        onClick={(e) => {
+                            onClickChangeMap(e, vinyHouseMonster);
+                        }}
+                        active={pickMaps === vinyHouseMonster}
+                    >
+                        비닐 하우스
+                    </Button>
                 </MapListContainer>
                 <MonsterContainer Monster={pickMaps} />
             </Container>
@@ -71,7 +81,7 @@ const Button = styled.button`
 const MapListContainer = styled.div`
     text-align: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
 `;
 const TotalContainer = styled.div`
