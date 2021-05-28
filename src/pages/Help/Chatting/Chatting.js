@@ -26,7 +26,14 @@ function Chatting(props) {
     // const [chats, setChats] = useState(ChattingSampe);
     const auth = useSelector((state) => state.auth);
     const { user } = auth;
-
+    const chatContainer = React.createRef();
+    const scrollToMyRef = () => {
+        const scroll =
+            chatContainer.current.scrollHeight -
+            chatContainer.current.clientHeight;
+        // console.log(scroll);
+        chatContainer.current.scrollTo(0, scroll);
+    };
     const onSubmitHandler = (e) => {
         e.preventDefault();
         // console.log(chatContent);
@@ -43,6 +50,7 @@ function Chatting(props) {
         socketRef.current.emit('message', { userName, chatContent });
         // socket.emit('message', { chatContent });
         setChatContent('');
+        scrollToMyRef();
     };
 
     return (
@@ -63,7 +71,7 @@ function Chatting(props) {
                     }
                 />
             </TitleContainer>
-            <ChatContainer>
+            <ChatContainer ref={chatContainer}>
                 {chats.map((chat, index) => (
                     <Comment chat={chat} key={index} />
                 ))}
