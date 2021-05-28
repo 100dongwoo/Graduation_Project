@@ -8,7 +8,7 @@ function Chatting(props) {
     const socketRef = useRef();
     const [chats, setChats] = useState([]);
     useEffect(() => {
-        socketRef.current = io.connect('http://localhost:4000');
+        socketRef.current = io.connect('http://54.180.217.191:5000');
         socketRef.current.on('message', ({ userName, chatContent }) => {
             setChats([...chats, { userName, chatContent }]);
         });
