@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Collapse } from 'react-collapse';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
 
 //career.book.image 이미지
 //career.book.name 페트병
@@ -51,19 +51,38 @@ function AchievementPost({ post }) {
                     </MoreText>
                 </div>
             </PostBox>
-            <div>
-                <Collapse isOpened={isOpen}>
+            <CollapseContainer>
+                {/*<Collapse isOpened={isOpen}>*/}
+                {/*    <p>*/}
+                {/*        <span>도감 명 : </span> {post?.career?.book.name}*/}
+                {/*    </p>*/}
+                {/*    <BookContent>{post?.career?.book.content}</BookContent>*/}
+                {/*</Collapse>*/}
+                <Collapse
+                    isOpen={isOpen}
+                    // onEntering={onEntering}
+                    // onEntered={onEntered}
+                    // onExiting={onExiting}
+                    // onExited={onExited}
+                >
+                    {/*<Card>*/}
+                    {/*<CardBody>*/}
                     <p>
                         <span>도감 명 : </span> {post?.career?.book.name}
                     </p>
                     <BookContent>{post?.career?.book.content}</BookContent>
+                    {/*</CardBody>*/}
+                    {/*</Card>*/}
                 </Collapse>
-            </div>
+            </CollapseContainer>
         </Container>
     );
 }
 
 export default AchievementPost;
+const CollapseContainer = styled.div`
+    padding: 5px 1rem;
+`;
 const BookContent = styled.p``;
 const MoreText = styled.p`
     cursor: pointer;
