@@ -59,8 +59,16 @@ function MonsterContainer({ Monster }) {
                         {Monster[bigImageNumber]?.infor}
                     </MonsterInfor>
                     <div>
-                        <Button onClick={onClickHandleLeft}> > </Button>
-                        <Button onClick={onClickHandleRight}> > </Button>
+                        <Icon
+                            className="fas fa-arrow-circle-left"
+                            onClick={onClickHandleLeft}
+                        />
+                        <Icon
+                            className="fas fa-arrow-circle-right"
+                            onClick={onClickHandleRight}
+                        />
+                        {/*<Button onClick={onClickHandleLeft}> > </Button>*/}
+                        {/*<Button onClick={onClickHandleRight}> > </Button>*/}
                     </div>
                 </InforContainer>
             </BottomContainer>
@@ -70,7 +78,7 @@ function MonsterContainer({ Monster }) {
 const motion = keyframes`
   0% {
     padding-top: 0;
-    
+
   }
   //50% {
   //  opacity: 0;
@@ -78,6 +86,15 @@ const motion = keyframes`
   100% {
    padding-top: 30px;
   }
+`;
+const Icon = styled.i`
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin-right: 0.5rem;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 0;
+    color: #50bcdf;
 `;
 const Button = styled.button``;
 const InforContainer = styled.div`

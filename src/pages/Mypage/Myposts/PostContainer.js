@@ -76,7 +76,6 @@ const Container = styled.div`
     background: red;
 `;
 const Button = styled.button`
-    z-index: 9999;
     background: #ffffff;
     border: 1px solid #042b6c;
     box-sizing: border-box;
@@ -92,6 +91,10 @@ const Button = styled.button`
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    &:hover {
+        background: black;
+        color: #ffffff;
+    }
 `;
 const RightContainer = styled.div`
     padding-left: 2rem;
