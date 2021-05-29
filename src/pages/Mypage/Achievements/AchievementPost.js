@@ -38,7 +38,6 @@ function AchievementPost({ post }) {
                     </CareerContent>
                     <CareerContent>
                         <CareerNameTitle>달성도 : </CareerNameTitle>
-                        달성도 : &nbsp;
                         {parseInt(
                             (parseFloat(post?.current_count) /
                                 parseFloat(post?.max_count)) *
@@ -55,9 +54,9 @@ function AchievementPost({ post }) {
             <div>
                 <Collapse isOpened={isOpen}>
                     <p>
-                        <span>이름 : </span> {post?.career?.book.name}
+                        <span>도감 명 : </span> {post?.career?.book.name}
                     </p>
-                    <p>{post?.career?.book.content}</p>
+                    <BookContent>{post?.career?.book.content}</BookContent>
                 </Collapse>
             </div>
         </Container>
@@ -65,7 +64,14 @@ function AchievementPost({ post }) {
 }
 
 export default AchievementPost;
-const MoreText = styled.p``;
+const BookContent = styled.p``;
+const MoreText = styled.p`
+    cursor: pointer;
+    color: blue;
+    &:hover {
+        transform: scale(1.04);
+    }
+`;
 const Container = styled.div`
     border-bottom: solid 1px #d9d9d9;
 `;
