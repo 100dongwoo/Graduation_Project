@@ -5,7 +5,7 @@ import Achievements from '../Achievements/Achievements';
 import Myposts from '../Myposts/Myposts';
 
 function Drawer(props) {
-    const MenuList = ['게시글', '내 정보', '완료 업적', '미완료 업적'];
+    const MenuList = ['내 정보', '게시글', '완료 업적', '미완료 업적'];
     const [pickMenu, setPikcMenu] = useState(MenuList[0]);
     const onClickMenu = (e) => {
         setPikcMenu(e.target.innerHTML);
