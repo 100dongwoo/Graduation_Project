@@ -77,7 +77,7 @@ function UploadPage(props) {
                     return;
                 }
                 SuccessAlert(`${post ? '수정' : '추가'}성공.`);
-                post ? history.back() : history.push('/Community');
+                post ? history.goBack() : history.push('/Community');
             })
             .catch((err) => {
                 console.log(err);
