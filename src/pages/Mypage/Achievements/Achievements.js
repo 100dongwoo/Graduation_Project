@@ -4,11 +4,14 @@ import { FailAlert } from '../../../Alert/Alert';
 import AchievementPost from './AchievementPost';
 import styled from 'styled-components';
 import PaginationComponent from '../../../components/Pagination/PaginationComponent';
+import { useSelector } from 'react-redux';
 
 function Achievements({ clear }) {
     const [achievements, setAchievements] = useState([]);
     const [page, setPage] = useState(1); //현재 페이지
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
+    const auth = useSelector((state) => state.auth);
+    const { user } = auth;
     useEffect(() => {
         FetchQAchievement(1);
     }, []);
@@ -18,9 +21,9 @@ function Achievements({ clear }) {
         FetchQAchievement(value);
     };
     const FetchQAchievement = (page) => {
-        let params = { page };
+        let params = { is_clear: clear, user: user?.id };
         axios
-            .get(`/careers/?is_clear=${clear}`, { params })
+            .get('/careers/', { params })
             .then((res) => {
                 // console.log(res);
                 if (res.statusText !== 'OK') {

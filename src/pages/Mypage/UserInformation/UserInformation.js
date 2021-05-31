@@ -61,7 +61,6 @@ function UserInformation(props) {
 const RightContent = styled.div`
     display: flex;
     flex-direction: column;
-
     @media only screen and (max-width: 1024px) {
         width: 100%;
     }
@@ -105,7 +104,6 @@ const DoreBox = styled.div`
     padding: 1rem;
     border: 1px solid #adadad;
     margin-left: 3rem;
-
     @media only screen and (max-width: 1024px) {
         display: none;
     }

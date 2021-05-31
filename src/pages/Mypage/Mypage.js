@@ -13,8 +13,8 @@ function Mypage(props) {
     );
 }
 const Container = styled.div`
-    max-width: 1250px;
-    margin: auto;
-    padding: 3rem 0rem;
+    //max-width: 1250px;
+    ////margin: auto;
+    //padding: 3rem 0;
 `;
 export default Mypage;

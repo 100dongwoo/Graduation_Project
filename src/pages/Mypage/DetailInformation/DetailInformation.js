@@ -8,7 +8,6 @@ function DetailInformation(props) {
     const { user } = auth;
     return (
         <div>
-            {console.log(user)}
             <Table bordered hover size="md">
                 {/*<thead>*/}
                 <TR>
