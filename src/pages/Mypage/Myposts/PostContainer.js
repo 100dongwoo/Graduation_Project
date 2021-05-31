@@ -109,6 +109,7 @@ const LeftContainer = styled.div`
 const PostBox = styled.div`
     height: 120px;
     background: #ffffff;
+    border: 1px solid #adadad;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);
     border-radius: 10px;
     margin-bottom: 1rem;

@@ -125,7 +125,6 @@ const Icon = styled.i`
 `;
 const CarouselContainer = styled.div`
     width: 100%;
-    background: red;
     max-width: 900px;
 `;
 const MoveButton = styled.button`
