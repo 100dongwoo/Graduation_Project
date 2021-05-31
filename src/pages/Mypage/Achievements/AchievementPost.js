@@ -20,7 +20,6 @@ function AchievementPost({ post }) {
     return (
         <Container>
             <PostBox>
-                {console.log(post)}
                 <Image src={post.career?.book.image} />
                 <div>
                     <CareerContent style={{ color: '#1a7bc6' }}>
