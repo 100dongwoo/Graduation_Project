@@ -42,16 +42,18 @@ function CommunityPage(props) {
     }, []);
 
     const fetchPost = (page, keyword) => {
-        let params = { page };
+        let page_size = 10;
+        let params = { page, page_size };
         if (keyword) {
             params.keyword = keyword;
         }
         // console.log(params);
-        axios.get('/posts/', {params})
+        axios
+            .get('/posts/', { params })
             .then((res) => {
                 console.log('res', res);
                 if (res.statusText !== 'OK') {
-                   FailAlert('게시글을 불러오는 데 문제가 생겼습니다.')
+                    FailAlert('게시글을 불러오는 데 문제가 생겼습니다.');
                     return;
                 }
                 // console.log(res);
@@ -62,9 +64,9 @@ function CommunityPage(props) {
                 setPosts(res.data?.results);
                 setTotalPage(
                     parseInt(res.data.count) !== 0
-                        ? parseInt(res.data.count) % 20 === 0
-                            ? parseInt(res.data.count / 20)
-                            : parseInt(res.data.count / 20) + 1
+                        ? parseInt(res.data.count) % page_size === 0
+                            ? parseInt(res.data.count / page_size)
+                            : parseInt(res.data.count / page_size) + 1
                         : 1
                 );
                 setIsLoading(false);
