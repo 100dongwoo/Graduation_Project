@@ -29,6 +29,18 @@ function Drawer(props) {
                     </Lists>
                 ))}
             </ListMenu>
+            <ResponsiveContainer>
+                {MenuList.map((Menu, index) => (
+                    <ResponsiveMenu
+                        key={index}
+                        active={pickMenu === Menu}
+                        onClick={onClickMenu}
+                    >
+                        {Menu}
+                    </ResponsiveMenu>
+                ))}
+            </ResponsiveContainer>
+
             <RightMenuContainer>
                 {pickMenu === '게시글' && <Myposts />}
                 {pickMenu === '내 정보' && <DetailInformation />}
@@ -38,6 +50,26 @@ function Drawer(props) {
         </Container>
     );
 }
+const ResponsiveContainer = styled.div`
+    display: none;
+    @media only screen and (max-width: 1024px) {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+`;
+const ResponsiveMenu = styled.span`
+    word-break: keep-all;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 14px 13px;
+    background: #3776c7;
+    color: #ffffff;
+    background: ${(props) => (props.active ? 'red' : '#3776c7;')};
+`;
 const RightMenuContainer = styled.div`
     width: 100%;
     //margin-top: 3rem;
@@ -48,6 +80,9 @@ const Container = styled.div`
     margin: auto;
     display: flex;
     background: #ffffff;
+    @media only screen and (max-width: 1024px) {
+        display: block;
+    }
 `;
 const ListMenu = styled.ul`
     list-style: none;
@@ -55,6 +90,9 @@ const ListMenu = styled.ul`
     background-color: #f68600;
     text-align: center;
     height: 100%;
+    @media only screen and (max-width: 1024px) {
+        display: none;
+    }
 `;
 const ListsTop = styled.li`
     height: 58px;
