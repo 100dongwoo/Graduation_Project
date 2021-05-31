@@ -52,7 +52,7 @@ function Myposts(props) {
             });
     };
     return (
-        <div>
+        <div style={{ width: '100%' }}>
             {posts.map((post, index) => (
                 <PostContainer
                     post={post}

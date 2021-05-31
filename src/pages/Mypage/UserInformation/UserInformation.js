@@ -10,57 +10,90 @@ function UserInformation(props) {
     const { user } = auth;
 
     return (
-        <Container>
-            <UserName>
-                캐릭터정보
-                <br /> <NickName>{user?.nickname}님</NickName>
-            </UserName>
+        <div style={{ position: 'relative' }}>
+            <BackgroundContainer>
+                <Image src="https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_AtnMBHbgEy_162185709886.png" />
+            </BackgroundContainer>
+            <Container>
+                <UserName>
+                    캐릭터정보
+                    <br /> <NickName>{user?.nickname}님</NickName>
+                </UserName>
 
-            <RightContainer>
-                <RightContent>
-                    <ImageBoxContainer>
-                        <CircleBox>
-                            <Circle
-                                src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
-                                alt="inforImage"
-                            />
-                            <BoxTitle>공격력</BoxTitle>
-                            <p> {user?.damage}</p>
-                        </CircleBox>
-                        <CircleBox>
-                            <Circle
-                                src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
-                                alt="inforImage"
-                            />
-                            <BoxTitle>방어력</BoxTitle>
-                            <p>{user?.defence}</p>
-                        </CircleBox>
-                        <CircleBox>
-                            <Circle
-                                src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
-                                alt="inforImage"
-                            />
-                            <BoxTitle>체 력</BoxTitle>
-                            <p>{user?.hp}</p>
-                        </CircleBox>
-                    </ImageBoxContainer>
-                    <TopInfor>
-                        <TopInforColor>경험치</TopInforColor> 123213213
-                        <JumpIcon>|</JumpIcon>
-                        <TopInforColor> 업적 수 </TopInforColor>
-                        {111} 개
-                    </TopInfor>
-                </RightContent>
-                <DoreBox>
-                    <DoreImage src={dore} alt="dore" />
-                </DoreBox>
-            </RightContainer>
-        </Container>
+                <RightContainer>
+                    <RightContent>
+                        <ImageBoxContainer>
+                            <CircleBox>
+                                <Circle
+                                    src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
+                                    alt="inforImage"
+                                />
+                                <BoxTitle>공격력</BoxTitle>
+                                <p> {user?.damage}</p>
+                            </CircleBox>
+                            <CircleBox>
+                                <Circle
+                                    src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
+                                    alt="inforImage"
+                                />
+                                <BoxTitle>방어력</BoxTitle>
+                                <p>{user?.defence}</p>
+                            </CircleBox>
+                            <CircleBox>
+                                <Circle
+                                    src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
+                                    alt="inforImage"
+                                />
+                                <BoxTitle>체 력</BoxTitle>
+                                <p>{user?.hp}</p>
+                            </CircleBox>
+                        </ImageBoxContainer>
+                        <TopInfor>
+                            <TopInforColor>경험치</TopInforColor> 123213213
+                            <JumpIcon>|</JumpIcon>
+                            <TopInforColor> 업적 수 </TopInforColor>
+                            {111} 개
+                        </TopInfor>
+                    </RightContent>
+                    <DoreBox>
+                        <DoreImage src={dore} alt="dore" />
+                    </DoreBox>
+                </RightContainer>
+            </Container>
+        </div>
     );
 }
+// width: 100%;
+// height: 100%;
+// object-fit: cover;
+// object-position: center center;
+// transition: opacity 500ms ease 0s;
+const Image = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: opacity 500ms ease 0s;
+    filter: brightness(30%);
+`;
+const BackgroundContainer = styled.div`
+    width: 100%;
+    position: absolute;
+    height: 450px;
+    z-index: -1;
+    //padding: 3rem 0;
+    //background: red;
+    //background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    //    url('https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_AtnMBHbgEy_162185709886.png');
+    ////background-image: filter: brightness(50%)  url('https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_AtnMBHbgEy_162185709886.png');
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    //opacity: 0.1;
+`;
 const RightContent = styled.div`
     display: flex;
     flex-direction: column;
+
     @media only screen and (max-width: 1024px) {
         width: 100%;
     }
@@ -74,7 +107,7 @@ const JumpIcon = styled.span`
 `;
 const TopInfor = styled.p`
     font-size: 16px;
-    color: #000000;
+    color: #ffffff;
     line-height: 51px;
     padding: 0.5rem 0;
     border-top: 1px solid #474563;
@@ -89,14 +122,13 @@ const RightContainer = styled.div`
     display: flex;
     text-align: center;
     @media only screen and (max-width: 1024px) {
-        margin: auto;
-        margin-top: 1rem;
+        margin: 1rem auto auto;
         width: 100%;
     }
 `;
 const BoxTitle = styled.p`
     margin-bottom: 0;
-    color: #343a40;
+    color: #ffffff;
 `;
 const DoreBox = styled.div`
     width: 212px;
@@ -104,6 +136,7 @@ const DoreBox = styled.div`
     padding: 1rem;
     border: 1px solid #adadad;
     margin-left: 3rem;
+
     @media only screen and (max-width: 1024px) {
         display: none;
     }
@@ -118,7 +151,7 @@ const CircleBox = styled.div`
     height: 150px;
     text-align: center;
     font-size: 19px;
-    color: gray;
+    color: #ffffff;
     margin: 0 1rem;
     @media only screen and (max-width: 1024px) {
         margin: 0 0.5rem;
@@ -130,6 +163,8 @@ const Circle = styled.img`
     height: 93px;
 `;
 const Container = styled.div`
+    position: relative;
+    z-index: 100;
     max-width: 1250px;
     margin: auto;
     display: flex;
@@ -140,7 +175,7 @@ const Container = styled.div`
     }
 `;
 const UserName = styled.span`
-    //color: #fff;
+    color: #fff;
     margin: 0;
     font-size: 55px;
     font-weight: normal;

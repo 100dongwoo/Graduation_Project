@@ -107,7 +107,6 @@ const LeftContainer = styled.div`
     justify-content: space-between;
 `;
 const PostBox = styled.div`
-    max-width: 860px;
     height: 120px;
     background: #ffffff;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);

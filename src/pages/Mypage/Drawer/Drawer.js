@@ -12,7 +12,13 @@ function Drawer(props) {
     };
     return (
         <Container>
-            <ListMenu onClick={onClickMenu}>
+            <ListMenu>
+                <ListsTop
+                    style={{
+                        border: 'none',
+                    }}
+                />
+
                 {MenuList.map((Menu, index) => (
                     <Lists
                         key={index}
@@ -34,11 +40,14 @@ function Drawer(props) {
 }
 const RightMenuContainer = styled.div`
     width: 100%;
+    //margin-top: 3rem;
+    padding: 2rem;
 `;
 const Container = styled.div`
     max-width: 1250px;
     margin: auto;
     display: flex;
+    background: #ffffff;
 `;
 const ListMenu = styled.ul`
     list-style: none;
@@ -46,21 +55,23 @@ const ListMenu = styled.ul`
     background-color: #f68600;
     text-align: center;
     height: 100%;
-    margin-right: 2.5rem;
 `;
-const Lists = styled.li`
+const ListsTop = styled.li`
     height: 58px;
     font-size: 25px;
     font-weight: bold;
     list-style: none;
     width: 135px;
     color: #ffdcb6;
-    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
     padding-top: 8px;
-    background: ${(props) => (props.active ? 'blue' : '#f68600;')};
+    background: ${(props) => (props.active ? '#e66500' : '#f68600;')};
+`;
+const Lists = styled(ListsTop)`
     cursor: pointer;
     &:hover {
-        background: red;
+        opacity: 0.5;
     }
 `;
+
 export default Drawer;
