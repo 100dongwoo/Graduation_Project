@@ -6,6 +6,19 @@ import sojuMonster from '../../../../images/monsters/ConvenienceStoreMonster/soj
 import petMonster from '../../../../images/monsters/ConvenienceStoreMonster/petMonster.png';
 import bananaMilkMonster from '../../../../images/monsters/ConvenienceStoreMonster/bananaMilkMonster.png';
 
+import fruitMonster from '../../../../images/monsters/MartMonster/fruitMonster.png';
+import paperBoxMonster from '../../../../images/monsters/MartMonster/paperBoxMonster.png';
+import spamMonster from '../../../../images/monsters/MartMonster/spamMonster.png';
+
+import kimchiroomMonster from '../../../../images/monsters/CountrySideMonster/kimchiroomMonster.png';
+import pesticideMonster from '../../../../images/monsters/CountrySideMonster/pesticideMonster.png';
+import styrofoamMonster from '../../../../images/monsters/CountrySideMonster/styrofoamMonster.png';
+import vegetableMonster from '../../../../images/monsters/CountrySideMonster/vegetableMonster.png';
+
+import strawberryMonster from '../../../../images/monsters/vinylHouseMonster/strawberryMonster.png';
+import orangeMonster from '../../../../images/monsters/vinylHouseMonster/orangeMonster.png';
+import waterMelonMonster from '../../../../images/monsters/vinylHouseMonster/waterMelonMonster.png';
+
 export const convenienceStoreMonster = [
     {
         image: ramenMonster,
@@ -46,10 +59,6 @@ export const convenienceStoreMonster = [
     //     bananaMilkMonster,
 ];
 // 시골 몬스터
-import kimchiroomMonster from '../../../../images/monsters/CountrySideMonster/kimchiroomMonster.png';
-import pesticideMonster from '../../../../images/monsters/CountrySideMonster/pesticideMonster.png';
-import styrofoamMonster from '../../../../images/monsters/CountrySideMonster/styrofoamMonster.png';
-import vegetableMonster from '../../../../images/monsters/CountrySideMonster/vegetableMonster.png';
 
 export const countrySideMonster = [
     // kimchiroomMonster,
@@ -82,9 +91,6 @@ export const countrySideMonster = [
     },
 ];
 // 마트 몬스터
-import fruitMonster from '../../../../images/monsters/MartMonster/fruitMonster.png';
-import paperBoxMonster from '../../../../images/monsters/MartMonster/paperBoxMonster.png';
-import spamMonster from '../../../../images/monsters/MartMonster/spamMonster.png';
 
 export const martMonster = [
     // fruitMonster, paperBoxMonster, spamMonster
@@ -109,9 +115,6 @@ export const martMonster = [
 ];
 //
 // 비닐하우스
-import strawberryMonster from '../../../../images/monsters/vinylHouseMonster/strawberryMonster.png';
-import orangeMonster from '../../../../images/monsters/vinylHouseMonster/orangeMonster.png';
-import waterMelonMonster from '../../../../images/monsters/vinylHouseMonster/waterMelonMonster.png';
 export const vinyHouseMonster = [
     {
         image: strawberryMonster,

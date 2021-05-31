@@ -71,7 +71,7 @@ function CommunityPage(props) {
             })
             .catch((err) => {
                 console.log('posts get err', err);
-                if (err.response.data?.msg) {
+                if (err.response?.data?.msg) {
                     FailAlert(err.response.data.msg);
                     alert(err.response.data.msg);
                 }
