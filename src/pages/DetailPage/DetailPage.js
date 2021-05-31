@@ -56,8 +56,8 @@ function DetailPage(props) {
        api
             .post('/reviews/', params)
             .then((res) => {
-                if (res.statusText !== 'Created') {
-                    // console.log(res);
+                if (!res.ok) {
+                    FailAlert('댓글 등록에 문제가 생겼습니다.');
                     return;
                 }
                 SuccessAlert('댓글작성 성공');
@@ -89,7 +89,7 @@ function DetailPage(props) {
             })
             .catch((err) => {
                 if (err.response.data.msg) {
-                    FailAlert(err.response.data.msg);
+                    FailAlert(err.response?.data.msg);
                 } else {
                     console.log('에러 : ', err);
                     FailAlert('존재하지 않는 게시글 입니다');

@@ -29,6 +29,7 @@ function CommunityPage(props) {
     // const user = useSelector(selectUser);
     const auth = useSelector((state) => state.auth);
     const { user } = auth;
+    console.log('user', user);
     const history = useHistory();
     const onChangeDisplay = (e, Display) => {
         setIsDisplay(Display);

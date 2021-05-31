@@ -77,9 +77,9 @@ function UploadPage(props) {
         //     .post('/posts/', form)
         request(url, form)
             .then((res) => {
-                // console.log(res);
-                if (res.statusText !== 'Created' && res.statusText !== 'OK') {
-                    console.log(res);
+                console.log(res);
+                if (!res.ok) {
+                    FailAlert('게시물 등록에 문제가 생겼습니다.');
                     return;
                 }
                 SuccessAlert(`${post ? '수정' : '추가'}성공.`);
@@ -87,7 +87,7 @@ function UploadPage(props) {
             })
             .catch((err) => {
                 console.log(err);
-                if (err.response.data.msg) {
+                if (err.response?.data.msg) {
                     FailAlert(err.response.data.msg);
                 } else {
                     console.log('에러 : ', err.response);

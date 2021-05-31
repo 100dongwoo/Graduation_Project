@@ -7,4 +7,4 @@ if (process.env.NODE_ENV === 'production') {
     url = 'http://54.180.217.191';
 }
 
-export const BASE_URL = url + ':8000/v1';
+export const BASE_URL = url + ':8003/v1';
