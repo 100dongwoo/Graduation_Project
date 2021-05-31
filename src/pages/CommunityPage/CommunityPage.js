@@ -17,7 +17,6 @@ import Spinner from 'react-bootstrap/Spinner';
 import CommunityTable from './CommunityTable';
 import CommunityBig from './CommunityBig';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
-import api from '../../settings/api';
 
 function CommunityPage(props) {
     const [totalPage, setTotalPage] = useState(1); //  전체 크기
@@ -47,11 +46,11 @@ function CommunityPage(props) {
             params.keyword = keyword;
         }
         // console.log(params);
-        api.get('/posts/', params)
+        axios.get('/posts/', {params})
             .then((res) => {
                 console.log('res', res);
-                if (!res.ok) {
-                    // console.log(res);
+                if (res.statusText !== 'OK') {
+                   FailAlert('게시글을 불러오는 데 문제가 생겼습니다.')
                     return;
                 }
                 // console.log(res);

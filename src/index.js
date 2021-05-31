@@ -8,12 +8,14 @@ import App from './App';
 import store, { persistor } from './Redux/store';
 import axios from 'axios';
 
-// if (process.env.NODE_ENV === 'production') {
-//     axios.defaults.baseURL = 'http://www.dorestory.com:8000/v1/';
-//     axios.defaults.headers.post['Content-Type'] =
-//         'application/json;charset=utf-8';
-//     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-// }
+    axios.defaults.baseURL = 'http://127.0.0.1:8001/v1';
+
+if (process.env.NODE_ENV === 'production') {
+    axios.defaults.baseURL = 'http://54.180.217.191:8000/v1';
+    axios.defaults.headers.post['Content-Type'] =
+        'application/json;charset=utf-8';
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+}
 
 ReactDOM.render(
     <React.StrictMode>

@@ -1,45 +1,26 @@
-import { create } from 'apisauce';
-import { BASE_URL } from './url';
-import camelcaseKeys from 'camelcase-keys';
-import snakecaseKeys from 'snakecase-keys';
+import {create} from 'apisauce'
+import {BASE_URL} from './url'
 
 const api = create({
     baseURL: BASE_URL,
     withCredentials: true,
-});
+})
 
-export const extraApi = create({ baseURL: BASE_URL });
+export const extraApi = create({baseURL: ''})
 
 api.addResponseTransform((response) => {
-    console.log(response);
+    console.log(response)
     if (response.status && response.status >= 500) {
-        throw 'Server Error';
+        // eslint-disable-next-line no-throw-literal
+        throw 'Server Error'
     } else if (!response.status) {
-        throw 'API Error';
-    } else {
-        if (response.data instanceof Object) {
-            response.data = camelcaseKeys(response.data, { deep: true });
-        }
-
-        if (response.data && response.data.message instanceof Object) {
-            response.data.message = camelcaseKeys(response.data.message, {
-                deep: true,
-            });
-            response.errors = response.data.message;
-        }
+        // eslint-disable-next-line no-throw-literal
+        throw 'API Error'
     }
-});
+})
 
 api.addRequestTransform((request) => {
-    if (request.params instanceof Object) {
-        request.params = snakecaseKeys(request.params, { deep: true });
-    }
-    if (
-        request.data instanceof Object &&
-        request.data.constructor.name === 'Object'
-    ) {
-        request.data = snakecaseKeys(request.data, { deep: true });
-    }
-});
+    console.log(request)
+})
 
-export default api;
+export default api
