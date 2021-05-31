@@ -239,7 +239,7 @@ const Drop = styled(NavDropdown)`
 const Container = styled.div`
     width: 100%;
     position: sticky;
-    z-index: 10;
+    z-index: 9999;
     top: 0;
 `;
 const LogoContainer = styled.div`
