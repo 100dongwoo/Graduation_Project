@@ -9,9 +9,13 @@ import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 import { useHistory } from 'react-router-dom';
 import api from '../../settings/api';
+import { useSelector } from 'react-redux';
 // import { convertFromHTML } from 'draft-convert';
 
 function UploadPage(props) {
+    const auth = useSelector((state) => state.auth);
+    const { user } = auth;
+
     const post = !!props.location.state ? props.location.state.post : null;
     const [editor, setEditor] = useState(
         post
@@ -55,6 +59,7 @@ function UploadPage(props) {
         let url = post ? `/posts/${post.id}/` : '/posts/';
         let form = new FormData();
         form.append('title', title);
+        form.append('user', user.id);
         form.append(
             'content',
             draftToHtml(convertToRaw(editor.getCurrentContent()))
