@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { FailAlert, SuccessAlert } from '../../Alert/Alert';
 import { useHistory } from 'react-router-dom';
+import api from '../../settings/api';
 // import { convertFromHTML } from 'draft-convert';
 
 function UploadPage(props) {
@@ -50,7 +51,7 @@ function UploadPage(props) {
         //     content: draftToHtml(convertToRaw(editor.getCurrentContent())),
         //     image: file,
         // };
-        let request = post ? axios.patch : axios.post;
+        let request = post ? api.patch : api.post;
         let url = post ? `/posts/${post.id}/` : '/posts/';
         let form = new FormData();
         form.append('title', title);

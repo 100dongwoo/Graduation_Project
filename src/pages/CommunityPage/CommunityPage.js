@@ -17,6 +17,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import CommunityTable from './CommunityTable';
 import CommunityBig from './CommunityBig';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
+import api from '../../settings/api';
 
 function CommunityPage(props) {
     const [totalPage, setTotalPage] = useState(1); //  전체 크기

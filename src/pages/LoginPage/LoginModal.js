@@ -53,7 +53,7 @@ function LoginModal(props) {
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             // console.log('axios url', axios.defaults.baseURL);
 
-            axios
+           api
                 .post('/users/login/', values)
                 .then((res) => {
                     handleClose();

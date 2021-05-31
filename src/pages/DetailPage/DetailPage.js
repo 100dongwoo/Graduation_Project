@@ -14,6 +14,7 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 import Avatar from '@material-ui/core/Avatar';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { calculateChatDate } from '../../Util/Util';
+import api from '../../settings/api';
 function DetailPage(props) {
     const auth = useSelector((state) => state.auth);
     const { user } = auth;
@@ -52,7 +53,7 @@ function DetailPage(props) {
             content: reviewText,
         };
 
-        axios
+       api
             .post('/reviews/', params)
             .then((res) => {
                 if (res.statusText !== 'Created') {
