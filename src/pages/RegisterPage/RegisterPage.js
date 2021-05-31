@@ -6,6 +6,7 @@ import './button.css';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import axios from 'axios';
 import { FailAlert, FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
+import api from '../../settings/api';
 function RegisterPage(props) {
     const formik = useFormik({
         enableReinitialize: true,
@@ -50,7 +51,7 @@ function RegisterPage(props) {
             //     FailAlert('모든항목 입력');
             //     return;
             // }
-            axios
+           api
                 .post('/users/sign-up/', values)
                 .then((res) => {
                     if (res.data.code !== 'OK') {
