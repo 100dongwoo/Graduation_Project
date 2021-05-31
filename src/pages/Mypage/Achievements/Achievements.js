@@ -78,15 +78,12 @@ function Achievements({ clear }) {
                         page={page}
                         handleChange={handleChange}
                     />
-                ) : clear ? (
-                    <NoPostFont>
-                        <UserName>'{user?.nickname}' </UserName> &nbsp; 님의
-                        완료 업적이 없습니다.
-                    </NoPostFont>
                 ) : (
                     <NoPostFont>
-                        <UserName>'{user?.nickname}' </UserName> &nbsp; 님은
-                        모든 업적을 완료하셨습니다
+                        <UserName>'{user?.nickname}' </UserName> &nbsp; 님의
+                        {clear
+                            ? '완료 업적이 없습니다.'
+                            : '모든 업적을 완료하셨습니다.'}
                     </NoPostFont>
                 )}
             </Container>
