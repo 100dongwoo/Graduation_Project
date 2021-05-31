@@ -51,6 +51,7 @@ function DetailPage(props) {
         let params = {
             post: postId,
             content: reviewText,
+            user: user.id
         };
 
        api
