@@ -25,7 +25,8 @@ function UserInformation(props) {
                         <ImageBoxContainer>
                             <CircleBox>
                                 <Circle
-                                    src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
+                                    src="https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_siptTniRgL_162245488110.png"
+                                    // src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
                                     alt="inforImage"
                                 />
                                 <BoxTitle>공격력</BoxTitle>
@@ -33,7 +34,8 @@ function UserInformation(props) {
                             </CircleBox>
                             <CircleBox>
                                 <Circle
-                                    src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
+                                    src="https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_cYOuhDIRLN_162245480440.png"
+                                    // src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
                                     alt="inforImage"
                                 />
                                 <BoxTitle>방어력</BoxTitle>
@@ -41,7 +43,8 @@ function UserInformation(props) {
                             </CircleBox>
                             <CircleBox>
                                 <Circle
-                                    src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
+                                    src="https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_ALmSGOWkQJ_162245472270.png"
+                                    // src="https://ssl.nx.com/s2/game/maplestory/renewal/common/char_info/job_icon02.png"
                                     alt="inforImage"
                                 />
                                 <BoxTitle>체 력</BoxTitle>
