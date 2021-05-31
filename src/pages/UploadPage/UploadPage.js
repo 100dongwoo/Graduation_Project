@@ -125,105 +125,126 @@ function UploadPage(props) {
         <Container>
             <Title> 게시글 {post ? '수정' : '등록'}</Title>
             <form>
-                <div>
-                    <TitleContainer>
-                        <InputBox
-                            placeholder="제목을 입력하세요."
-                            type="text"
-                            maxLength="60"
-                            value={title}
-                            onChange={(e) => setTitle(e.currentTarget.value)}
-                        />
-                        <LengthTitle>{title.length} / 60</LengthTitle>
-                    </TitleContainer>
+                <TitleContainer>
+                    <InputBox
+                        placeholder="제목을 입력하세요."
+                        type="text"
+                        maxLength="60"
+                        value={title}
+                        onChange={(e) => setTitle(e.currentTarget.value)}
+                    />
+                    <LengthTitle>{title.length} / 60</LengthTitle>
+                </TitleContainer>
 
-                    <Editor
-                        editorStyle={{
-                            width: '100%',
-                            minHeight: 360,
-                            borderWidth: 1,
-                            borderStyle: 'solid',
-                            borderColor: 'lightgray',
-                            padding: '10px 20px 10px 20px',
-                        }}
-                        editorState={editor}
-                        onEditorStateChange={onEditorChange}
-                        toolbar={{
-                            inline: { inDropdown: true },
-                            list: { inDropdown: true },
-                            textAlign: { inDropdown: true },
-                            link: { inDropdown: true },
-                            history: { inDropdown: true },
-                            image: {
-                                uploadCallback: uploadImageCallBack,
-                            },
-                        }}
-                        placeholder="내용을 작성해주세요."
-                        // 한국어 설정
-                        localization={{
-                            locale: 'ko',
+                <Editor
+                    editorStyle={{
+                        width: '100%',
+                        minHeight: 360,
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                        borderColor: 'lightgray',
+                        padding: '10px 20px 10px 20px',
+                    }}
+                    editorState={editor}
+                    onEditorStateChange={onEditorChange}
+                    toolbar={{
+                        inline: { inDropdown: true },
+                        list: { inDropdown: true },
+                        textAlign: { inDropdown: true },
+                        link: { inDropdown: true },
+                        history: { inDropdown: true },
+                        image: {
+                            uploadCallback: uploadImageCallBack,
+                        },
+                    }}
+                    placeholder="내용을 작성해주세요."
+                    // 한국어 설정
+                    localization={{
+                        locale: 'ko',
+                    }}
+                />
+                {/**/}
+
+                <div className="FileUp">
+                    {preview && (
+                        <div>
+                            <p style={{ marginRight: '20px' }}>첨부 이미지</p>
+
+                            <Preview src={preview} alt="previewImage" />
+                            {/*<i className="fas fa-trash"/>*/}
+                            {/*<DeleteImage*/}
+                            {/*    onClick={(e) => {*/}
+                            {/*        e.preventDefault();*/}
+                            {/*        fileInput.current.value = '';*/}
+                            {/*        setFile(null);*/}
+                            {/*        setPreview(null);*/}
+                            {/*    }}*/}
+                            {/*>*/}
+                            {/*    이미지 삭제 <i className="fas fa-trash" />*/}
+                            {/*</DeleteImage>*/}
+                        </div>
+                    )}
+                    <Label className="input-file-button" htmlFor="input-file">
+                        <i className="far fa-image" />
+                        {preview ? '이미지변경' : '이미지'}
+                    </Label>
+                    {preview && (
+                        <DeleteImage
+                            onClick={(e) => {
+                                e.preventDefault();
+                                fileInput.current.value = '';
+                                setFile(null);
+                                setPreview(null);
+                            }}
+                        >
+                            이미지 삭제 <i className="fas fa-trash" />
+                        </DeleteImage>
+                    )}
+                    <input
+                        ref={fileInput}
+                        id="input-file"
+                        style={{ display: 'none' }}
+                        type="file"
+                        // name="file"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => {
+                            // setFile(e.target.value);
+                            e.preventDefault();
+
+                            let reader = new FileReader();
+                            let file = e.target.files[0];
+                            reader.onloadend = () => {
+                                setFile(file);
+                                setPreview(reader.result);
+                            };
+                            reader.readAsDataURL(file);
                         }}
                     />
-                    {/**/}
+                </div>
 
-                    <div className="FileUp">
-                        <p style={{ marginRight: '20px' }}>첨부 이미지</p>
-                        {preview && (
-                            <div>
-                                <Preview src={preview} alt="previewImage" />
-                                <DeleteImage
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        fileInput.current.value = '';
-                                        setFile(null);
-                                        setPreview(null);
-                                    }}
-                                >
-                                    이미지 삭제
-                                </DeleteImage>
-                            </div>
-                        )}
-                        <label
-                            className="input-file-button"
-                            htmlFor="input-file"
-                        >
-                            업로드
-                        </label>
-                        <input
-                            ref={fileInput}
-                            id="input-file"
-                            style={{ display: 'none' }}
-                            type="file"
-                            // name="file"
-                            accept=".jpg, .jpeg, .png"
-                            onChange={(e) => {
-                                // setFile(e.target.value);
-                                e.preventDefault();
-
-                                let reader = new FileReader();
-                                let file = e.target.files[0];
-                                reader.onloadend = () => {
-                                    setFile(file);
-                                    setPreview(reader.result);
-                                };
-                                reader.readAsDataURL(file);
-                            }}
-                        />
-                    </div>
-
-                    {/**/}
+                {/**/}
+                <ButtonContainer>
                     <SubmitBtn
-                        style={{
-                            background:
-                                draftToHtml(
-                                    convertToRaw(editor.getCurrentContent())
-                                ).length === 8
-                                    ? 'red'
-                                    : '#f9f9f9',
-                        }}
+                        // style={{
+                        //     background:
+                        //         draftToHtml(
+                        //             convertToRaw(editor.getCurrentContent())
+                        //         ).length === 8
+                        //             ? 'red'
+                        //             : '#f9f9f9',
+                        // }}
                         onClick={onHandleSubmit}
                     >
                         {post ? '수 정' : '등 록'}
+                    </SubmitBtn>
+                    <SubmitBtn
+                        cancle={true}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            history.goBack();
+                        }}
+                    >
+                        취 소
                     </SubmitBtn>
                     {/*<textarea*/}
                     {/*    style={{ width: '100%', height: 200 }}*/}
@@ -232,11 +253,23 @@ function UploadPage(props) {
                     {/*        convertToRaw(editor.getCurrentContent())*/}
                     {/*    )}*/}
                     {/*/>*/}
-                </div>
+                </ButtonContainer>
             </form>
         </Container>
     );
 }
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+const Label = styled.label`
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+    font-weight: 600;
+    &:hover {
+    }
+`;
 const Preview = styled.img`
     width: 12.5rem;
     height: 12.5rem;
@@ -244,7 +277,14 @@ const Preview = styled.img`
     @media only screen and (max-width: 1024px) {
     }
 `;
-const DeleteImage = styled.button``;
+const DeleteImage = styled.button`
+    margin-left: 0.7rem;
+    border-radius: 10px;
+    background-color: #0a66b7;
+
+    padding: 10px;
+    color: #ffffff;
+`;
 const TitleContainer = styled.div`
     border: 1px solid #e3e3e3;
     border-radius: 4px;
@@ -287,11 +327,20 @@ const Container = styled.div`
     padding: 1.5rem;
 `;
 const SubmitBtn = styled.button`
-    width: 200px;
+    width: 90px;
     height: 56px;
     margin-top: 1.5rem;
     border: 1px solid #e7e7e7;
-    box-shadow: 0 2px 15px 0 rgb(0 0 0 / 70%);
+    //background: #455d9d;
+    color: #ffffff;
+    align-items: center;
+    text-align: center;
+    background: ${(props) => (props.cancle ? '#747a86' : '#455d9d')};
+    margin-right: 1rem;
+    &:hover {
+        opacity: 0.8;
+    }
+    //box-shadow: 0 2px 15px 0 rgb(0 0 0 / 70%);
 `;
 const Title = styled.p`
     font-family: Noto Sans KR;
