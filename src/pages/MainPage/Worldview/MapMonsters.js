@@ -16,7 +16,7 @@ function MapMonsters(props) {
     };
     return (
         <TotalContainer>
-            <Container id="worldview">
+            <Container id="monsters">
                 <MapListContainer>
                     <Button
                         className="snip1535"

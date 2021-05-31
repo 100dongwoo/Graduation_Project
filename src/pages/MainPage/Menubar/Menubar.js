@@ -13,20 +13,20 @@ function Menubar(props) {
                     exact="true"
                     offset={-80}
                 >
-                    게임소개
+                    게임 맵
                 </NavLinks>
                 <NavLinks
-                    to="character"
+                    to="monsters"
                     smooth={true}
                     duration={500}
                     spy={true}
                     exact="true"
                     offset={-80}
                 >
-                    캐릭터
+                    몬스터
                 </NavLinks>
                 <NavLinks
-                    to="worldview"
+                    to="story"
                     smooth={true}
                     duration={500}
                     spy={true}
@@ -89,12 +89,12 @@ const NavLinks = styled(LinkS)`
     font-weight: 400;
     cursor: pointer;
     &:hover {
-        color: #ffe81e;
+        //color: #ffe81e;
         transform: scale(1.04);
     }
-    &.active {
-        border-bottom: 3px solid #01bf71;
-        transform: scale(1.04);
-        font-weight: 700;
-    }
+    //&.active {
+    //    border-bottom: 3px solid #01bf71;
+    //    transform: scale(1.04);
+    //    font-weight: 700;
+    //}
 `;

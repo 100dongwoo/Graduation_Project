@@ -96,49 +96,63 @@ function NavBar(props) {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <NavDropdown title="게임소개">
-                            <NavLinkq
-                                to="banner"
-                                smooth={true}
-                                duration={500}
-                                spy={true}
-                                exact="true"
-                                offset={-80}
-                            >
-                                <NavDropdown.Item>게임소개</NavDropdown.Item>
-                            </NavLinkq>
-                            <NavLinkq
-                                to="character"
-                                smooth={true}
-                                duration={500}
-                                spy={true}
-                                exact="true"
-                                offset={-80}
-                            >
-                                <NavDropdown.Item>캐릭터</NavDropdown.Item>
-                            </NavLinkq>
-                            <NavLinkq
-                                to="worldview"
-                                smooth={true}
-                                duration={500}
-                                spy={true}
-                                exact="true"
-                                offset={-80}
-                            >
-                                <NavDropdown.Item>세계관</NavDropdown.Item>
-                            </NavLinkq>
-                            <NavLinkq
-                                to="media"
-                                smooth={true}
-                                duration={500}
-                                spy={true}
-                                exact="true"
-                                offset={-80}
-                            >
-                                <NavDropdown.Item>미디어</NavDropdown.Item>
-                            </NavLinkq>
-                            {/**/}
-                        </NavDropdown>
+                        <Nav.Link
+                            href={'/'}
+                            onClick={(e) => {
+                                onChannelChange(e, '');
+                            }}
+                        >
+                            게임소개
+                        </Nav.Link>
+                        {/*<NavDropdown title="게임소개">*/}
+                        {/*    <NavLinkq*/}
+                        {/*        to="banner"*/}
+                        {/*        smooth={true}*/}
+                        {/*        duration={500}*/}
+                        {/*        spy={true}*/}
+                        {/*        exact="true"*/}
+                        {/*        offset={-80}*/}
+                        {/*        onClick={(e) => {*/}
+                        {/*            onChannelChange(e, '');*/}
+                        {/*        }}*/}
+                        {/*    >*/}
+                        {/*        <NavDropdown.Item>게임소개</NavDropdown.Item>*/}
+                        {/*    </NavLinkq>*/}
+                        {/*    <NavLinkq*/}
+                        {/*        onClick={(e) => {*/}
+                        {/*            onChannelChange(e, '');*/}
+                        {/*        }}*/}
+                        {/*        to="character"*/}
+                        {/*        smooth={true}*/}
+                        {/*        duration={500}*/}
+                        {/*        spy={true}*/}
+                        {/*        exact="true"*/}
+                        {/*        offset={-80}*/}
+                        {/*    >*/}
+                        {/*        <NavDropdown.Item>캐릭터</NavDropdown.Item>*/}
+                        {/*    </NavLinkq>*/}
+                        {/*    <NavLinkq*/}
+                        {/*        to="worldview"*/}
+                        {/*        smooth={true}*/}
+                        {/*        duration={500}*/}
+                        {/*        spy={true}*/}
+                        {/*        exact="true"*/}
+                        {/*        offset={-80}*/}
+                        {/*    >*/}
+                        {/*        <NavDropdown.Item>세계관</NavDropdown.Item>*/}
+                        {/*    </NavLinkq>*/}
+                        {/*    <NavLinkq*/}
+                        {/*        to="media"*/}
+                        {/*        smooth={true}*/}
+                        {/*        duration={500}*/}
+                        {/*        spy={true}*/}
+                        {/*        exact="true"*/}
+                        {/*        offset={-80}*/}
+                        {/*    >*/}
+                        {/*        <NavDropdown.Item>미디어</NavDropdown.Item>*/}
+                        {/*    </NavLinkq>*/}
+                        {/*    /!**!/*/}
+                        {/*</NavDropdown>*/}
 
                         <Nav.Link
                             href={'/Notice'}
