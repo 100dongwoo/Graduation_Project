@@ -23,7 +23,14 @@ function Achievements({ clear }) {
         FetchQAchievement(value);
     };
     const FetchQAchievement = (page) => {
-        let params = { is_clear: clear, user: user?.id };
+        let page_size = 4;
+        let params = {
+            is_clear: clear,
+            user: user?.id,
+            page_size: page_size,
+            page: page,
+        };
+
         axios
             .get('/careers/', { params })
             .then((res) => {
@@ -37,9 +44,9 @@ function Achievements({ clear }) {
                 setTotalCount(res.data?.count);
                 setTotalPage(
                     parseInt(res.data?.count) !== 0
-                        ? parseInt(res.data?.count) % 20 === 0
-                            ? parseInt(res.data?.count / 20)
-                            : parseInt(res.data?.count / 20) + 1
+                        ? parseInt(res.data?.count) % page_size === 0
+                            ? parseInt(res.data?.count / page_size)
+                            : parseInt(res.data?.count / page_size) + 1
                         : 1
                 );
                 setIsReady(true);
