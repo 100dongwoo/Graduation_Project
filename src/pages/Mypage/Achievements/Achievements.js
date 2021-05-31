@@ -66,7 +66,11 @@ function Achievements({ clear }) {
                     {<h1>{clear ? '업적' : '미완료 업적'}</h1>}
                 </MenuContainer>
                 {achievements?.map((achievement) => (
-                    <AchievementPost post={achievement} key={achievement.id} />
+                    <AchievementPost
+                        post={achievement}
+                        key={achievement.id}
+                        clear={clear}
+                    />
                 ))}
                 {totalCount !== 0 ? (
                     <PaginationComponent

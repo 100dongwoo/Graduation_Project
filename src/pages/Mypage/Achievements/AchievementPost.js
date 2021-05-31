@@ -12,7 +12,7 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 //career.type_name
 //career.current_count
 //
-function AchievementPost({ post }) {
+function AchievementPost({ post, clear }) {
     const [isOpen, setIsOpen] = useState(false);
     const onChnageIsOpen = (e) => {
         setIsOpen(!isOpen);
@@ -45,9 +45,11 @@ function AchievementPost({ post }) {
                         {/*&nbsp; &nbsp; | &nbsp;&nbsp; {post?.current_count} /{' '}*/}
                         {/*{post?.max_count}*/}
                     </CareerContent>
-                    <MoreText onClick={onChnageIsOpen}>
-                        {isOpen ? '도감 접기' : '도감 보기'}
-                    </MoreText>
+                    {clear && (
+                        <MoreText onClick={onChnageIsOpen}>
+                            {isOpen ? '도감 접기' : '도감 보기'}
+                        </MoreText>
+                    )}
                 </div>
             </PostBox>
             <CollapseContainer>
