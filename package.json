@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "apisauce": "2.1.1",
     "axios": "0.21.1",
     "bootstrap": "4.6.0",
     "draft-convert": "2.1.11",
@@ -35,7 +36,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -62,6 +63,5 @@
     "formik": "2.2.6",
     "react-router-dom": "5.2.0",
     "yup": "0.32.9"
-  },
-  "proxy": "http://54.180.217.191:8000/v1/"
+  }
 }
