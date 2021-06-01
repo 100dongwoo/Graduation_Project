@@ -7,7 +7,7 @@ import axios from 'axios';
 // import { selectUser } from '../../Redux/store';
 import { LOGIN, LOGOUT, selectUser } from '../../Redux/userSlice';
 // import { LOGIN, LOGOUT, selectUser } from '../../Redux/store';
-import { FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
+import { FailAlert, FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import api from '../../settings/api';
 import { useHistory } from 'react-router-dom';
@@ -55,6 +55,10 @@ function LoginModal(props) {
 
             api.post('/users/login/', values)
                 .then((res) => {
+                    if (!res.ok) {
+                        FailAlert(res?.data?.msg);
+                        return;
+                    }
                     handleClose();
                     SuccessAlert('로그인 성공');
                     // console.log('성공', res);
@@ -143,7 +147,7 @@ function LoginModal(props) {
                             }}
                         />
                         <SignContainer>
-                            Not a member?
+                            Not a member? &nbsp;
                             <SignFont
                                 onClick={() => {
                                     setShow(false);
