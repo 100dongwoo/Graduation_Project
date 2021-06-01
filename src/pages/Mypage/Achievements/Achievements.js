@@ -23,7 +23,7 @@ function Achievements({ clear }) {
         FetchQAchievement(value);
     };
     const FetchQAchievement = (page) => {
-        let page_size = 4;
+        let page_size = 5;
         let params = {
             is_clear: clear,
             user: user?.id,
@@ -109,7 +109,7 @@ const NoPostFont = styled.span`
     padding-top: 3px;
 `;
 const Container = styled.div`
-    margin-bottom: 3rem;
+    //margin-bottom: 3rem;
 `;
 const MenuContainer = styled.div`
     border-bottom: 4px solid #dedede;

@@ -73,7 +73,8 @@ const ResponsiveMenu = styled.span`
 const RightMenuContainer = styled.div`
     width: 100%;
     //margin-top: 3rem;
-    padding: 2rem;
+    padding: 2rem 2rem 0;
+    margin-bottom: 3rem;
 `;
 const Container = styled.div`
     max-width: 1250px;
