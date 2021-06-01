@@ -187,16 +187,27 @@ function NavBar(props) {
                             퀴즈
                         </Nav.Link>
                         {/*테스트*/}
-                        {user && (
-                            <Nav.Link
-                                href={'/mypage'}
-                                onClick={(e) => {
-                                    onChannelChange(e, `mypage/${user.id}`);
-                                }}
-                            >
-                                마이페이지
-                            </Nav.Link>
-                        )}
+                        {/*{user && (*/}
+                        {/*    <Nav.Link*/}
+                        {/*        href={'/mypage'}*/}
+                        {/*        onClick={(e) => {*/}
+                        {/*            onChannelChange(e, `mypage/${user.id}`);*/}
+                        {/*        }}*/}
+                        {/*    >*/}
+                        {/*        마이페이지*/}
+                        {/*    </Nav.Link>*/}
+                        {/*)}*/}
+                        <Nav.Link
+                            // href={'/mypage'}
+                            onClick={(e) => {
+                                let address = user
+                                    ? `mypage/${user.id}`
+                                    : 'register';
+                                onChannelChange(e, address);
+                            }}
+                        >
+                            {user ? '마이페이지' : '회원가입'}
+                        </Nav.Link>
                         {/*테스트*/}
                     </Nav>
                     <Nav>

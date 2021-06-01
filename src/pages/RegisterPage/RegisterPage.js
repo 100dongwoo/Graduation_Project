@@ -51,8 +51,7 @@ function RegisterPage(props) {
             //     FailAlert('모든항목 입력');
             //     return;
             // }
-           api
-                .post('/users/sign-up/', values)
+            api.post('/users/sign-up/', values)
                 .then((res) => {
                     if (res.data.code !== 'OK') {
                         FailAlert(res.data.msg);
@@ -291,13 +290,13 @@ function RegisterPage(props) {
                     {/*    Login now*/}
                     {/*</button>*/}
                     <ButtonContainer>
-                        <div className="wrap">
+                        <div className="wrap" style={{ marginRight: '1rem' }}>
                             <button
                                 className="button"
                                 type="submit"
                                 onClick={handleSubmit}
                             >
-                                회원가입 하귀
+                                회원가입
                             </button>
                         </div>
                         <div className="wrap">
