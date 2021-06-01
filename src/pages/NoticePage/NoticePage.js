@@ -28,7 +28,7 @@ function NoticePage(props) {
         axios
             .get('notices/')
             .then((res) => {
-                console.log('공지사항 결과', res);
+                // console.log('공지사항 결과', res);
                 if (res.statusText !== 'OK') {
                     // console.log(res);
                     return;

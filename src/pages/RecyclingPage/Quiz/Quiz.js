@@ -30,7 +30,6 @@ function Quiz(props) {
     };
     return (
         <Container id="quizes">
-            {console.log(quizs)}
             <Content>
                 <h1>재활용 QUIZ</h1>
                 <p>

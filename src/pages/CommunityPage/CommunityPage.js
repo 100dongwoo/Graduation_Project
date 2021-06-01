@@ -29,7 +29,6 @@ function CommunityPage(props) {
     // const user = useSelector(selectUser);
     const auth = useSelector((state) => state.auth);
     const { user } = auth;
-    console.log('user', user);
     const history = useHistory();
     const onChangeDisplay = (e, Display) => {
         setIsDisplay(Display);
@@ -52,7 +51,7 @@ function CommunityPage(props) {
         axios
             .get('/posts/', { params })
             .then((res) => {
-                console.log('res', res);
+                // console.log('res', res);
                 if (res.statusText !== 'OK') {
                     FailAlert('게시글을 불러오는 데 문제가 생겼습니다.');
                     return;

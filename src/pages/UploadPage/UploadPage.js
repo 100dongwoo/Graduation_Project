@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
@@ -31,7 +31,10 @@ function UploadPage(props) {
     const [preview, setPreview] = useState(post ? post?.image : '');
     const history = useHistory();
     const fileInput = useRef();
-
+    useEffect(() => {
+        if (!user) history.push('/');
+        // console.log('a');
+    }, [user]);
     // onChange(
     //     EditorState.push(EditorState, convertFromHTML(post?.content))
     // );

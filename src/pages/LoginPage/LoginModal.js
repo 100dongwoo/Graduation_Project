@@ -73,6 +73,7 @@ function LoginModal(props) {
     });
     const handleLogout = (e) => {
         dispatch(LOGOUT());
+        SuccessAlert('로그아웃 성공');
     };
     const {
         values,
