@@ -53,8 +53,7 @@ function LoginModal(props) {
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             // console.log('axios url', axios.defaults.baseURL);
 
-           api
-                .post('/users/login/', values)
+            api.post('/users/login/', values)
                 .then((res) => {
                     handleClose();
                     SuccessAlert('로그인 성공');
@@ -163,8 +162,20 @@ function LoginModal(props) {
 export default LoginModal;
 const LoginButton = styled.button`
     width: 120px;
-    height: 38px;
-    border-radius: 16px;
+    height: 40px;
+    color: #080410;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+    font-weight: 900;
+    border-radius: 19px;
+    border: 2px solid #17191d;
+    background: #ffffff;
+    transition: all 0.15s linear;
+    &:hover {
+        background: #007bff;
+        color: #ffffff;
+    }
 `;
 const LoginLabel = styled.h1`
     text-align: center;
