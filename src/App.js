@@ -51,7 +51,16 @@ function App(props) {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={LoginPage} />
-                    <Route exact path="/register" component={RegisterPage} />
+                    {/*<Route exact path="/register" component={RegisterPage} />*/}
+                    <Route
+                        exact
+                        path="/register"
+                        render={
+                            () =>
+                                user ? <Redirect to="/" /> : <RegisterPage />
+                            //    로그인 됬으면                           안됬으면
+                        }
+                    />
                     <Route exact path="/upload" component={UploadPage} />
                     <Route exact path="/Notice" component={NoticePage} />
                     <Route exact path="/Ranking" component={RakingPage} />
