@@ -22,8 +22,13 @@ function Myposts(props) {
         fetchPostMyPosts(page);
     }, []);
     const fetchPostMyPosts = (page) => {
+        // console.log(user?.id);
+        let params = {
+            user: user?.id,
+            page: page,
+        };
         axios
-            .get(`/posts/`, { user: user?.id, page: page })
+            .get(`/posts/?`, { params })
             .then((res) => {
                 // console.log('res', res);
                 if (res.statusText !== 'OK') {
