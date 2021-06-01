@@ -190,7 +190,11 @@ function UploadPage(props) {
                             {/*</DeleteImage>*/}
                         </div>
                     )}
-                    <Label className="input-file-button" htmlFor="input-file">
+                    <Label
+                        className="input-file-button"
+                        htmlFor="input-file"
+                        accept=".jpg, .jpeg, .png"
+                    >
                         <i className="far fa-image" />
                         {preview ? '이미지변경' : '이미지'}
                     </Label>
@@ -269,6 +273,7 @@ const ButtonContainer = styled.div`
     justify-content: center;
 `;
 const Label = styled.label`
+    margin-top: 0.5rem;
     cursor: pointer;
     font-size: 1.4rem;
     font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
@@ -279,7 +284,7 @@ const Label = styled.label`
 const Preview = styled.img`
     width: 12.5rem;
     height: 12.5rem;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     @media only screen and (max-width: 1024px) {
     }
 `;
