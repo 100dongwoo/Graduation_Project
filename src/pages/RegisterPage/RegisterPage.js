@@ -7,7 +7,9 @@ import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import axios from 'axios';
 import { FailAlert, FailLoginAlert, SuccessAlert } from '../../Alert/Alert';
 import api from '../../settings/api';
+import { useHistory } from 'react-router-dom';
 function RegisterPage(props) {
+    const history = useHistory();
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -61,10 +63,11 @@ function RegisterPage(props) {
 
                     SuccessAlert('회원가입 되었습니다');
                     // alert('회원가입 되었습니다.');
-                    props.history.replace('/');
+                    history.goBack();
+                    // props.history.replace('/');
                 })
                 .catch((err) => {
-                    if (err.response.data.msg) {
+                    if (err.response?.data.msg) {
                         FailAlert(err.response.data.msg);
                         // alert(err.response.data.msg);
                     } else {
