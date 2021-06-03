@@ -198,6 +198,7 @@ function NavBar(props) {
                         {/*    </Nav.Link>*/}
                         {/*)}*/}
                         <Nav.Link
+                            href={user ? `mypage/${user?.id}` : 'register'}
                             // href={'/mypage'}
                             onClick={(e) => {
                                 let address = user

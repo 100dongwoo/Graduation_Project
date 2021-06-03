@@ -330,11 +330,13 @@ function RegisterPage(props) {
 
 export default RegisterPage;
 
-const Container = styled.div``;
+const Container = styled.div`
+    padding: 1rem 1rem 4rem;
+`;
 
 const JoinFont = styled.p`
     font-size: 40px;
-    padding-top: 60px;
+    padding-top: 3rem;
     border-bottom: 1px solid #cccccc;
     text-align: center;
     margin-bottom: 4rem;
@@ -351,7 +353,7 @@ const FormContainer = styled.form`
     width: 100%;
 `;
 const TextContainer = styled.div`
-    width: 530px;
+    max-width: 530px;
     text-align: left;
     margin: 1rem auto auto;
     height: 5.4rem;
@@ -363,7 +365,8 @@ const Textbox = styled.div`
     flex-direction: column;
     //align-items: center;
     position: relative;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
 `;
 const Input = styled.input`
     background-color: #eaf0fe;
@@ -390,6 +393,7 @@ const TextLabel = styled.p`
     margin-bottom: 3px;
     font-weight: bold;
     font-size: 1rem;
+    white-space: nowrap;
 `;
 const HideLabel = styled(TextLabel)`
     cursor: pointer;
@@ -398,6 +402,7 @@ const ShowBox = styled.div`
     display: flex;
     margin-top: 1rem;
     justify-content: space-between;
+    min-width: 100px; ;
 `;
 const SuccessIcons = styled.i`
     position: absolute;
