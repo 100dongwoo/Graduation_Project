@@ -21,10 +21,19 @@ function CommunityBig({ posts }) {
                         onClickToDetail(e, post.id);
                     }}
                 >
-                    <div style={{ display: 'flex' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            height: '100%',
+                        }}
+                    >
                         <div
                             style={{
                                 width: '100%',
+                                height: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between',
                             }}
                         >
                             <PostTitle>{post.title}</PostTitle>
@@ -66,18 +75,19 @@ function CommunityBig({ posts }) {
 const Post = styled.div`
     width: 100%;
     height: 219.85px;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem 1.5rem;
     margin-top: 1.5rem;
     background: #ffffff;
     border: 8px solid #f5f5f5;
     box-sizing: border-box;
     border-radius: 2px;
     cursor: pointer;
+
     &:hover {
         opacity: 0.8;
     }
     @media only screen and (max-width: 768px) {
-        height: 149.85px;
+        height: 160.85px;
         padding: 0.5rem 0.6rem;
     }
 `;
@@ -99,6 +109,12 @@ const PostTitle = styled.p`
     display: -webkit-box;
     -webkit-line-clamp: 1; /* number of lines to show */
     -webkit-box-orient: vertical;
+    @media only screen and (max-width: 768px) {
+        font-size: 18px;
+    }
+    //@media only screen and (max-device-width: 321px) {
+    //    margin-bottom: 1px;
+    //}
 `;
 const PostContent = styled.p`
     //text-overflow: ellipsis;
@@ -111,13 +127,19 @@ const PostContent = styled.p`
     font-size: 16px;
     line-height: 23px;
     color: #5a5a5a;
+    @media only screen and (max-width: 768px) {
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 10px;
+    }
 `;
 const PostInforBox = styled.div`
-    height: 40px;
+    height: 50px;
     background: #f1f1f1;
     border: 1px solid #f4f4f4;
     box-sizing: border-box;
     border-radius: 4px;
+
     @media only screen and (max-width: 768px) {
         font-size: 10px;
     }

@@ -174,6 +174,7 @@ function DetailPage(props) {
                 </TopContainer>
             </UserContainer>
             <Container>
+                {/*{post?.image && <Image src={post?.image} alt="이미지" />}*/}
                 <div
                     style={{
                         display: 'flex',
@@ -203,7 +204,9 @@ function DetailPage(props) {
                     {/*    </DeleteButton>*/}
                     {/*)}*/}
                 </div>
-
+                <ImageContainer>
+                    {post?.image && <Image src={post?.image} alt="이미지" />}
+                </ImageContainer>
                 {/*리뷰*/}
                 <ReviewContainer>
                     <TitleContainer>
@@ -319,6 +322,18 @@ const PostInforBox = styled.p`
     @media only screen and (max-width: 768px) {
         font-size: 15px;
     }
+`;
+const ImageContainer = styled.div`
+    width: 100%;
+    @media only screen and (max-width: 768px) {
+        text-align: center;
+    }
+`;
+const Image = styled.img`
+    max-width: 300px;
+    width: 100%;
+    height: 300px;
+    margin-top: 1rem;
 `;
 const TopContainer = styled.div`
     margin: auto;
