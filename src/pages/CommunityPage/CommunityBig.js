@@ -40,7 +40,9 @@ function CommunityBig({ posts }) {
                             <PostContent>
                                 {
                                     // post.content
-                                    post.content.replace(/(<([^>]+)>)/gi, '') // 태그제거
+                                    post.content
+                                        .replace(/(<([^>]+)>)/gi, '') // 태그제거
+                                        .replace(/&nbsp;/gi, '')
                                 }
                             </PostContent>
                             <PostInforBox>
@@ -129,6 +131,10 @@ const PostContent = styled.p`
     color: #5a5a5a;
     @media only screen and (max-width: 768px) {
         font-size: 14px;
+        line-height: 20px;
+    }
+    @media only screen and (max-device-width: 321px) {
+        margin-top: -6px;
         line-height: 16px;
     }
 `;
