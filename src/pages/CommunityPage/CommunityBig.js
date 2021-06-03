@@ -130,7 +130,6 @@ const PostContent = styled.p`
     @media only screen and (max-width: 768px) {
         font-size: 14px;
         line-height: 16px;
-        margin-bottom: 10px;
     }
 `;
 const PostInforBox = styled.div`
