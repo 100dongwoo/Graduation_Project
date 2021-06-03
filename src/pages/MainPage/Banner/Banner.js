@@ -72,11 +72,14 @@ const CarouselBox = styled(Carousel.Item)`
     height: 500px;
     width: 100%;
     background: orange;
+    @media only screen and (max-width: 768px) {
+        height: 330px;
+    }
 `;
 const Container = styled.div``;
 
 const IMG = styled.img`
     width: 100%;
-    height: 500px;
+    height: 100%;
 `;
 export default Banner;
