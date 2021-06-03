@@ -21,7 +21,7 @@ function CommunityTable({ posts }) {
                         <HeadSmallTH>활동</HeadSmallTH>
                     </Headtr>
                 </thead>
-                <tbody>
+                <tbody style={{ borderBottom: '3px solid #919191' }}>
                     {posts?.map((post, index) => (
                         <TR
                             key={index}
@@ -102,6 +102,9 @@ const HeadSmallTH = styled(TH)`
     width: 5%;
     min-width: 4.9rem;
     text-align: center;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 const HeadSmallReviewCount = styled(HeadSmallTH)`
     @media only screen and (max-width: 768px) {
@@ -127,6 +130,9 @@ const ContentUser = styled(TD)`
 `;
 const ContentSmall = styled(TD)`
     text-align: center;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 const ContentSmallReview = styled(ContentSmall)`
     @media only screen and (max-width: 768px) {
