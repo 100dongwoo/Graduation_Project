@@ -96,6 +96,8 @@ const Container = styled.div`
 const ContainerTop = styled.div`
     max-width: 1250px;
     margin: auto;
+    padding: 0 0.8rem;
+    word-break: keep-all;
 `;
 const SubTitle = styled.p`
     margin-top: 1rem;
