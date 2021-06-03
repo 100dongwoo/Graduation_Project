@@ -40,7 +40,10 @@ function RecycleBox(props) {
     };
     // console.log('infos', recycles);
     return (
-        <div id="Recycles">
+        <div
+            id="Recycles"
+            style={{ padding: '0 0.8rem', wordBreak: 'keep-all' }}
+        >
             <TopContainer>
                 <TopTitle>재활용 가이드</TopTitle>
                 <TopContent>

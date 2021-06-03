@@ -8,13 +8,13 @@ function RulesContainer(props) {
         <Container id="rules">
             <Content>
                 <Title>
-                    재활용 방법 : 이 세 가지 규칙 사용 <br /> 올바른 재활용!
+                    재활용 방법 : 3가지 규칙 사용 <br /> 올바른 재활용!
                 </Title>
                 <Information>
-                    기본으로 돌아갈 시간입니다. 사실 일부 재활용 조치는 다른
-                    것보다 더 큰 영향을 미칩니다.
-                    <br /> 따라서 다음에 재활용 할 때이 세 가지 기본 규칙을
-                    기억하십시오
+                    기본으로 돌아갈 시간입니다. 사실 일부 재활용 방법은
+                    간단합니다.
+                    <br /> 따라서 다음에 재활용 할 때이 3가지 기본 규칙을
+                    기억하세요.
                 </Information>
                 <TipContent>
                     <Tipbox>
@@ -125,7 +125,8 @@ const Container = styled.div`
     margin-top: 4rem;
     margin-bottom: 2.5rem;
     background-color: #f4f4f4;
-    padding: 2rem 0;
+    padding: 2rem 0.8rem;
+    word-break: keep-all;
 `;
 const Content = styled.div`
     max-width: 1250px;
