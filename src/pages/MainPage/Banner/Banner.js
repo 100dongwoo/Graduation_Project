@@ -9,34 +9,37 @@ import countrysideMap from '../../../images/map/countrysideMap.png';
 import scienceRoom from '../../../images/map/ScienceRoomMap.png';
 import sunset from '../../../images/map/sunsetMap.png';
 import ramen from '../../../images/monsters/ConvenienceStoreMonster/ramenMonster.png';
+import hasMonsterConvenienceStore from '../../../images/mapHasMonster/convenienceStore.png';
+import hasMonsterMart from '../../../images/mapHasMonster/martMap.png';
+import hasMonsterCountrysideMap from '../../../images/mapHasMonster/countrysideMap.png';
 const Banner = () => {
     const [main, setMain] = useState([
         {
-            backImage: convenienceStore,
+            backImage: hasMonsterConvenienceStore,
             title: '흰색 돼지',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
             // image: trush3,
             // 'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
         },
         {
-            backImage: countrysideMap,
+            backImage: hasMonsterMart,
             title: '엘사 딱가리',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
             // image:
             //     'https://i.pinimg.com/564x/27/de/1f/27de1fbde83fb1441b19c2ec4743a76d.jpg',
         },
         {
-            backImage: scienceRoom,
+            backImage: hasMonsterCountrysideMap,
             title: '댕댕이',
             sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
             image: ramen,
         },
-        {
-            backImage: sunset,
-            title: '????????????',
-            sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
-            image: ramen,
-        },
+        // {
+        //     backImage: sunset,
+        //     title: '????????????',
+        //     sub: '  Nulla vitae elit libero, a pharetra augue mollis interdum',
+        //     image: ramen,
+        // },
     ]);
 
     return (
@@ -71,9 +74,9 @@ const Banner = () => {
 const CarouselBox = styled(Carousel.Item)`
     height: 500px;
     width: 100%;
-    background: orange;
+    //background: orange;
     @media only screen and (max-width: 768px) {
-        height: 330px;
+        height: 300px;
     }
 `;
 const Container = styled.div``;

@@ -101,6 +101,10 @@ const WorldTitle = styled.p`
     line-height: 1.1;
     font-weight: bold;
     margin-bottom: 2rem;
+    @media only screen and (max-width: 768px) {
+        font-size: 2.9rem;
+        margin-bottom: 1rem;
+    }
 `;
 const TopContainer = styled.div`
     text-align: center;

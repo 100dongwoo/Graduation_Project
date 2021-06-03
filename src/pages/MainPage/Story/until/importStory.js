@@ -12,6 +12,7 @@ import story11 from '../StoryImages/story11.jpg';
 import story12 from '../StoryImages/story12.jpg';
 import story13 from '../StoryImages/story13.jpg';
 import story14 from '../StoryImages/story14.jpg';
+import story95 from '../StoryImages/story9.5.jpg';
 export const story = [
     story1,
     story2,
@@ -22,6 +23,7 @@ export const story = [
     story7,
     story8,
     story9,
+    story95,
     story10,
     story11,
     story12,

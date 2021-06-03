@@ -69,6 +69,7 @@ const Container = styled.div`
     position: sticky;
     //border-top: 10px solid red;
     box-shadow: 0 2px 15px 0 rgb(0 0 0 / 70%);
+    padding: 0 1rem;
 `;
 
 const Nav = styled.div`

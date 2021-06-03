@@ -62,4 +62,8 @@ const HeaderWrap = styled.div`
         transform: translateY(0px);
         margin-top: 0px;
     }
+
+    @media only screen and (max-device-width: 768px) {
+        display: none;
+    }
 `;

@@ -77,6 +77,11 @@ const Button = styled.button`
     text-transform: uppercase;
     font-weight: 700;
     background-color: ${(props) => (props.active ? '#ff534b' : '#c47135')};
+    @media only screen and (max-width: 768px) {
+        margin: 15px 15px;
+        font-size: 1rem;
+        padding: 12px 20px 5px;
+    }
 `;
 const MapListContainer = styled.div`
     text-align: center;

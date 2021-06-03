@@ -36,27 +36,37 @@ function NoticeDetaiPage(props) {
             <NoticeFont>공지사항</NoticeFont>
             <NoticeContainer>
                 <CreateDate>{moment(post?.created_at).format('ll')}</CreateDate>
-
                 <Title>{post?.title}</Title>
+                <ResponsiveImage src={post?.image} alt="image" />
                 <Content>{post?.content}</Content>
-                <img
-                    src={post?.image}
-                    style={{
-                        width: 300,
-                        height: 250,
-                        position: 'absolute',
-                        top: '20px',
-                        right: '20px',
-                        fontSize: '100px',
-                    }}
-                    alt="image"
-                />
+                <Image src={post?.image} alt="image" />
             </NoticeContainer>
         </Container>
     );
 }
 
 export default NoticeDetaiPage;
+const ResponsiveImage = styled.img`
+    width: 250px;
+    height: 230px;
+    position: relative;
+    display: none;
+    @media only screen and (max-width: 768px) {
+        display: block;
+        margin: 1rem auto 1.5rem;
+    }
+`;
+const Image = styled.img`
+    width: 250px;
+    height: 230px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 100px;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+`;
 const Content = styled.p`
     font-size: 1rem;
     word-break: keep-all;
@@ -101,9 +111,15 @@ const NoticeContainer = styled.div`
     box-sizing: border-box;
     color: #000;
     position: relative;
+
+    @media only screen and (max-width: 768px) {
+        padding: 20px 20px 30px;
+        //background: red;
+    }
 `;
 const Container = styled.div`
     max-width: 1100px;
-    padding: 1.5rem;
+    padding: 1rem;
+
     margin: auto;
 `;

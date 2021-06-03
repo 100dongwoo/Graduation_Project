@@ -107,6 +107,9 @@ const InforContainer = styled.div`
     @media only screen and (max-width: 768px) {
         margin: auto;
     }
+    @media only screen and (max-width: 768px) {
+        height: 400px;
+    }
 `;
 const MonsterName = styled.h1`
     font-size: 3.125rem;
@@ -114,12 +117,19 @@ const MonsterName = styled.h1`
     white-space: pre-line;
     line-height: 1.2;
     font-weight: 600;
+    word-break: keep-all;
+    @media only screen and (max-width: 768px) {
+        font-size: 2.5rem;
+    }
 `;
 const MonsterInfor = styled.p`
     white-space: pre-line;
     text-shadow: #594d46 0.1875rem 0.1875rem 0.1875rem;
     color: #c4a893;
     font-size: 1.375rem;
+    @media only screen and (max-width: 768px) {
+        font-size: 1.2rem;
+    }
 `;
 const BottomContainer = styled.div`
     display: flex;
@@ -169,7 +179,6 @@ const MonsterImageBox = styled.div`
     height: 135px;
     //padding: 1rem;
     border: 2px solid #adadad;
-
     opacity: ${(props) => (props.active ? 1 : 0.4)};
     transition: opacity 500ms ease 0s;
 `;
