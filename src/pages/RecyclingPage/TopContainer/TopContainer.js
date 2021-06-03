@@ -86,7 +86,10 @@ const TotalContainer = styled.div`
 const Content = styled.div`
     max-width: 1250px;
     margin: auto;
-    padding: 3rem 0px;
+    padding: 3rem 0.8rem;
+    @media only screen and (max-width: 768px) {
+        padding: 3rem 0;
+    }
 `;
 const Container = styled.div`
     border: 10px solid #f4f4f4;
