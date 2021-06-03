@@ -51,11 +51,10 @@ function DetailPage(props) {
         let params = {
             post: postId,
             content: reviewText,
-            user: user.id
+            user: user.id,
         };
 
-       api
-            .post('/reviews/', params)
+        api.post('/reviews/', params)
             .then((res) => {
                 if (!res.ok) {
                     FailAlert('댓글 등록에 문제가 생겼습니다.');
@@ -150,7 +149,7 @@ function DetailPage(props) {
         props.history.push({ pathname: '/upload', state: { post } });
     };
     return (
-        <div style={{ marginBottom: '3rem' }}>
+        <div style={{ marginBottom: '5rem', padding: '0 1rem' }}>
             <Title>{post.title}</Title>
             <UserContainer>
                 <TopContainer>
@@ -317,6 +316,9 @@ const PostInforBox = styled.p`
     font-size: 16px;
     line-height: 23px;
     color: #666666;
+    @media only screen and (max-width: 768px) {
+        font-size: 15px;
+    }
 `;
 const TopContainer = styled.div`
     margin: auto;
@@ -338,6 +340,10 @@ const UserName = styled.p`
     //line-height: 29px;
     letter-spacing: 0.04em;
     color: #828ea2;
+    @media only screen and (max-width: 768px) {
+        margin: 0 0 0 0.4rem;
+        font-size: 1rem;
+    }
 `;
 const UserContainer = styled.div`
     width: 100%;
@@ -375,6 +381,7 @@ const ReviewSubmitBox = styled.div`
     border: 1px solid #dcdde1;
     padding: 1rem;
     text-align: right;
+    margin-top: 1rem;
 `;
 const TextArea = styled.textarea`
     resize: none;

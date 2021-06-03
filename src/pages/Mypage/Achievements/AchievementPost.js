@@ -84,7 +84,9 @@ export default AchievementPost;
 const CollapseContainer = styled.div`
     padding: 5px 1rem;
 `;
-const BookContent = styled.p``;
+const BookContent = styled.p`
+    word-break: keep-all;
+`;
 const MoreText = styled.p`
     cursor: pointer;
     color: blue;
@@ -114,6 +116,7 @@ const PostBox = styled.div`
     //border-bottom: solid 1px #d9d9d9;
     display: flex;
     padding: 10px 7px 5px 4px;
+    word-break: keep-all;
 `;
 const Image = styled.img`
     border: 1px solid #adadad;

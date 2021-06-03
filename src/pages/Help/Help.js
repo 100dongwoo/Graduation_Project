@@ -76,6 +76,9 @@ const Container = styled.div`
 
 const Social = styled.i`
     color: #000;
+    @media only screen and (max-width: 768px) {
+        font-size: 2.5rem;
+    }
 `;
 const HelpBox = styled.div`
     background: white;
@@ -91,6 +94,10 @@ const HelpBox = styled.div`
     //&: hover {
     //    opacity: 0.8;
     //}
+    @media only screen and (max-width: 768px) {
+        width: 60px;
+        height: 60px;
+    }
 `;
 const HelpContainer = styled.div`
     position: absolute;

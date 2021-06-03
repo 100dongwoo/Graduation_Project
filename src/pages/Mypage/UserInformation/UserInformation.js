@@ -84,6 +84,7 @@ const BackgroundContainer = styled.div`
     position: absolute;
     height: 450px;
     z-index: -1;
+
     //padding: 3rem 0;
     //background: red;
     //background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
@@ -173,6 +174,8 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     padding-top: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     @media only screen and (max-width: 1024px) {
         flex-direction: column;
     }

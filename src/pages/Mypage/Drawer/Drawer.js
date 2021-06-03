@@ -63,9 +63,10 @@ const ResponsiveMenu = styled.span`
     word-break: keep-all;
     white-space: nowrap;
     cursor: pointer;
-    margin-right: 1rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
     margin-bottom: 0.5rem;
-    padding: 14px 13px;
+    padding: 10px 7px;
     background: #3776c7;
     color: #ffffff;
     background: ${(props) => (props.active ? 'red' : '#3776c7;')};

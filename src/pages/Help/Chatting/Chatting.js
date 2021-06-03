@@ -194,5 +194,8 @@ const HelpContainer = styled.div`
     height: ${(props) => (props.containerSize ? '500px' : '700px')};
     right: calc(100% + 10px);
     width: 360px;
+    @media only screen and (max-width: 768px) {
+        width: 250px;
+    }
 `;
 export default Chatting;

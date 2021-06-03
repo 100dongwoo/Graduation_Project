@@ -91,6 +91,9 @@ const Button = styled.button`
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    @media only screen and (max-width: 768px) {
+        width: 80px;
+    }
     &:hover {
         background: black;
         color: #ffffff;
@@ -119,6 +122,10 @@ const PostBox = styled.div`
     cursor: pointer;
     &:hover {
         opacity: 0.7;
+    }
+    @media only screen and (max-width: 768px) {
+        padding: 15px 12px;
+        height: 100px;
     }
 `;
 const Title = styled.span`
@@ -154,5 +161,9 @@ const Content = styled.span`
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
+    @media only screen and (max-width: 768px) {
+        font-size: 13px;
+        line-height: 13px;
+    }
 `;
 export default PostContainer;
