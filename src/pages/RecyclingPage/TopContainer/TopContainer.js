@@ -64,10 +64,15 @@ const NavLinkq = styled(LinkS)`
     &:hover {
         border-bottom: 4px solid #01bf71;
     }
+
     @media only screen and (max-width: 768px) {
         font-size: 1rem;
         margin-right: 1rem;
         margin-left: 1rem;
+    }
+    @media only screen and (max-device-width: 341px) {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
     }
     //&.active {
     //    border-bottom: 3px solid #01bf71;
