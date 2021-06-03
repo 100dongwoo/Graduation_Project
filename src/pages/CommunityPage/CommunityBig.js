@@ -134,14 +134,17 @@ const PostContent = styled.p`
     }
 `;
 const PostInforBox = styled.div`
-    height: 50px;
-    background: #f1f1f1;
+    height: 40px;
+    background: #e9ecef;
     border: 1px solid #f4f4f4;
     box-sizing: border-box;
     border-radius: 4px;
 
     @media only screen and (max-width: 768px) {
         font-size: 10px;
+    }
+    @media only screen and (max-device-width: 321px) {
+        margin-bottom: 0.6rem;
     }
 `;
 // 사진있는 이위에는 포스트 관련 styled-component
