@@ -120,7 +120,7 @@ function CommunityPage(props) {
                                 </InputGroup.Append>
                             </InputGroups>
                         </form>
-                        <IconBox>
+                        <IconBox user={user}>
                             {user && (
                                 <WriteButton
                                     onClick={() => {
@@ -230,9 +230,10 @@ const SpinnerContainer = styled.div`
 const IconBox = styled.div`
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    //justify-content: space-between;
     padding-right: 1rem;
     margin-top: 1rem;
+    justify-content: ${(props) => (props.user ? 'space-between' : 'flex-end')};
 `;
 const Icons = styled.i`
     font-size: 1.2rem;
