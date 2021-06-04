@@ -80,7 +80,7 @@ function Achievements({ clear }) {
                     />
                 ) : (
                     <NoPostFont>
-                        <UserName>'{user?.nickname}' </UserName> &nbsp; 님의
+                        <UserName>'{user?.nickname}' </UserName> 님의
                         {clear
                             ? '완료 업적이 없습니다.'
                             : '모든 업적을 완료하셨습니다.'}
@@ -92,7 +92,7 @@ function Achievements({ clear }) {
 }
 
 export default Achievements;
-const UserName = styled.p`
+const UserName = styled.span`
     color: #3776c7;
     font-size: 1.9rem;
     margin-top: 2px;
@@ -101,9 +101,9 @@ const UserName = styled.p`
 const NoPostFont = styled.span`
     color: black;
     font-size: 2rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    //width: 100%;
+    //display: flex;
+    //justify-content: center;
     background: #f9f9f9;
     text-align: center;
     padding-top: 3px;

@@ -124,7 +124,7 @@ const PostBox = styled.div`
         opacity: 0.7;
     }
     @media only screen and (max-width: 768px) {
-        padding: 15px 12px;
+        padding: 12px 12px;
         height: 100px;
     }
 `;
@@ -163,7 +163,7 @@ const Content = styled.span`
     -webkit-box-orient: vertical;
     @media only screen and (max-width: 768px) {
         font-size: 13px;
-        line-height: 13px;
+        line-height: 18px;
     }
 `;
 export default PostContainer;
