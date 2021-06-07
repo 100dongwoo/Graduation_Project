@@ -122,6 +122,7 @@ a { text-decoration: none; }
 }
 .installer a.close:after {
     content: 'Close';
+
     position: absolute;
     top: 7px;
     right: 30px;
@@ -174,7 +175,11 @@ a { text-decoration: none; }
 }
 
 .installer#Donwload .info:before {
-    content: '\f227';
+    content: ' ';
+    background-image: url("https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_ZJfrjsujgg_162306275874.png");
+
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .installer .details {
