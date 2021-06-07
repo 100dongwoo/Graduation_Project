@@ -20,6 +20,10 @@ function NavBar(props) {
         e.preventDefault();
         history.push(`/${channel}`);
     };
+    const onClickStart = (e) => {
+        e.preventDefault();
+        window.open('http://naver.me/Gw5JVQYC');
+    };
     return (
         // <Container>
         //     <LogoContainer>
@@ -211,6 +215,37 @@ function NavBar(props) {
                         </Nav.Link>
                         {/*테스트*/}
                     </Nav>
+
+                    {/**/}
+                    <Nav>
+                        <a className="download" href="#Donwload" />
+                        <div className="platforms" id="platforms">
+                            {/*<a href="#windows" data-os="windows"></a>*/}
+                            {/*<a href="#Donwload" data-os="다운받기" />*/}
+                            {/*<a href="#linux" data-os="linux"></a>*/}
+                        </div>
+
+                        <div className="installer" id="Donwload">
+                            <div className="info" data-weight="약 2GB" />
+                            <div className="details">
+                                <p>Dore Story 다운받기</p>
+                                <span>Version 1.0.0</span>
+                                <ul>
+                                    <li>친환경 게임</li>
+                                    <li>재활용 분리수거 게임</li>
+                                    <li>재밌는 게임</li>
+                                    <li>환경을 지키자</li>
+                                </ul>
+                            </div>
+                            <label onClick={onClickStart}>
+                                {/*<input type="radio" id="progressMac" />*/}
+                                <span />
+                            </label>
+                            <a className="close" href="#" />
+                        </div>
+                        {/**/}
+                    </Nav>
+                    {/**/}
                     <Nav>
                         {/*<Nav.Link href="#deets">More deets</Nav.Link>*/}
                         {/*<Nav.Link eventKey={2} href="#memes">*/}
