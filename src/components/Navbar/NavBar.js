@@ -218,14 +218,14 @@ function NavBar(props) {
 
                     {/**/}
                     <Nav>
-                        <a className="download" href="#Donwload" />
+                        <a className="download" href="#download" />
                         <div className="platforms" id="platforms">
                             {/*<a href="#windows" data-os="windows"></a>*/}
                             {/*<a href="#Donwload" data-os="다운받기" />*/}
                             {/*<a href="#linux" data-os="linux"></a>*/}
                         </div>
 
-                        <div className="installer" id="Donwload">
+                        <div className="installer" id="download">
                             <div className="info" data-weight="315MB" />
                             <div className="details">
                                 <p>Dore Story 다운받기</p>
@@ -234,7 +234,7 @@ function NavBar(props) {
                                     <li>친환경 게임</li>
                                     <li>재활용 분리수거 게임</li>
                                     <li>재밌는 게임</li>
-                                    <li>환경을 지키자</li>
+                                    <li>학습용 게임</li>
                                 </ul>
                             </div>
                             <label onClick={onClickStart}>

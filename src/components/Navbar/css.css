@@ -174,7 +174,7 @@ a { text-decoration: none; }
     color: #aaa;
 }
 
-.installer#Donwload .info:before {
+.installer#download .info:before {
     content: ' ';
     background-image: url("https://dorestory.s3.ap-northeast-2.amazonaws.com/static/post_images/resized_ZJfrjsujgg_162306275874.png");
 
@@ -258,7 +258,8 @@ a { text-decoration: none; }
     animation: downloadSuccess 3.1s ease;
 }
 .installer label span:after {
-    content: 'DOWNLOAD';
+    content: '다운로드';
+    font-size: 1.1rem;
     position: absolute;
     width: 80%;
     height: 100%;
