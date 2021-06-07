@@ -226,7 +226,7 @@ function NavBar(props) {
                         </div>
 
                         <div className="installer" id="Donwload">
-                            <div className="info" data-weight="약 2GB" />
+                            <div className="info" data-weight="315MB" />
                             <div className="details">
                                 <p>Dore Story 다운받기</p>
                                 <span>Version 1.0.0</span>
