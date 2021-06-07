@@ -22,7 +22,7 @@ function NavBar(props) {
     };
     const onClickStart = (e) => {
         e.preventDefault();
-        window.open('http://naver.me/Gw5JVQYC');
+        window.open('http://naver.me/G7KYsOcc');
     };
     return (
         // <Container>
