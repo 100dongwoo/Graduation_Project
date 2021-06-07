@@ -4,15 +4,29 @@
 | :----: | :--: | :-------: | :------: |
 | 김재훈 | 팀장 | Back-End  |  Django  |
 | 백동우 | 팀원 | Front-End |  React   |
+
+
+## 사용 기술 스택
+- Node.js
+- Django
+- React
+
 ### 사용한 라이브러리(Web)
 - styled-components
 - react-scroll
 - react-router-dom
 - react-bootstrap (UI 컴포넌트 라이브러리)
+- material-ui(UI 컴포넌트 라이브러리)
 - useFormik, yup
+- axios
+- draft.js ( 게시글 에디터 )
+- moment
+- redux-toolkit
+- react-redux
+- react-persist
+- formik
+- socket.io-client
 
-### 사용된 기술(Web)
-*****
 ## 게임 개발 팀원
 |  이름  | 담당 | 기술스택 |
 | :----: | :--: |:------: |
